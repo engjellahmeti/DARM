@@ -1,0 +1,35 @@
+--> The negative event log has the following rules:
+            1. If the notification type is not P that implicates that the penalty amount is below 4950. (r1)
+            2. If the notification type is equal to P that implicates that the penalty amount exceeds 5000. (r5)
+            3. If the notification resource differs from Admin and the notification type is P that implicates that the penalty amount doesn't go lower than 5056. (r16)
+
+--> While the positive event log has the following rules:
+            1. If the notification type is equal to C that implicates that the penalty amount is bigger than 5000. (r28)
+            2. If the notification type is P that implicates that the penalty amount is not bigger than 5000. (r32)
+            3. If the penalty amount is bigger than 5000 that implicates that the collection resource is not Police. (r57)
+            4. If the penalty amount doesn't exceed 5000 that implicates that the collection resource is Police. (r61)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the notification type is unequal to P that implicates that the penalty amount is lower than 4950. (r1)' and its subrules comparisons to the positive subrules are below:
+          - The notification type for the event 'Insert Fine Notification' is unequal to P in the negative rule, while in the positive rule r28, it is equal to C.
+          - The amount for the event 'Add Penalty' is lower than 4950 in the negative rule, while in the positive rule r28, it exceeds 5000.
+          - The amount for the event 'Add Penalty' is lower than 4950 in the negative rule, while in the positive rule r32, it is smaller than 5000.
+
+The second mined negative rule  is 'If the notification type is equal to P that implicates that the penalty amount is bigger than 5000. (r5)' and its subrules comparisons to the positive subrules are below:
+          - The notification type for the event 'Insert Fine Notification' is equal to P in the negative rule, while in the positive rule r28, it is C.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 17' is deviant because the penalty amount is smaller than 5000 (r57), the notification type is unequal to P (r32) and the process is not executed by Police (r61).
+The process execution with 'Case No. 22' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the notification type differs from P (r32).
+The process execution with 'Case No. 82' is deviant because the penalty amount is not bigger than 5000 (r28, r57) and the notification type is not P (r32).
+The process execution with 'Case No. 806' is deviant because the penalty amount is above 5000 (r32), the process is not executed by Police (r61) and the notification type is unequal to C (r28).
+The process execution with 'Case No. 98' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the notification type is unequal to P (r32).
+The process execution with 'Case No. 41' is deviant because the notification type differs from P (r32), the process is not executed by Police (r61) and the penalty amount is smaller than 5000 (r57).
+The process execution with 'Case No. 92' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the process is not executed by Police (r61).
+The process execution with 'Case No. 893' is deviant because the process is not executed by Police (r57) and the penalty amount is above 5000 (r61).
+The process execution with 'Case No. 19' is deviant because the penalty amount is not bigger than 5000 (r57) and the process is not executed by Police (r61).
+The process execution with 'Case No. 21' is deviant because the penalty amount doesn't exceed 5000 (r57) and the process is not executed by Police (r61).
+The process execution with 'Case No. 891' is deviant because the penalty amount is not smaller than 5000 (r61).
+The process execution with 'Case No. 93' is deviant because the penalty amount is not smaller than 5000 (r61).
+The process execution with 'Case No. 87' is deviant because t(r61).
+The process execution with 'Case No. 91' is deviant because t(r61).

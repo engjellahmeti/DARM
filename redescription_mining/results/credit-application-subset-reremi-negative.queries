@@ -1,0 +1,4 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r0,91568.0<Salary<109914.0,80.0<AssessmentCost<84.0,1.0,0.006,0,0,3,21,Salary,ApplyForCredit,AssessmentCost,Assessment,response
+r1,108071.0<Amount<111552.0,80.0<AssessmentCost<93.0,1.0,0.003,0,0,7,17,Amount,ApplyForCredit,AssessmentCost,Assessment,response
+r2,3421.0<Salary<12413.0,87.0<AssessmentCost<100.0,0.857,0.006,1,0,6,17,Salary,ApplyForCredit,AssessmentCost,Assessment,response

@@ -1,0 +1,19 @@
+activity OrderProduct
+bind OrderProduct: Price, Amount
+activity PayOrder
+bind PayOrder: Resource, Discount
+activity DeliverOrder
+bind DeliverOrder: Delivery
+activity CloseOrder
+bind CloseOrder: PaymentType
+Amount: integer between 1 and 10000
+Price: integer between 1 and 20000
+Delivery: Slow, Fast
+Resource: Customer, Company
+Discount: integer between 1 and 50
+PaymentType: PayPal, Transfer
+Init[OrderProduct] |
+Existence[DeliverOrder] |
+Existence[CloseOrder] |
+Response[DeliverOrder, CloseOrder] |A.Delivery  is Slow |B.PaymentType  is Transfer
+Response[DeliverOrder, CloseOrder] |A.Delivery  is Fast |B.PaymentType  is PayPal

@@ -1,0 +1,32 @@
+--> The negative event log has the following rules:
+            1. If the notification type is C that implicates that the penalty amount is lower than 4950. (r0)
+            2. If the notification type is equal to P that implicates that the penalty amount doesn't go lower than 5000. (r2)
+
+--> While the positive event log has the following rules:
+            1. If the notification type is equal to C that implicates that the penalty amount doesn't go lower than 5000. (r2)
+            2. If the notification type is equal to P that implicates that the penalty amount is smaller than 4909. (r3)
+            3. If the penalty amount doesn't go lower than 5000 that implicates that the process is executed by Admin. (r6)
+            4. If the penalty amount is below 4951 that implicates that the process is executed by Police. (r7)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the notification type is C that implicates that the penalty amount is lesser than 4950. (r0)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Add Penalty' is lesser than 4950 in the negative rule, while in the positive rule r2, it is bigger than 5000.
+          - The notification type for the event 'Insert Fine Notification' is C in the negative rule, while in the positive rule r3, it is equal to P.
+          - The amount for the event 'Add Penalty' is lesser than 4950 in the negative rule, while in the positive rule r3, it is below 4909.
+
+The second mined negative rule  is 'If the notification type is P that implicates that the penalty amount exceeds 5000. (r2)' and its subrules comparisons to the positive subrules are below:
+          - The notification type for the event 'Insert Fine Notification' is P in the negative rule, while in the positive rule r2, it is equal to C.
+          - The amount for the event 'Add Penalty' exceeds 5000 in the negative rule, while in the positive rule r3, it is lesser than 4909.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 873' is deviant because the penalty amount is above 4909 (r3), the penalty amount is not smaller than 4951 (r7) and the process is not executed by Admin (r6).
+The process execution with 'Case No. 50' is deviant because the process is not executed by Police (r7), the notification type is unequal to P (r3) and the penalty amount doesn't exceed 5000 (r2).
+The process execution with 'Case No. 84' is deviant because the notification type is unequal to P (r3), the penalty amount is smaller than 5000 (r2) and the process is not executed by Police (r7).
+The process execution with 'Case No. 878' is deviant because the penalty amount is above 4909 (r3), the notification type is not C (r2) and the penalty amount is above 4951 (r7).
+The process execution with 'Case No. 863' is deviant because the penalty amount is not smaller than 4951 (r7), the process is not executed by Admin (r6) and the penalty amount is not smaller than 4909 (r3).
+The process execution with 'Case No. 840' is deviant because the penalty amount is not smaller than 4909 (r3), the process is not executed by Police (r7) and the process is not executed by Admin (r6).
+The process execution with 'Case No. 898' is deviant because the notification type is unequal to C (r2), the process is not executed by Police (r7) and the penalty amount is not smaller than 4909 (r3).
+The process execution with 'Case No. 891' is deviant because the process is not executed by Admin (r6) and the penalty amount is not below 4951 (r7).
+The process execution with 'Case No. 375' is deviant because the process is not executed by Admin (r6) and the process is not executed by Police (r7).
+
+The process execution with 'Case No. 218' is deviant because the penalty amount is not bigger than 5000 (r6) and the process is not executed by Police (r7).

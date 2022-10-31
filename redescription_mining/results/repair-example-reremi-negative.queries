@@ -1,0 +1,3 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r0,Resource=Tester,Resource=Tester,0.5820000000000001,0.003,14,9,32,40,Resource,Register,Resource,InformUser,response
+r2,Resource=Solver,Resource=System,0.509,0.006999999999999999,14,12,27,42,Resource,Register,Resource,InformUser,response

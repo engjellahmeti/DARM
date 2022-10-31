@@ -1,0 +1,18 @@
+activity ApplyForCredit
+bind ApplyForCredit: Salary, Amount
+activity Assessment
+bind Assessment: AssessmentCost, AssessmentType, Resource
+activity OutcomeNotification
+bind OutcomeNotification: Result
+Salary: integer between 1000 and 120000
+Amount: integer between 30000 and 120000
+AssessmentCost: integer between 50 and 250
+AssessmentType: Simple, Complex
+Resource: BankManager, CreditAssessmentOfficer
+Result: Accepted, Rejected
+Init[ApplyForCredit] |
+Response[ApplyForCredit, Assessment] | |
+Response[ApplyForCredit, Assessment] |A.Salary <= 24000 and A.Amount > 50000 |B.AssessmentType  is Complex and B.AssessmentCost > 100 and B.Resource  is CreditAssessmentOfficer
+Response[ApplyForCredit, Assessment] |A.Amount > 100000 |B.AssessmentType  is Complex and B.AssessmentCost > 100
+Response[ApplyForCredit, Assessment] |A.Salary > 24000 and A.Amount <= 100000 |B.AssessmentType  is Simple and B.AssessmentCost <= 100
+Precedence[ApplyForCredit,OutcomeNotification] | A.Salary > 12000 |B.Result  is Accepted

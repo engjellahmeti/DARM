@@ -1,0 +1,33 @@
+--------------------Negative rules--------------------
+
+   Rule r1:  ! NotificationType=P => Amount<4950
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 4950\. :determiner zero) ) 
+
+   Rule r5:  NotificationType=P => 5000<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5000\. :determiner zero) )
+
+   Rule r16:  ( ! Resource=Admin & NotificationType=P ) => 5056<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5056\. :determiner zero) )
+
+--------------------Positive rules--------------------
+
+   Rule r28:  NotificationType=C => 5000<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex c\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5000\. :determiner zero) )
+
+   Rule r32:  NotificationType=P => ! 5000<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5000\. :determiner zero) )
+
+   Rule r57:  5000<Amount => ! Resource=Police
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5000\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex police\. :number mass)) 
+
+   Rule r61:  ! 5000<Amount => Resource=Police
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5000\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex police\. :number mass)) 
+

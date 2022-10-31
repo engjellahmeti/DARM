@@ -1,0 +1,8 @@
+pandas==1.1.5
+stanza==1.2
+python-clired==6.0.5
+xmltodict==0.12.0
+pyodbc==4.0.30
+pyter3==0.3
+nltk==3.7
+numpy==1.22.2

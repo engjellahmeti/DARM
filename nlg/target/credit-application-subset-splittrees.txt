@@ -1,0 +1,474 @@
+--> The negative event log has the following rules:
+            1. If the credit amount ranges between 108071 and 114743 that implicates that the assessment cost varies between 80 and 94. (r39)
+            2. If the credit amount is not bigger than 106411 and the credit salary varies between 3570 and 14742 that implicates that the assessment cost ranges from 100 to 125. (r37)
+            3. If the credit salary is in between 3421 and 12556 that implicates that the assessment cost stretches from 87 to 100. (r42)
+            4. If the credit amount is in between 105320 and 109351 and the credit salary doesn't go lower than 13839 that implicates that the assessment cost is not bigger than 92 and the assessment type is unequal to Complex. (r50)
+
+--> While the positive event log has the following rules:
+            1. If the credit amount doesn't go lower than 49804 and is smaller than 50256 and the credit salary doesn't exceed 7533 or the credit salary exceeds 7676 and is smaller than 7770 and the credit amount goes lower than 50256 or the credit amount doesn't go lower than 50256 and doesn't exceed 118656 and the credit salary doesn't exceed 26485 or the credit amount exceeds 118852 and the credit salary is not bigger than 26485  or the credit amount is bigger than 50256 and doesn't go lower than 99627 and the credit salary is bigger than 26485 that implicates that the assessment cost is between 56 and 102 and the process is executed by BankManager and the assessment type is not Complex or the assessment cost ranges between 102 and 162 and the assessment type is not Complex or the assessment cost doesn't go lower than 190 and the assessment type differs from Complex or the assessment cost goes lower than 98 and the assessment type is Complex or the assessment cost exceeds 124 and the process is not executed by CreditAssessmentOfficer and the assessment type is equal to Complex or the process is executed by CreditAssessmentOfficer and the assessment cost doesn't go lower than 101 and the assessment type is equal to Complex. (r73)
+            2. If the credit salary is not bigger than 34617 and the credit amount is bigger than 50757 or the credit amount doesn't go lower than 99627 and the credit salary is bigger than 34617 that implicates that the assessment cost goes lower than 98 and the assessment type is equal to Complex or the assessment type is unequal to Simple and the assessment cost is bigger than 101 or the assessment cost is in betwee 101 and 162 and the assessment type is Simple. (r75)
+            3. If the credit salary is not bigger than 26485 and the credit amount exceeds 50256 or the credit amount exceeds 99627 and the credit salary exceeds 26485 that implicates that the assessment cost is not bigger than 56 and the process is executed by BankManager and the assessment type differs from Complex or the assessment cost is between 102 and 132 and the assessment type is not Complex or the assessment cost is smaller than 55 and the assessment resource is not BankManager and the assessment type is Complex or the assessment cost is bigger than 94 and the assessment resource is not BankManager and the assessment type is Complex or the assessment cost ranges between 56 and 63 and the process is executed by BankManager and the assessment type is Complex. (r77)
+            4. If the credit amount is not bigger than 49804 and the credit salary doesn't exceed 7533 or the credit salary doesn't go lower than 7770 and the credit amount goes lower than 50256 or the credit amount is between 118656 and 118852 and the credit salary doesn't exceed 26485 or the credit amount varies between 50526 and 99627 and the credit salary doesn't go lower than 26485 that implicates that the assessment resource is not BankManager and the assessment cost doesn't exceed 102 and the assessment type is unequal to Complex or the assessment cost is between 56 and 102 and the process is executed by BankManager and the assessment type differs from Complex or the assessment cost ranges between 162 and 190 and the assessment type differs from Complex or the assessment cost ranges between 69 and 124 and the assessment resource is BankManager and the assessment type is equal to Complex. (r85)
+            5. If the credit salary is ranges between 1214 and 9296 and the credit amount is smaller than 48521 or the credit salary doesn't go lower than 9591 and the credit amount is smaller than 48521 or the credit amount varies between 48521 and 49978 or the credit amount ranges between 49978 and 99627 and the credit salary is bigger than 24206 that implicates that the assessment resource is not BankManager and the assessment type differs from Complex and the assessment cost is smaller than 101 or the assessment cost is between 56 and 101 and the process is executed by BankManager and the assessment type differs from Complex or the assessment cost ranges between 98 and 101 and the assessment type is Complex or the assessment cost ranges between 101 and 124 and the assessment resource is BankManager and the assessment type is not Simple or the assessment cost is between 101 and 102 and the assessment cost doesn't exceed 162 and the assessment type is Simple or the assessment cost is smaller than 190 and doesn't go lower than 162 and the assessment type is equal to Simple. (r114)
+            6. If the credit salary is not bigger than 11868 and the credit amount is not bigger than 50256 or the credit salary is bigger than 12963 and the credit amount is not bigger than 50256 or the credit amount ranges between 50256 and 99627 and the credit salary exceeds 24206 that implicates that the assessment type is not Complex and the assessment cost is smaller than 101 or the assessment cost  and the assessment type is equal to Complex or the assessment cost ranges between 101 and 131 and the process is not executed by CreditAssessmentOfficer and the assessment type is not Simple or the assessment cost varies betweeen 101 and 102 and the assessment type is Simple or the assessment cost ranges between 162 and 190 and the assessment type is equal to Simple. (r118)
+            7. If the credit amount is smaller than 50256 or the credit amount is between 50256 and 99627 and the credit salary exceeds 26485 that implicates that the assessment resource is not BankManager and the assessment cost is smaller than 102 and the assessment type differs from Complex or the assessment cost is between 56 and 102 and the process is executed by BankManager and the assessment type differs from Complex or the assessment cost is bigger than 132 and the assessment type is not Complex or the assessment cost ranges between 55 and 94 and the process is not executed by BankManager and the assessment type is equal to Complex or the assessment cost is bigger than 63 and the process is executed by BankManager and the assessment type is equal to Complex. (r81)
+            8. If the credit salary varies between 1225 and 2294 and the credit amount doesn't exceed 50256 or the credit salary doesn't go lower than 2294 and the credit amount is not bigger than 50256 or the credit amount is between 50256 and 99627 and the credit salary is bigger than 24206 that implicates that the assessment type differs from Complex and the assessment cost doesn't exceed 101 or the assessment cost ranges between 98 and 101 and the assessment type is equal to Complex. (r121)
+            9. If the credit salary is between 1337 and 9296 and the credit amount doesn't exceed 50531 or the credit amount ranges between 48979 and 50531 and the credit salary is bigger than 9296 or the credit amount varies between 50531 and 99627 and the credit salary doesn't go lower than 24601 that implicates that the assessment cost is smaller than 100 and the assessment resource differs from BankManager and the assessment type is not Complex or the assessment cost is between 56 and 101 and the assessment resource is BankManager and the assessment type differs from Complex or the assessment cost exceeds 225 and the assessment type is not Complex and the assessment resource is not BankManager or the assessment type is equal to Complex and the assessment cost is between 101 and 121 and the assessment resource is BankManager. (r116)
+            10. If the notification result is equal to Rejected that implicates that the credit salary is lower than 6732. (r168)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the credit amount doesn't exceed 106411 and the credit salary exceeds 3570 and the credit salary is not bigger than 14742 that implicates that the assessment cost goes lower than 125 and the assessment cost doesn't go lower than 100. (r37)' and its subrules comparisons to the positive subrules are below:
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r73, it is smaller than 7533.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r73, it exceeds 7676.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r73, it is not bigger than 7770.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r73, it doesn't go lower than 7533.
+          - The amount for the event 'Apply For Credit' doesn't exceed 106411 in the negative rule, while in the positive rule r73, it doesn't exceed 118656.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r73, it is smaller than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r73, it is smaller than 26485.
+          - The amount for the event 'Apply For Credit' doesn't exceed 106411 in the negative rule, while in the positive rule r73, it exceeds 118852.
+          - The amount for the event 'Apply For Credit' doesn't exceed 106411 in the negative rule, while in the positive rule r73, it doesn't go lower than 118656.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r73, it doesn't exceed 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r73, it doesn't exceed 26485.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r73, it doesn't go lower than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r73, it doesn't go lower than 26485.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r73, it is not bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it is not bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it doesn't go lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r73, it is bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it is bigger than 190.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r73, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it exceeds 124.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r73, it is bigger than 101.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r75, it doesn't exceed 34617.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r75, it doesn't exceed 34617.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r75, it is bigger than 34617.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r75, it is bigger than 34617.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r75, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r75, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r75, it is smaller than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r75, it is smaller than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r75, it exceeds 101.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r77, it is smaller than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r77, it is smaller than 26485.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r77, it is bigger than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r77, it is bigger than 26485.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r77, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r77, it is not bigger than 132.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r77, it is not bigger than 132.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r77, it doesn't go lower than 102.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r85, it goes lower than 7533.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r85, it is bigger than 7770.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r85, it exceeds 7533.
+          - The amount for the event 'Apply For Credit' doesn't exceed 106411 in the negative rule, while in the positive rule r85, it is not bigger than 118852.
+          - The amount for the event 'Apply For Credit' doesn't exceed 106411 in the negative rule, while in the positive rule r85, it doesn't go lower than 118656.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r85, it goes lower than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r85, it goes lower than 26485.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r85, it doesn't go lower than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r85, it doesn't go lower than 26485.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r85, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r85, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r85, it doesn't exceed 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r85, it doesn't exceed 190.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r85, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r85, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r85, it doesn't go lower than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r85, it doesn't exceed 124.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r114, it is smaller than 9296.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r114, it exceeds 9591.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r114, it is bigger than 9296.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r114, it exceeds 24206.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r114, it exceeds 24206.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it is smaller than 124.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r114, it is not bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it is not bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it exceeds 101.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r114, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r114, it exceeds 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r114, it exceeds 162.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r118, it is not bigger than 11868.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r118, it is not bigger than 12963.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r118, it is bigger than 12963.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r118, it doesn't go lower than 24206.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r118, it doesn't go lower than 24206.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r118, it is not bigger than 131.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it is not bigger than 131.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r118, it is not bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it is not bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it exceeds 101.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r118, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r118, it exceeds 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r118, it exceeds 162.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r81, it doesn't go lower than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r81, it doesn't go lower than 26485.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r81, it is smaller than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r81, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r81, it is bigger than 132.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r81, it is bigger than 132.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r81, it exceeds 102.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r121, it is bigger than 24206.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r121, it is bigger than 24206.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r121, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r121, it is not bigger than 101.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r116, it doesn't exceed 9296.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r116, it is bigger than 9296.
+          - The salary for the event 'Apply For Credit' exceeds 3570 in the negative rule, while in the positive rule r116, it is bigger than 24601.
+          - The salary for the event 'Apply For Credit' is not bigger than 14742 in the negative rule, while in the positive rule r116, it is bigger than 24601.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r116, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r116, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' goes lower than 125 in the negative rule, while in the positive rule r116, it exceeds 225.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r116, it exceeds 225.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r116, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 100 in the negative rule, while in the positive rule r116, it doesn't exceed 121.
+
+The second mined negative rule  is 'If the credit amount goes lower than 109351 and the credit amount doesn't go lower than 105320 and the credit salary is bigger than 13839 that implicates that the assessment cost doesn't exceed 92 and the assessment type is not Complex. (r50)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Apply For Credit' goes lower than 109351 in the negative rule, while in the positive rule r73, it is not bigger than 118656.
+          - The amount for the event 'Apply For Credit' doesn't go lower than 105320 in the negative rule, while in the positive rule r73, it is not bigger than 118656.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r73, it goes lower than 26485.
+          - The amount for the event 'Apply For Credit' goes lower than 109351 in the negative rule, while in the positive rule r73, it is bigger than 118852.
+          - The amount for the event 'Apply For Credit' doesn't go lower than 105320 in the negative rule, while in the positive rule r73, it is bigger than 118852.
+          - The amount for the event 'Apply For Credit' goes lower than 109351 in the negative rule, while in the positive rule r73, it is bigger than 118656.
+          - The amount for the event 'Apply For Credit' doesn't go lower than 105320 in the negative rule, while in the positive rule r73, it is bigger than 118656.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r73, it is smaller than 26485.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r73, it is bigger than 26485.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it goes lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it is bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it is bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it is not bigger than 98.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it exceeds 124.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it exceeds 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r73, it doesn't go lower than 101.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r75, it is not bigger than 34617.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r75, it exceeds 34617.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r75, it is smaller than 98.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r75, it is not bigger than 101.
+          - The assessment type for the event 'Assessment' is not Complex in the negative rule, while in the positive rule r75, it is not Simple.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r75, it exceeds 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r75, it is not bigger than 162.
+          - The assessment type for the event 'Assessment' is not Complex in the negative rule, while in the positive rule r75, it is equal to Simple.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r75, it is bigger than 101.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r77, it goes lower than 26485.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r77, it is bigger than 26485.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r77, it doesn't exceed 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r77, it doesn't exceed 132.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r77, it exceeds 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r77, it is smaller than 94.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r77, it doesn't go lower than 94.
+          - The amount for the event 'Apply For Credit' goes lower than 109351 in the negative rule, while in the positive rule r85, it is not bigger than 118852.
+          - The amount for the event 'Apply For Credit' doesn't go lower than 105320 in the negative rule, while in the positive rule r85, it is not bigger than 118852.
+          - The amount for the event 'Apply For Credit' goes lower than 109351 in the negative rule, while in the positive rule r85, it is bigger than 118656.
+          - The amount for the event 'Apply For Credit' doesn't go lower than 105320 in the negative rule, while in the positive rule r85, it is bigger than 118656.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r85, it is smaller than 26485.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r85, it doesn't go lower than 26485.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r85, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r85, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r85, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r85, it is bigger than 162.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r85, it exceeds 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r85, it doesn't exceed 124.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r114, it is bigger than 24206.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it exceeds 98.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it doesn't exceed 124.
+          - The assessment type for the event 'Assessment' is not Complex in the negative rule, while in the positive rule r114, it is not Simple.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it is smaller than 162.
+          - The assessment type for the event 'Assessment' is not Complex in the negative rule, while in the positive rule r114, it is Simple.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it is smaller than 190.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it doesn't go lower than 162.
+          - The assessment type for the event 'Assessment' is not Complex in the negative rule, while in the positive rule r114, it is equal to Simple.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r114, it doesn't go lower than 101.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r118, it is bigger than 24206.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it is bigger than 98.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it doesn't exceed 131.
+          - The assessment type for the event 'Assessment' is not Complex in the negative rule, while in the positive rule r118, it is not Simple.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it doesn't exceed 162.
+          - The assessment type for the event 'Assessment' is not Complex in the negative rule, while in the positive rule r118, it is Simple.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it exceeds 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it doesn't exceed 190.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r118, it exceeds 162.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r81, it doesn't go lower than 26485.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r81, it is smaller than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r81, it exceeds 132.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r81, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r81, it is smaller than 94.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r121, it doesn't go lower than 24206.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r121, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r121, it exceeds 98.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r121, it doesn't exceed 101.
+          - The salary for the event 'Apply For Credit' is bigger than 13839 in the negative rule, while in the positive rule r116, it exceeds 24601.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r116, it goes lower than 100.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r116, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r116, it exceeds 225.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r116, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r116, it goes lower than 121.
+          - The assessment cost for the event 'Assessment' doesn't exceed 92 in the negative rule, while in the positive rule r116, it exceeds 101.
+
+The third mined negative rule  is 'If the credit amount goes lower than 114743 and the credit amount is bigger than 108071 that implicates that the assessment cost doesn't go lower than 80 and the assessment cost goes lower than 94. (r39)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Apply For Credit' goes lower than 114743 in the negative rule, while in the positive rule r73, it goes lower than 118656.
+          - The amount for the event 'Apply For Credit' is bigger than 108071 in the negative rule, while in the positive rule r73, it goes lower than 118656.
+          - The amount for the event 'Apply For Credit' goes lower than 114743 in the negative rule, while in the positive rule r73, it exceeds 118852.
+          - The amount for the event 'Apply For Credit' is bigger than 108071 in the negative rule, while in the positive rule r73, it exceeds 118852.
+          - The amount for the event 'Apply For Credit' goes lower than 114743 in the negative rule, while in the positive rule r73, it exceeds 118656.
+          - The amount for the event 'Apply For Credit' is bigger than 108071 in the negative rule, while in the positive rule r73, it exceeds 118656.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it goes lower than 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it goes lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it is bigger than 190.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it is bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it doesn't go lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it doesn't go lower than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it is not bigger than 98.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it is not bigger than 98.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it is bigger than 124.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it is bigger than 124.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r73, it exceeds 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r73, it exceeds 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r75, it doesn't exceed 98.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r75, it doesn't exceed 98.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r75, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r75, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r75, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r75, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r75, it doesn't exceed 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r75, it doesn't exceed 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r77, it is smaller than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r77, it is smaller than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r77, it is smaller than 132.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r77, it is smaller than 132.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r77, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r77, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r77, it goes lower than 94.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r77, it exceeds 94.
+          - The amount for the event 'Apply For Credit' goes lower than 114743 in the negative rule, while in the positive rule r85, it is not bigger than 118852.
+          - The amount for the event 'Apply For Credit' is bigger than 108071 in the negative rule, while in the positive rule r85, it is not bigger than 118852.
+          - The amount for the event 'Apply For Credit' goes lower than 114743 in the negative rule, while in the positive rule r85, it is bigger than 118656.
+          - The amount for the event 'Apply For Credit' is bigger than 108071 in the negative rule, while in the positive rule r85, it is bigger than 118656.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r85, it doesn't exceed 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r85, it doesn't exceed 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r85, it is smaller than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r85, it is smaller than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r85, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r85, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r85, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r85, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r85, it exceeds 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r85, it exceeds 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r85, it goes lower than 124.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r85, it goes lower than 124.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it exceeds 98.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it exceeds 98.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it doesn't exceed 124.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it doesn't exceed 124.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it doesn't exceed 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it doesn't exceed 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it exceeds 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it exceeds 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it doesn't exceed 190.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it doesn't exceed 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r114, it exceeds 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r114, it exceeds 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it is bigger than 98.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it is bigger than 98.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it is not bigger than 131.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it is not bigger than 131.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it goes lower than 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it goes lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r118, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r118, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r81, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r81, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r81, it is bigger than 132.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r81, it is bigger than 132.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r81, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r81, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r81, it is not bigger than 94.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r121, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r121, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r121, it is bigger than 98.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r121, it is bigger than 98.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r121, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r121, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r116, it is smaller than 100.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r116, it is smaller than 100.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r116, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r116, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r116, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r116, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r116, it is bigger than 225.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r116, it is bigger than 225.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r116, it exceeds 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r116, it exceeds 101.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r116, it doesn't exceed 121.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r116, it doesn't exceed 121.
+          - The assessment cost for the event 'Assessment' doesn't go lower than 80 in the negative rule, while in the positive rule r116, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' goes lower than 94 in the negative rule, while in the positive rule r116, it is bigger than 101.
+
+The fourth mined negative rule  is 'If the credit salary is bigger than 3421 and the credit salary is not bigger than 12556 that implicates that the assessment cost varies between 87 and 100. (r42)' and its subrules comparisons to the positive subrules are below:
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r73, it is smaller than 7533.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r73, it exceeds 7676.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r73, it is not bigger than 7770.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r73, it exceeds 7533.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r73, it goes lower than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r73, it goes lower than 26485.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r73, it doesn't exceed 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r73, it doesn't exceed 26485.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r73, it doesn't go lower than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r73, it doesn't go lower than 26485.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it doesn't exceed 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it doesn't exceed 162.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it exceeds 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it is bigger than 190.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it doesn't go lower than 162.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it goes lower than 98.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it doesn't go lower than 124.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r73, it is bigger than 101.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r75, it is not bigger than 34617.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r75, it is not bigger than 34617.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r75, it exceeds 34617.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r75, it exceeds 34617.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r75, it doesn't exceed 98.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r75, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r75, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r75, it is smaller than 162.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r75, it exceeds 101.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r77, it is not bigger than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r77, it is not bigger than 26485.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r77, it doesn't go lower than 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r77, it doesn't go lower than 26485.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r77, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r77, it doesn't exceed 132.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r77, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r77, it doesn't exceed 94.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r77, it doesn't go lower than 94.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r85, it doesn't exceed 7533.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r85, it doesn't go lower than 7770.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r85, it doesn't go lower than 7533.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r85, it doesn't exceed 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r85, it doesn't exceed 26485.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r85, it exceeds 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r85, it exceeds 26485.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r85, it doesn't exceed 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r85, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r85, it is smaller than 190.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r85, it exceeds 162.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r85, it exceeds 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r85, it goes lower than 124.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r114, it doesn't exceed 9296.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r114, it exceeds 9591.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r114, it is bigger than 9296.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r114, it exceeds 24206.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r114, it exceeds 24206.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it is bigger than 98.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it doesn't exceed 124.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it goes lower than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it is not bigger than 162.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it doesn't exceed 190.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r114, it exceeds 162.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r118, it is not bigger than 11868.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r118, it is not bigger than 12963.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r118, it is not bigger than 12963.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r118, it is bigger than 12963.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r118, it is bigger than 12963.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r118, it exceeds 24206.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r118, it exceeds 24206.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it doesn't go lower than 98.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it is not bigger than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it doesn't exceed 131.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it is smaller than 162.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it doesn't go lower than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it is not bigger than 190.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r118, it doesn't go lower than 162.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r81, it exceeds 26485.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r81, it exceeds 26485.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r81, it doesn't exceed 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r81, it is not bigger than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r81, it is bigger than 132.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r81, it is bigger than 102.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r81, it is not bigger than 94.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r121, it is bigger than 24206.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r121, it is bigger than 24206.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r121, it doesn't exceed 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r121, it doesn't go lower than 98.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r116, it doesn't exceed 9296.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r116, it exceeds 9296.
+          - The salary for the event 'Apply For Credit' is bigger than 3421 in the negative rule, while in the positive rule r116, it is bigger than 24601.
+          - The salary for the event 'Apply For Credit' is not bigger than 12556 in the negative rule, while in the positive rule r116, it is bigger than 24601.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r116, it is not bigger than 100.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r116, it goes lower than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r116, it is smaller than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r116, it doesn't go lower than 225.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r116, it is bigger than 101.
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r116, it doesn't exceed 121.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 389' is deviant because the credit salary doesn't exceed 26485 (r81), the credit salary is not below 2294 (r121) and the credit salary is not below 11868 (r118).
+The process execution with 'Case No. 399' is deviant because the credit salary doesn't exceed 26485 (r81), the process is not executed by BankManager (r114) and the process is not executed by BankManager (r85).
+The process execution with 'Case No. 392' is deviant because the credit salary is not below 9296 (r114), the process is not executed by BankManager (r81) and the credit salary is higher than 9296 (r116).
+The process execution with 'Case No. 299' is deviant because the credit salary is above 7533 (r85), the process is not executed by BankManager (r81) and the credit salary doesn't exceed 34617 (r75).
+The process execution with 'Case No. 384' is deviant because the credit salary is higher than 7533 (r85), the process is not executed by BankManager (r77) and the credit salary is above 9296 (r114).
+The process execution with 'Case No. 398' is deviant because the credit salary is not smaller than 2294 (r121), the process is not executed by CreditAssessmentOfficer (r118) and the credit salary goes lower than 34617 (r75).
+The process execution with 'Case No. 381' is deviant because the credit salary is higher than 6732 (r168), the credit salary is above 9296 (r116) and the credit salary is higher than 9296 (r114).
+The process execution with 'Case No. 379' is deviant because the notification result is not Rejected (r168).
+The process execution with 'Case No. 382' is deviant because the notification result is not Rejected (r168).
+The process execution with 'Case No. 293' is deviant because the credit salary is higher than 6732 (r168).

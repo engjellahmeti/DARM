@@ -1,0 +1,17 @@
+activity Register
+bind Register: Resource
+activity InformUser
+bind InformUser: Resource, ComplexityOfRepair
+activity ArchiveRepair
+bind ArchiveRepair: NumberRepairs, DefectFixed, Resource
+Resource: System, Tester, Solver
+NumberRepairs: integer between 0 and 3
+DefectFixed: true, false
+ComplexityOfRepair: Simple, Medium, Complex
+Init[Register] |
+Response[Register, InformUser] | |
+Response[Register, InformUser] |A.Resource  is Tester|B.Resource  is System
+Response[Register, InformUser] |A.Resource  is Solver|B.ComplexityOfRepair  is Complex
+Response[InformUser, ArchiveRepair] |A.Resource  is Tester|B.NumberRepairs > 2 and B.DefectFixed  is false and B.Resource  is Solver
+Response[InformUser, ArchiveRepair] |A.Resource  is System|B.NumberRepairs <= 2 and B.DefectFixed  is true
+Response[InformUser, ArchiveRepair] |A.ComplexityOfRepair  is Complex|B.NumberRepairs = 3

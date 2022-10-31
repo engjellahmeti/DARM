@@ -1,0 +1,32 @@
+--------------------Negative rules--------------------
+
+   Rule r7:  ! Resource=Tester => ! Resource=Tester
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+
+   Rule r1:  ( Resource=Tester & ! Resource=Solver ) => ( ComplexityOfRepair=Complex & ! Resource=System & ! Resource=Tester ) | Resource=Tester
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex solver\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex complexity of repair :determiner the) :range (first / object :lex complex\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+
+   Rule r3:  Resource=Tester => Resource=Tester
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+
+--------------------Positive rules--------------------
+
+   Rule r17:  Resource=System => ! ComplexityOfRepair=Complex
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex complexity of repair :determiner the) :range (first / object :lex complex\. :number mass)) 
+
+   Rule r21:  Resource=Solver => ComplexityOfRepair=Complex
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex solver\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex complexity of repair :determiner the) :range (first / object :lex complex\. :number mass)) 
+
+   Rule r37:  ! Resource=System => Resource=Solver
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex solver\. :number mass)) 
+

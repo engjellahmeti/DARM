@@ -1,0 +1,1200 @@
+--> The negative event log has the following rules:
+            1. If the product price is smaller than 4143 or the product amount is bigger than 463 and the product price goes lower than 10902 or the product price exceeds 12259 that implicates that the order delivery is not Slow. (r7)
+            2. If the product price is bigger than 4143 that implicates that the order delivery is equal to Slow. (r5)
+            3. If the product amount is smaller than 839 or the product amount exceeds 4320 and is not bigger than 4439 or the product amount is smaller than 6012 and exceeds 4715 or the product amount doesn't go lower than 6672 and goes lower than 8881 or the product amount doesn't exceed 9333 and exceeds 8964 that implicates that the order discount goes lower than 2 or the order discount exceeds 3 and goes lower than 7 or the order discount exceeds 8 and is smaller than 14 or the order discount is smaller than 15 and exceeds 14. (r69)
+            4. If the product amount doesn't exceed 4320 and exceeds 839 or the product amount exceeds 839 and doesn't go higher than 4715 or the product amount exceeds 7908 and is smaller than 9333 or the product amount doesn't go lower than 9333 that implicates that the order discount goes lower than 8 and is smaller than 11 and or the order discount is bigger than 11 and doesn't exceed 14 or the order discount is bigger than 15. (r63)
+            5. If  the product amount doesn't exceed 4117 and doesn't go lower than 1891 or the product price doesn't exceed 9597 and is bigger than 6869 that implicates that the order discount is bigger than 8. (r73)
+            6. If the order payment type is PayPal that implicates that the order delivery is equal to Slow. (r231)
+
+--> While the positive event log has the following rules:
+            1. If the product price is not bigger than 10319 and the product amount is bigger than 4709 that implicates that the process is not executed by Customer or the order discount is smaller than 18 and the process is executed by Customer. (r111)
+            2. If the product price is bigger than 12008 and the product amount doesn't exceed 4709 or the product amount exceeds 4709 that implicates that the order resource is Company. (r123)
+            3. If the product price exceeds 3880 and is smaller than 3921 and the product amount is not bigger than 5578 or the product amount doesn't go lower than 5578 and doesn't exceed 9835 and the product price is not bigger than 3998 that implicates that the order discount goes lower than 2 or the order discount is bigger than 2 and not bigger than 17 or the order resource differs from Customer and the order discount is bigger than 42 or the order discount doesn't go lower than 47 and the order resource is Customer. (r117)
+            4. If the product price doesn't go lower than 264 and the product amount doesn't exceed 6602 or the product amount is bigger than 9820 and the product price is smaller than 3998 or the product price exceeds 3998 and the product amount is bigger than 6602 that implicates that the order discount is bigger than 11 and doesn't exceed 17 and the order resource is not Company or the order discount exceeds 17 and is smaller than 44 and the order resource differs from Customer or the order discount is bigger than 17 and doesn't exceed 49 and the order resource is Customer. (r119)       
+            5. If the product price exceeds 3880 and doesn't exceed 6602 and the product price goes lower than 3909 or the product amount exceeds 3666 and doesn't exceed 6602 and the product price exceeds 3909 or the product amount is bigger than 6602 and goes lower than 9820 and the product price is smaller than 3998 that implicates that the order discount is bigger than 6 and goes lower than 10 and the process is not executed by Company or the order discount is bigger than 13 and doesn't exceed 18 and the order resource differs from Company or the order discount goes lower than 10 and the process is executed by Company or the order discount is bigger than 14 and goes lower than 18 and the process is executed by Company or the order discount doesn't go lower than 44 and the order resource is not Customer or the order discount doesn't go lower than 49 and the process is executed by Customer. (r121)
+            6. If the product amount doesn't exceed 165 and the product price is smaller than 3880 or the product price doesn't go lower than 3880 and is not bigger than 3909 and the product amount is smaller than 6602 or the product amount is bigger than 6602 and is not bigger than 9820 and the product price is smaller than 3998 that implicates that the order discount exceeds 6 and is not bigger than 10 and the order resource differs from Company or the order discount doesn't go lower than 13 and doesn't exceed 17 and the order resource differs from Company or the order discount doesn't exceed 10 and the order resource is Company or the order discount is bigger than 14 and goes lower than 17 and the process is executed by Company or the order discount is bigger than 17 and doesn't go lower than 44 and the process is not executed by Customer or the order discount is bigger than 49 and the order resource is Customer. (r158)
+            7. If the product amount is lesser than 6602 that implicates that the order discount is not bigger than 28 and the order resource is not Customer or the order discount is bigger than 10 and is smaller than 18 and the process is executed by Customer or the order discount exceeds 18 and the order resource is Customer. (r115)
+            8. If the product amount doesn't exceed 4709 that implicates that the order resource is Customer. (r109)
+            9. If the order payment type is equal to Transfer that implicates that the order delivery is Slow. (r235)
+            10. If the order payment type differs from Transfer that implicates that the order delivery is equal to Fast. (r239)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the product amount doesn't exceed 4117 and the product amount exceeds 1891 or the product price is smaller than 9597 and the product price doesn't go lower than 6869 and the product amount doesn't go lower than 4117 and the product amount doesn't go lower than 1891 that implicates that the order discount is bigger than 8. (r73)' and its subrules comparisons to the positive subrules are below:
+          - The price for the event 'Order Product' is smaller than 9597 in the negative rule, while in the positive rule r111, it is not bigger than 10319.
+          - The price for the event 'Order Product' doesn't go lower than 6869 in the negative rule, while in the positive rule r111, it is not bigger than 10319.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r111, it is bigger than 4709.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r111, it is bigger than 4709.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r111, it is bigger than 4709.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r111, it is bigger than 4709.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r111, it doesn't exceed 18.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r117, it is not bigger than 9835.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r117, it is not bigger than 9835.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r117, it is not bigger than 9835.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r117, it is not bigger than 9835.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r117, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r117, it is not bigger than 42.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r117, it exceeds 47.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r119, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r119, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r119, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r119, it doesn't go lower than 6602.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r119, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r119, it doesn't exceed 44.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r119, it exceeds 17.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r119, it is smaller than 49.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r121, it doesn't go lower than 3666.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r121, it doesn't go lower than 3666.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it exceeds 13.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it is bigger than 10.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it is bigger than 18.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it is bigger than 49.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r158, it is not bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r158, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r158, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r158, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r158, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r158, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r158, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r158, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4117 in the negative rule, while in the positive rule r158, it exceeds 6602.
+          - The amount for the event 'Order Product' exceeds 1891 in the negative rule, while in the positive rule r158, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4117 in the negative rule, while in the positive rule r158, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 1891 in the negative rule, while in the positive rule r158, it exceeds 6602.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it goes lower than 10.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it goes lower than 14.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 44.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' is bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 17.
+
+The second mined negative rule  is 'If the product amount doesn't exceed 4320 and the product amount doesn't exceed 4439 and the product amount doesn't go lower than 839 and the product amount goes lower than 4715 or the product amount exceeds 4439 and the product amount exceeds 839 and the product amount is not bigger than 4715 or the product amount is bigger than 7908 and the product price exceeds 16834 and the product amount goes lower than 9333 and the product amount is bigger than 4715 or the product amount doesn't exceed 9662 and the product amount is bigger than 9333 and the product amount exceeds 4715 that implicates that the order discount is not bigger than 8 and the order discount doesn't exceed 11 and the order discount is smaller than 14 and the order discount exceeds 7 or the order discount is bigger than 11 and the order discount goes lower than 14 and the order discount exceeds 7 or the order discount is bigger than 15 and the order discount is bigger than 14 and the order discount doesn't go lower than 7. (r63)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r111, it exceeds 4709.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r111, it exceeds 4709.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r111, it exceeds 4709.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r111, it exceeds 4709.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r111, it exceeds 4709.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r111, it is smaller than 18.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' is bigger than 7908 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' doesn't exceed 9662 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' is bigger than 9333 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r117, it goes lower than 9835.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r117, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 42.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' is bigger than 7908 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' doesn't exceed 9662 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' is bigger than 9333 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r119, it exceeds 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r119, it is bigger than 6602.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r119, it exceeds 11.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it exceeds 11.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r119, it exceeds 11.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r119, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r119, it is smaller than 44.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r119, it goes lower than 49.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it goes lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r121, it doesn't go lower than 3666.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r121, it doesn't go lower than 3666.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' is bigger than 7908 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 9662 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' is bigger than 9333 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it doesn't go lower than 6602.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it doesn't go lower than 13.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it doesn't go lower than 13.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 13.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it doesn't go lower than 13.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 13.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it goes lower than 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it goes lower than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it goes lower than 10.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it is not bigger than 14.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it is not bigger than 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it is not bigger than 14.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it is not bigger than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it is not bigger than 14.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it is bigger than 14.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it is bigger than 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it is bigger than 14.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it is bigger than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it is bigger than 14.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it exceeds 18.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 49.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r158, it doesn't exceed 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' is bigger than 7908 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 9662 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' is bigger than 9333 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r158, it goes lower than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4320 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 839 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4439 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 839 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' is not bigger than 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it goes lower than 17.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it is not bigger than 14.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it is not bigger than 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is not bigger than 14.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it is not bigger than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it is not bigger than 14.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it is bigger than 44.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it exceeds 49.
+          - The discount for the event 'Pay Order' is not bigger than 8 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 11 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 14 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' goes lower than 14 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 15 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 14 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 7 in the negative rule, while in the positive rule r158, it is bigger than 17.
+
+The third mined negative rule  is 'If the product amount is not bigger than 839 and the product amount goes lower than 4715 or the product amount is bigger than 4320 and the product amount doesn't exceed 4439 and the product amount is bigger than 839 and the product amount goes lower than 4715 or the product amount goes lower than 6012 and the product amount doesn't exceed 8881 and the product amount is bigger than 4715 or the product amount is bigger than 6672 and the product amount doesn't go lower than 6012 and the product amount is not bigger than 8881 and the product amount doesn't go lower than 4715 or the product amount goes lower than 9333 and the product amount exceeds 8964 and the product amount is bigger than 8881 and the product amount exceeds 4715 that implicates that the order discount is smaller than 2 and the order discount is smaller than 7 or the order discount is bigger than 3 and the order discount doesn't go lower than 2 and the order discount goes lower than 7 or the order discount doesn't go lower than 8 and the order discount is smaller than 11 and the order discount doesn't exceed 14 and the order discount is bigger than 7 or the order discount is not bigger than 15 and the order discount exceeds 14 and the order discount exceeds 7. (r69)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r111, it doesn't go lower than 4709.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r111, it doesn't go lower than 4709.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r111, it doesn't go lower than 4709.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r111, it doesn't go lower than 4709.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r111, it goes lower than 18.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r117, it is not bigger than 5578.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' doesn't exceed 8881 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' is bigger than 6672 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' is not bigger than 8881 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' exceeds 8964 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' is bigger than 8881 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r117, it doesn't exceed 9835.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r117, it exceeds 5578.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it doesn't exceed 42.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it goes lower than 17.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it goes lower than 42.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it exceeds 42.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it doesn't go lower than 47.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r117, it is bigger than 42.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r119, it is smaller than 6602.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 8881 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' is bigger than 6672 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' is not bigger than 8881 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' exceeds 8964 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' is bigger than 8881 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r119, it is bigger than 9820.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r119, it exceeds 6602.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 11.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it is smaller than 17.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it is not bigger than 44.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it is not bigger than 49.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r119, it doesn't go lower than 17.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it is not bigger than 6602.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r121, it exceeds 3666.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r121, it exceeds 3666.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it is smaller than 6602.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't exceed 8881 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' is bigger than 6672 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' is not bigger than 8881 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' exceeds 8964 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' is bigger than 8881 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it doesn't exceed 9820.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r121, it is bigger than 6602.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it is bigger than 6.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it is bigger than 6.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it is bigger than 6.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it is not bigger than 10.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it is smaller than 18.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it is bigger than 13.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it exceeds 10.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it is not bigger than 18.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 14.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it goes lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it exceeds 44.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r121, it exceeds 49.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r158, it is smaller than 6602.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' doesn't exceed 8881 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' is bigger than 6672 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' is not bigger than 8881 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' exceeds 8964 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' is bigger than 8881 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r158, it is smaller than 9820.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r158, it doesn't go lower than 6602.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it exceeds 6.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it exceeds 6.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it exceeds 6.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is smaller than 10.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it doesn't exceed 17.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it exceeds 13.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it exceeds 10.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is not bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it doesn't exceed 10.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it doesn't exceed 14.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is bigger than 14.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is smaller than 17.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it doesn't go lower than 44.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is bigger than 17.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it is bigger than 49.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r158, it exceeds 17.
+          - The amount for the event 'Order Product' is not bigger than 839 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 4715 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 4320 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 4439 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 839 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 6012 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' doesn't exceed 8881 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 4715 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 6672 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 6012 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' is not bigger than 8881 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' doesn't go lower than 4715 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' goes lower than 9333 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' exceeds 8964 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' is bigger than 8881 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The amount for the event 'Order Product' exceeds 4715 in the negative rule, while in the positive rule r115, it is lower than 6602.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r115, it doesn't exceed 28.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r115, it exceeds 26.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r115, it doesn't exceed 18.
+          - The discount for the event 'Pay Order' is smaller than 2 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 3 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 2 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' goes lower than 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' doesn't go lower than 8 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is smaller than 11 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' doesn't exceed 14 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is bigger than 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' is not bigger than 15 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' exceeds 14 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+          - The discount for the event 'Pay Order' exceeds 7 in the negative rule, while in the positive rule r115, it doesn't go lower than 18.
+
+The fourth mined negative rule  is 'If the order payment type is PayPal that implicates that the order delivery is Slow. (r231)' and its subrules comparisons to the positive subrules are below:
+          - The payment type for the event 'Close Order' is PayPal in the negative rule, while in the positive rule r235, it is Transfer.
+          - The payment type for the event 'Close Order' is PayPal in the negative rule, while in the positive rule r239, it is not Transfer.
+          - The delivery for the event 'Deliver Order' is Slow in the negative rule, while in the positive rule r239, it is Fast.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 41' is deviant because the product amount is not smaller than 4709 (r109, r123) and the product price is not smaller than 10319 (r111).
+The process execution with 'Case No. 74' is deviant because the product price is not smaller than 3880 (r158) and the process is not executed by Customer (r119, r123).
+The process execution with 'Case No. 64' is deviant because the process is not executed by Customer (r115) and the process is not executed by Company (r121, r158).
+The process execution with 'Case No. 50' is deviant because the process is not executed by Customer (r111, r115) and the product amount is not below 4709 (r109).
+The process execution with 'Case No. 175' is deviant because the product price is above 3998 (r119) and the process is not executed by Company (r117, r158).
+The process execution with 'Case No. 10' is deviant because the process is not executed by Customer (r115, r117) and the product price is smaller than 12008 (r123).
+The process execution with 'Case No. 69' is deviant because the product amount goes lower than 4709 (r111), the process is not executed by Customer (r115) and the product price is not below 3998 (r119).
+The process execution with 'Case No. 154' is deviant because the order delivery is not Slow (r235) and the order payment type is not Transfer (r239).
+The process execution with 'Case No. 169' is deviant because the order payment type is not Transfer (r235) and the order delivery differs from Fast (r239).
+The process execution with 'Case No. 200' is deviant because the order delivery is not Slow (r235) and the order payment type differs from Transfer (r239).
+The process execution with 'Case No. 174' is deviant because the order payment type is not Transfer (r235) and the order delivery is unequal to Fast (r239).
+The process execution with 'Case No. 192' is deviant because the order delivery is not Slow (r235) and the order payment type is not Transfer (r239).
+The process execution with 'Case No. 90' is deviant because the order delivery is unequal to Slow (r235) and the order payment type is not Transfer (r239).

@@ -1,0 +1,89 @@
+The metrics for event log "credit application subset" using reremi algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.9933949801849405
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 1.0
+      TER (Translation Edit Rate): 0.1388888888888889
+      Count of Positive Rules: 5
+      Count of Deviant Rules: 3
+
+The metrics for event log "credit application subset" using splittrees algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.9484669641571901
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 0.8540983606557377
+      TER (Translation Edit Rate): 0.025898460309805884
+      Count of Positive Rules: 10
+      Count of Deviant Rules: 4
+
+------------------------------------------------------------------------------------------------
+
+
+The metrics for event log "repair example" using reremi algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.831013916500994
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 0.9351351351351351
+      TER (Translation Edit Rate): 0.3052531328320802
+      Count of Positive Rules: 3
+      Count of Deviant Rules: 2
+
+The metrics for event log "repair example" using splittrees algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.8316151202749141
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 0.9547738693467337
+      TER (Translation Edit Rate): 0.28329490557751424
+      Count of Positive Rules: 3
+      Count of Deviant Rules: 3
+
+
+------------------------------------------------------------------------------------------------
+
+
+The metrics for event log "road traffic fines" using reremi algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.9786585365853658
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 0.9956140350877193
+      TER (Translation Edit Rate): 0.16666666666666666
+      Count of Positive Rules: 4
+      Count of Deviant Rules: 2
+
+The metrics for event log "road traffic fines" using splittrees algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.9171348314606742
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 0.9870689655172413
+      TER (Translation Edit Rate): 0.18768723154688066
+      Count of Positive Rules: 4
+      Count of Deviant Rules: 3
+
+      
+------------------------------------------------------------------------------------------------
+
+The metrics for event log "running example" using reremi algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.9804832713754646
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 0.9871382636655949
+      TER (Translation Edit Rate): 0.0750915750915751
+      Count of Positive Rules: 7
+      Count of Deviant Rules: 3
+
+The metrics for event log "running example" using splittrees algorithm:
+      BLEU (Bilingual Evaluation Understudy Score): 0.9793650298130053
+      ROUGE (Recall Oriented Understudy for Gisting Evaluation): 0.9063032367972743
+      TER (Translation Edit Rate): 0.011905291685705512
+      Count of Positive Rules: 10
+      Count of Deviant Rules: 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

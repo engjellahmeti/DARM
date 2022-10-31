@@ -1,0 +1,8 @@
+1	salary	salary	_	NN	_	number=SG|id0=3|id2=1|id1=3|definiteness=DEF|dpos=NN	_	3	_	ATTR	_	_	_
+2	credit	credit	_	NN	_	number=SG|id0=2|id1=2|dpos=NN	_	1	_	ATTR	_	_	_
+3	stretch	stretch	_	VBZ	_	id0=4|person=3|id1=4|tense=PRES|finiteness=FIN|dpos=VB	_	0	_	ROOT	_	_	_
+4	26485	26485	_	CD	_	id0=6|id1=6|dpos=CD	_	3	_	ATTR	_	_	_
+5	101546	101546	_	CD	_	id0=8|id1=8|dpos=CD	_	3	_	ATTR	_	_	_
+6	from	from	_	IN	_	id0=5|id1=5|dpos=IN	_	0	_	ROOT	_	_	_
+7	to	to	_	IN	_	id0=7|id1=7|dpos=IN	_	0	_	ROOT	_	_	_
+

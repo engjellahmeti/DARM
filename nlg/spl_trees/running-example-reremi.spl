@@ -1,0 +1,45 @@
+--------------------Negative rules--------------------
+
+   Rule r2:  7344<Amount<9642 => Delivery=Slow
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex amount :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 7344\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 9642\. :number mass)) ) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r10:  18022<Price<19671 | 3941<Amount<6237 => 13<Discount<15
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex price :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 18022\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 19671\. :number mass)) ) )
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex amount :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 3941\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 6237\. :number mass)) ) )
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex discount :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 13\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 15\. :number mass)) ) )
+
+   Rule r23:  PaymentType=PayPal => Delivery=Slow
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex payment type :determiner the) :range (first / object :lex paypal\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+--------------------Positive rules--------------------
+
+   Rule r2:  3697<Price => Delivery=Fast
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 3697\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r5:  4709<Amount => Resource=Company
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 4709\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex company\. :number mass)) 
+
+   Rule r7:  Amount<4704 => Resource=Customer
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 4704\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex customer\. :number mass)) 
+
+   Rule r9:  Delivery=Fast => 17<Discount<47
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex discount :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 17\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 47\. :number mass)) ) )
+
+   Rule r11:  17<Discount<47 => Delivery=Fast
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex discount :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 17\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 47\. :number mass)) ) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r12:  PaymentType=Transfer => Delivery=Slow
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex payment type :determiner the) :range (first / object :lex transfer\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r13:  PaymentType=PayPal => Delivery=Fast
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex payment type :determiner the) :range (first / object :lex paypal\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+

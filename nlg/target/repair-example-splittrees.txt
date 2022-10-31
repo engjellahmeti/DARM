@@ -1,0 +1,29 @@
+--> The negative event log has the following rules:
+            1. If the register resource is not Tester that implicates that the user resource differs from Tester. (r7)
+            2. If the register resource is Tester and the process is not executed by Solver that implicates that the user complexity of repair is equal to Complex and the user resource differs from System and Tester or the process is executed by Tester. (r1)
+            3. If the register resource is Tester that implicates that the user resource is Tester. (r3)
+
+--> While the positive event log has the following rules:
+            1. If the register resource is System that implicates that the user complexity of repair differs from Complex. (r17)
+            2. If the register resource is Solver that implicates that the user complexity of repair is Complex. (r21)
+            3. If the user resource differs from System that implicates that the repair resource is Solver. (r37)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the register resource is not Tester that implicates that the user resource is not Tester. (r7)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is not Tester in the negative rule, while in the positive rule r37, it is not System.
+          - The resource for the event 'Inform User' is not Tester in the negative rule, while in the positive rule r37, it is executed by Solver.
+
+The second mined negative rule  is 'If the process is executed by Tester that implicates that the user resource is Tester. (r3)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is executed by Tester in the negative rule, while in the positive rule r37, it is not executed by System.
+          - The resource for the event 'Inform User' is Tester in the negative rule, while in the positive rule r37, it is Solver.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 203' is deviant because the process is not executed by Solver (r37) and not by System (r17), the user complexity of repair is unequal to Complex (r21).
+The process execution with 'Case No. 1' is deviant because the process is not executed by System (r17) and not by Solver (r37), the user complexity of repair is not Complex (r21).
+The process execution with 'Case No. 468' is deviant because the process is not executed by System (r17) and not by Solver (r21, r37).
+The process execution with 'Case No. 375' is deviant because the process is not executed by System (r17) and the user complexity of repair is unequal to Complex (r21).
+The process execution with 'Case No. 201' is deviant because the process is not executed by System (r17) and not by Solver (r37).
+The process execution with 'Case No. 833' is deviant because the process is not executed by Solver (r21, r37) and not by System (r17).
+The process execution with 'Case No. 449' is deviant because the process is not executed by Solver (r21) and not by System (r37).
+
+The process execution with 'Case No. 888' is deviant because the process is not executed by System (r17) and not by Solver (r37), the user complexity of repair differs from Complex (r21).

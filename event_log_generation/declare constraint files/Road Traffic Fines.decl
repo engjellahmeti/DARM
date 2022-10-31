@@ -1,0 +1,18 @@
+activity InsertFineNotification
+bind InsertFineNotification: NotificationType, Resource
+activity AddPenalty
+bind AddPenalty: Amount
+activity SendFine
+bind SendFine: Expense, Resource
+activity SendForCreditCollection
+bind SendForCreditCollection: Resource
+NotificationType: P, C
+Resource: Admin, Police, System
+Amount: integer between 0 and 8000
+Expense: integer between 0 and 100
+Init[InsertFineNotification] |
+Response[InsertFineNotification, AddPenalty] | |
+Response[InsertFineNotification, AddPenalty] |A.NotificationType  is P|B.Amount < 5000
+Response[InsertFineNotification, AddPenalty] |A.NotificationType  is C|B.Amount > 5000
+Response[AddPenalty, SendForCreditCollection] |A.Amount > 5000 |B.Resource  is Admin
+Response[AddPenalty, SendForCreditCollection] |A.Amount < 5000 |B.Resource  is Police

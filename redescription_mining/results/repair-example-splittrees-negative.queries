@@ -1,0 +1,4 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r7,! Resource=Tester,! Resource=Tester,0.635,0.005,9,14,40,32,Resource,Register,Resource,InformUser,response
+r1,( Resource=Tester & ! Resource=Solver ),( ComplexityOfRepair=Complex & ! Resource=System & ! Resource=Tester ) | Resource=Tester,0.627,0.003,9,13,37,36,Resource,Register,"Resource,ComplexityOfRepair",InformUser,response
+r3,Resource=Tester,Resource=Tester,0.5820000000000001,0.003,14,9,32,40,Resource,Register,Resource,InformUser,response

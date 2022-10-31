@@ -1,0 +1,4 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r17,Resource=System,! ComplexityOfRepair=Complex,0.85,0.002,25,89,648,47,Resource,Register,ComplexityOfRepair,InformUser,response
+r21,Resource=Solver,ComplexityOfRepair=Complex,0.289,0.0,77,29,43,660,Resource,Register,ComplexityOfRepair,InformUser,response
+r37,! Resource=System,Resource=Solver,0.8290000000000001,0.002,92,0,446,41,Resource,InformUser,Resource,ArchiveRepair,response

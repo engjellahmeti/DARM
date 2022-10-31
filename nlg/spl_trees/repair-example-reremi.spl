@@ -1,0 +1,24 @@
+--------------------Negative rules--------------------
+
+   Rule r0:  Resource=Tester => Resource=Tester
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex tester\. :number mass)) 
+
+   Rule r2:  Resource=Solver => Resource=System
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex solver\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+
+--------------------Positive rules--------------------
+
+   Rule r1:  Resource=Solver => ComplexityOfRepair=Complex
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex solver\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex complexity of repair :determiner the) :range (first / object :lex complex\. :number mass)) 
+
+   Rule r2:  Resource=Solver => Resource=Solver
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex solver\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex solver\. :number mass)) 
+
+   Rule r5:  Resource=System => DefectFixed
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       
+

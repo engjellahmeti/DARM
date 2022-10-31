@@ -1,0 +1,9 @@
+1	the	the	the	DT	DT	_	_	3	3	DET	DET	_	_	_	_	_	_
+2	credit	credit	credit	NN	NN	_	_	3	3	NMOD	NMOD	_	_	_	_	_	_
+3	salary	salary	salary	NN	NN	_	_	4	4	NMOD	NMOD	_	_	_	_	_	_
+4	stretches	stretch	stretch	VBZ	VBZ	_	_	0	0	ROOT	ROOT	_	_	_	_	_	_
+5	from	from	from	IN	IN	_	_	6	6	CASE	CASE	_	_	_	_	_	_
+6	26485	26485	26485	CD	CD	_	_	4	4	NMOD	NMOD	_	_	_	_	_	_
+7	to	to	to	IN	IN	_	_	8	8	CASE	CASE	_	_	_	_	_	_
+8	101546	101546	101546	CD	CD	_	_	4	4	NMOD	NMOD	_	_	_	_	_	_
+

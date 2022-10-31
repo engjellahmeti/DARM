@@ -1,0 +1,6 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r10,46630.0<Amount,72.0<AssessmentCost,0.813,0.001,119,195,1364,91,Amount,ApplyForCredit,AssessmentCost,Assessment,response
+r12,50069.0<Amount,Resource=BankManager | AssessmentType=Complex,0.8170000000000001,0.0,167,114,1253,235,Amount,ApplyForCredit,"Resource,AssessmentType",Assessment,response
+r14,Salary<21267.0,Resource=BankManager | 94.0<AssessmentCost,0.7809999999999999,0.004,252,115,1312,90,Salary,ApplyForCredit,"Resource,AssessmentCost",Assessment,response
+r21,26485.0<Salary<101546.0 | Amount<49978.0,AssessmentType=Simple & AssessmentCost<101.0,0.579,0.0,175,69,336,1189,"Salary,Amount",ApplyForCredit,"AssessmentType,AssessmentCost",Assessment,response
+r32,Result=Rejected,Salary<3054.0,0.185,0.008,33,42,17,245,Result,OutcomeNotification,Salary,ApplyForCredit,precedence

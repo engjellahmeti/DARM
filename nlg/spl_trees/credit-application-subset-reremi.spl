@@ -1,0 +1,40 @@
+--------------------Negative rules--------------------
+
+   Rule r0:  91568<Salary<109914 => 80<AssessmentCost<84
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex salary :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 91568\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 109914\. :number mass)) ) )
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex cost :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 80\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 84\. :number mass)) ) )
+
+   Rule r1:  108071<Amount<111552 => 80<AssessmentCost<93
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex amount :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 108071\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 111552\. :number mass)) ) )
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex cost :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 80\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 93\. :number mass)) ) )
+
+   Rule r2:  3421<Salary<12413 => 87<AssessmentCost<100
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex salary :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 3421\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 12413\. :number mass)) ) )
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex cost :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 87\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 100\. :number mass)) ) )
+
+--------------------Positive rules--------------------
+
+   Rule r10:  46630<Amount => 72<AssessmentCost
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 46630\. :determiner zero) )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 72\. :determiner zero) )
+
+   Rule r12:  50069<Amount => Resource=BankManager | AssessmentType=Complex
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 50069\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex bankmanager\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex type :determiner the) :range (first / object :lex complex\. :number mass)) 
+
+   Rule r14:  Salary<21267 => Resource=BankManager | 94<AssessmentCost
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 21267\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex bankmanager\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 94\. :determiner zero) )
+
+   Rule r21:  26485<Salary<101546 | Amount<49978 => AssessmentType=Simple & AssessmentCost<101
+       (betweenrange / property-ascription  :lex alternate  :domain  (attributename / subject :lex salary :determiner the) :range (fromto / object :lex in :number mass  :between (ir / ir :experiential-complexity-q complex :conjunctive-extension-q conjunctive :complex-thing-part1-id (first / abstraction :lex 26485\, :number mass)  :complex-thing-part2-id (second / abstraction :lex 101546\. :number mass)) ) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 49978\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex type :determiner the) :range (first / object :lex simple\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 101\. :determiner zero) ) 
+
+   Rule r32:  Result=Rejected => Salary<3054
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex result :determiner the) :range (first / object :lex rejected\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3054\. :determiner zero) ) 
+

@@ -1,0 +1,323 @@
+(EXAMPLE 
+    :NAME   EQUAL-EXAMPLE 
+    :GENERATEDFORM   "The  salary  is  100000 ." 
+    :TARGETFORM   "The  salary  is  100000 ." 
+    :LOGICALFORM 
+      (EQUALNESS / PROPERTY-ASCRIPTION 
+            :TENSE PRESENT 
+            :LEX EQUAL
+            :NUMBER MASS
+            :DOMAIN 
+            (ATTRIBUTENAME / PERSON :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FIRST / OBJECT :LEX 100000\. :NUMBER MASS)            
+      )
+)
+
+(say '(
+        EQUALNESS / PROPERTY-ASCRIPTION 
+            :TENSE PRESENT 
+            :LEX EQUAL
+            :NUMBER MASS
+            :DOMAIN 
+            (ATTRIBUTENAME / PERSON :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FIRST / OBJECT :LEX 100000\. :NUMBER MASS)            
+      )
+)
+
+
+
+
+
+
+(EXAMPLE 
+    :NAME   LOWER-EXAMPLE 
+    :GENERATEDFORM   "The  salary  is  lower  than  100000 ." 
+    :TARGETFORM   "The  salary  is  lower  than  100000 ." 
+    :LOGICALFORM 
+      (LOWERTHAN / GREATER-THAN-COMPARISON 
+           :TENSE PRESENT 
+           :DOMAIN
+           (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+           :RANGE
+           (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX LOW)
+           :STANDARD
+           (SECOND / QUALITY :LEX 100000\. :DETERMINER ZERO)
+      )
+)
+
+(say '(
+        LOWERTHAN / GREATER-THAN-COMPARISON 
+           :TENSE PRESENT 
+           :DOMAIN
+           (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+           :RANGE
+           (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX LOW)
+           :STANDARD
+           (SECOND / QUALITY :LEX 100000\. :DETERMINER ZERO)
+      )
+)
+
+
+
+
+
+
+(EXAMPLE 
+    :NAME   HIGHER-EXAMPLE 
+    :GENERATEDFORM   "The  salary  is  higher  than  100000 ." 
+    :TARGETFORM   "The  salary  is  higher  than  100000 ." 
+    :LOGICALFORM 
+      (HIGHERTHAN / GREATER-THAN-COMPARISON 
+            :TENSE PRESENT 
+            :DOMAIN
+            (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX HIGH)
+            :STANDARD
+            (FIRST / QUALITY :LEX 100000\. :DETERMINER ZERO)
+      )
+)
+
+(say '(
+        HIGHERTHAN / GREATER-THAN-COMPARISON 
+            :TENSE PRESENT 
+            :DOMAIN
+            (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX HIGH)
+            :STANDARD
+            (FIRST / QUALITY :LEX 100000\. :DETERMINER ZERO)
+      )
+)
+
+
+
+
+
+
+(EXAMPLE 
+    :NAME   BETWEEN-EXAMPLE
+    :GENERATEDFORM   "The  salary  ranges  in  between  100000,  and  200000 ." 
+    :TARGETFORM   "The  salary  ranges  in  between  100000  and  200000 ."
+    :LOGICALFORM 
+      (BETWEENRANGE / CLASS-ASCRIPTION 
+            :LEX RANGE 
+            :NUMBER PLURAL 
+            :DOMAIN 
+            (ATTRIBUTENAME / OBJECT :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FROMTO / OBJECT :LEX IN :NUMBER MASS 
+                    :BETWEEN
+                    (IR / IR :EXPERIENTIAL-COMPLEXITY-Q COMPLEX
+                        :CONJUNCTIVE-EXTENSION-Q CONJUNCTIVE
+                        :COMPLEX-THING-PART1-ID
+                        (FIRST / ABSTRACTION :LEX 100000\, :NUMBER MASS) 
+                        :COMPLEX-THING-PART2-ID
+                       (SECOND / ABSTRACTION :LEX 200000\. :NUMBER MASS))
+            )
+      )
+)
+
+
+(say '(
+        BETWEENRANGE / CLASS-ASCRIPTION 
+            :LEX RANGE 
+            :NUMBER PLURAL 
+            :DOMAIN 
+            (ATTRIBUTENAME / OBJECT :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FROMTO / OBJECT :LEX IN :NUMBER MASS 
+                    :BETWEEN
+                    (IR / IR :EXPERIENTIAL-COMPLEXITY-Q COMPLEX
+                        :CONJUNCTIVE-EXTENSION-Q CONJUNCTIVE
+                        :COMPLEX-THING-PART1-ID
+                        (FIRST / ABSTRACTION :LEX 100000\, :NUMBER MASS) 
+                        :COMPLEX-THING-PART2-ID
+                       (SECOND / ABSTRACTION :LEX 200000\. :NUMBER MASS))
+            )
+      )
+)
+
+
+
+(say '(
+        BETWEENRANGE / CLASS-ASCRIPTION 
+            :LEX RANGE 
+            :NUMBER PLURAL 
+            :DOMAIN 
+            (ATTRIBUTENAME / OBJECT :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FROMTO / OBJECT :LEX BETWEEN :NUMBER PLURAL 
+                    :PART-OF 
+                    (FIRST / ABSTRACTION :LEX 100000\, :NUMBER MASS) 
+                    (SECOND / ABSTRACTION :LEX 200000\. :NUMBER MASS)
+            )
+      )
+)
+
+
+
+
+
+------------------------------------------------------------------------------VERSION 2-----------------------------------------------------------------------------------------------------------
+
+(EXAMPLE 
+    :NAME   EQUAL-EXAMPLE 
+    :GENERATEDFORM   "The  salary  is   one  hundred  thousand  objects ." 
+    :TARGETFORM   "The  salary  is  100000 ." 
+    :LOGICALFORM 
+      (EQUALNESS / PROPERTY-ASCRIPTION 
+            :TENSE PRESENT 
+            :LEX EQUAL
+            :NUMBER MASS
+            :DOMAIN 
+            (ATTRIBUTENAME / PERSON :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FIRST / ABSTRACTION :QUANTITY 100000)            
+      )
+)
+
+(say '(
+        EQUALNESS / PROPERTY-ASCRIPTION 
+            :TENSE PRESENT 
+            :LEX EQUAL
+            :NUMBER MASS
+            :DOMAIN 
+            (ATTRIBUTENAME / PERSON :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FIRST / ABSTRACTION :QUANTITY 100000)            
+      )
+)
+
+
+
+
+
+
+(EXAMPLE 
+    :NAME   LOWER-EXAMPLE 
+    :GENERATEDFORM   "The  salary  is  lower  than   one  hundred  thousand  objects ." 
+    :TARGETFORM   "The  salary  is  lower  than  100000 ." 
+    :LOGICALFORM 
+      (LOWERTHAN / GREATER-THAN-COMPARISON 
+           :TENSE PRESENT 
+           :DOMAIN
+           (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+           :RANGE
+           (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX LOW)
+           :STANDARD
+           (SECOND / ABSTRACTION :QUANTITY 100000)
+      )
+)
+
+(say '(
+        LOWERTHAN / GREATER-THAN-COMPARISON 
+           :TENSE PRESENT 
+           :DOMAIN
+           (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+           :RANGE
+           (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX LOW)
+           :STANDARD
+           (SECOND / ABSTRACTION :QUANTITY 100000)
+      )
+)
+
+
+
+
+
+
+(EXAMPLE 
+    :NAME   HIGHER-EXAMPLE 
+    :GENERATEDFORM   "The  salary  is  higher  than   one  hundred  thousand  objects ." 
+    :TARGETFORM   "The  salary  is  higher  than  100000 ." 
+    :LOGICALFORM 
+      (HIGHERTHAN / GREATER-THAN-COMPARISON 
+            :TENSE PRESENT 
+            :DOMAIN
+            (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX HIGH)
+            :STANDARD
+            (FIRST / ABSTRACTION :QUANTITY 100000)
+      )
+)
+
+(say '(
+        HIGHERTHAN / GREATER-THAN-COMPARISON 
+            :TENSE PRESENT 
+            :DOMAIN
+            (ATTRIBUTENAME / ONE-OR-TWO-D-TIME :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (COMPARISONTYPE / SENSE-AND-MEASURE-QUALITY :LEX HIGH)
+            :STANDARD
+            (FIRST / ABSTRACTION :QUANTITY 100000)
+      )
+)
+
+
+
+
+
+
+(EXAMPLE 
+    :NAME   BETWEEN-EXAMPLE
+    :GENERATEDFORM   "The  salary  ranges  in  between  one  hundred  thousand  objects  and  two  hundred  thousand  objects ." 
+    :TARGETFORM   "The  salary  ranges  in  between  100000  and  200000 ."
+    :LOGICALFORM 
+      (BETWEENRANGE / CLASS-ASCRIPTION 
+            :LEX RANGE 
+            :NUMBER PLURAL 
+            :DOMAIN 
+            (ATTRIBUTENAME / OBJECT :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FROMTO / OBJECT :LEX IN :NUMBER MASS 
+                    :BETWEEN
+                    (IR / IR :EXPERIENTIAL-COMPLEXITY-Q COMPLEX
+                        :CONJUNCTIVE-EXTENSION-Q CONJUNCTIVE
+                        :COMPLEX-THING-PART1-ID
+                        (FIRST / ABSTRACTION :QUANTITY 100000) 
+                        :COMPLEX-THING-PART2-ID
+                       (SECOND / ABSTRACTION :QUANTITY 200000))
+            )
+      )
+)
+
+
+(say '(
+        BETWEENRANGE / CLASS-ASCRIPTION 
+            :LEX RANGE 
+            :NUMBER PLURAL 
+            :DOMAIN 
+            (ATTRIBUTENAME / OBJECT :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FROMTO / OBJECT :LEX IN :NUMBER MASS 
+                    :BETWEEN
+                    (IR / IR :EXPERIENTIAL-COMPLEXITY-Q COMPLEX
+                        :CONJUNCTIVE-EXTENSION-Q CONJUNCTIVE
+                        :COMPLEX-THING-PART1-ID
+                        (FIRST / ABSTRACTION :QUANTITY 100000) 
+                        :COMPLEX-THING-PART2-ID
+                       (SECOND / ABSTRACTION :QUANTITY 200000))
+            )
+      )
+)
+
+
+
+(say '(
+        BETWEENRANGE / CLASS-ASCRIPTION 
+            :LEX RANGE 
+            :NUMBER PLURAL 
+            :DOMAIN 
+            (ATTRIBUTENAME / OBJECT :LEX SALARY :DETERMINER THE)
+            :RANGE
+            (FROMTO / OBJECT :LEX BETWEEN :NUMBER PLURAL 
+                    :PART-OF 
+                    (FIRST / ABSTRACTION :QUANTITY 100000) 
+                    (SECOND / ABSTRACTION :QUANTITY 200000)
+            )
+      )
+)

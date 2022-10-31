@@ -1,0 +1,38 @@
+--> The negative event log has the following rules:
+            1. If the credit salary alternates between 91568 and 109914 that implicates that the assessment cost alternates between 80 and 84. (r0)
+            2. If the credit amount varies between 108071 and 111552 that implicates that the assessment cost varies between 80 and 93. (r1)
+            3. If the credit salary stretches from 3421 to 12413 that implicates that the assessment cost ranges from 87 to 100. (r2)
+
+--> While the positive event log has the following rules:
+            1. If the credit amount doesn't go lower than 46630 that implicates that the assessment cost doesn't go lower than 72. (r10)
+            2. If the credit amount is bigger than 50069 that implicates that the assessment resource is BankManager or the assessment type is equal to Complex. (r12)
+            3. If the credit salary is lower than 21267 that implicates that the process is executed by BankManager or the assessment cost is bigger than 94. (r14)
+            4. If the credit salary ranges from 26485 to 101546 or the credit amount is lesser than 49978 that implicates that the assessment type is equal to Simple and the assessment cost is lesser than 101. (r21)
+            5. If the notification result is Rejected that implicates that the credit salary is smaller than 3054. (r32)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the credit amount varies between 108071 and 111552 that implicates that the assessment cost alternates between 80 and 93. (r1)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Apply For Credit' varies between 108071 and 111552 in the negative rule, while in the positive rule r21, it is lesser than 49978.
+
+The second mined negative rule  is 'If the credit salary varies between 3421 and 12413 that implicates that the assessment cost varies between 87 and 100. (r2)' and its subrules comparisons to the positive subrules are below:
+          - The assessment cost for the event 'Assessment' varies between 87 and 100 in the negative rule, while in the positive rule r14, it doesn't go lower than 94.
+          - The salary for the event 'Apply For Credit' varies between 3421 and 12413 in the negative rule, while in the positive rule r21, it alternates between 26485 and 101546.
+
+The third mined negative rule  is 'If the credit salary ranges from 91568 to 109914 that implicates that the assessment cost varies between 80 and 84. (r0)' and its subrules comparisons to the positive subrules are below:
+          - The salary for the event 'Apply For Credit' ranges from 91568 to 109914 in the negative rule, while in the positive rule r14, it is below 21267.
+          - The assessment cost for the event 'Assessment' varies between 80 and 84 in the negative rule, while in the positive rule r14, it is bigger than 94.
+          - The salary for the event 'Apply For Credit' ranges from 91568 to 109914 in the negative rule, while in the positive rule r21, it ranges from 26485 to 101546.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 385' is deviant because the credit salary does not vary between 26485 and 101546 (r21), the assessment cost is smaller than 72 (r10) and the process is not executed by BankManager (r14).
+The process execution with 'Case No. 291' is deviant because the assessment cost is smaller than 72 (r10) and the credit salary does not vary between 26485 and 101546 (r21).
+The process execution with 'Case No. 296' is deviant because the credit salary doesn't stretch from 26485 to 101546 (r21).
+The process execution with 'Case No. 398' is deviant because the credit salary does not vary between 26485 and 101546 (r21).
+The process execution with 'Case No. 400' is deviant because the credit salary doesn't alternate between 26485 and 101546 (r21).
+The process execution with 'Case No. 397' is deviant because the credit salary doesn't alternate between 26485 and 101546 (r21).
+The process execution with 'Case No. 387' is deviant because the credit salary is higher than 21267 (r14) and the credit amount is above 49978 (r21).
+The process execution with 'Case No. 377' is deviant because the credit salary does not range from 26485 to 101546 (r21) and the credit salary is above 3054 (r32).
+The process execution with 'Case No. 379' is deviant because the notification result differs from Rejected (r32).
+The process execution with 'Case No. 292' is deviant because the credit salary is not below 3054 (r32).
+The process execution with 'Case No. 293' is deviant because the credit salary is not smaller than 3054 (r32).
+The process execution with 'Case No. 378' is deviant because the credit salary is higher than 3054 (r32).
