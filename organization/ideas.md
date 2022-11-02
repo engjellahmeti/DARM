@@ -5,7 +5,7 @@ During the meeting on 31.10.2022 09:00, we have discussed our ideas regarding th
 
 ### Engjëll's ideas:
 
--	Idea for a modification of the SpliT algorithm 
+-	Idea for a modification of the SplitT algorithm 
     - use Decision Tree (Random Forest) (create a new algorithm)
 	  1. find on each side two best decision trees with the depth of the number of attributes
 	  2. validate which events validate to true on both sides
