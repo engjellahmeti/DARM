@@ -1,0 +1,106 @@
+{
+    "running-example": {
+      "reremi": {
+        "no_of_declare_constraints": 5,
+        "total_execution_time_without_preprocessing": "38.25s",
+        "total_execution_time": "64.48s",
+        "info_per_declare_constraint": {
+          "response(OrderProduct, DeliverOrder)": {
+            "negative": {
+              "activation_view_rows": 399,
+              "activation_view_attributes": 2,
+              "target_view_rows": 399,
+              "target_view_attirbutes": 1,
+              "no_of_discovered_redescriptions": 1,
+              "execution_time": "1.84s"
+            },
+            "positive": {
+              "activation_view_rows": 389,
+              "activation_view_attributes": 2,
+              "target_view_rows": 389,
+              "target_view_attirbutes": 1,
+              "no_of_discovered_redescriptions": 1,
+              "execution_time": "0.81s"
+            },
+            "execution_time_per_constraint": "2.65s"
+          },
+          "response(OrderProduct, PayOrder)": {
+            "negative": {
+              "activation_view_rows": 108,
+              "activation_view_attributes": 2,
+              "target_view_rows": 108,
+              "target_view_attirbutes": 2,
+              "no_of_discovered_redescriptions": 1,
+              "execution_time": "4.92s"
+            },
+            "positive": {
+              "activation_view_rows": 353,
+              "activation_view_attributes": 2,
+              "target_view_rows": 353,
+              "target_view_attirbutes": 2,
+              "no_of_discovered_redescriptions": 2,
+              "execution_time": "30.32s"
+            },
+            "execution_time_per_constraint": "35.24s"
+          },
+          "respondedexistence(DeliverOrder, PayOrder)": {
+            "negative": {
+              "activation_view_rows": 997,
+              "activation_view_attributes": 1,
+              "target_view_rows": 997,
+              "target_view_attirbutes": 2,
+              "no_of_discovered_redescriptions": 0,
+              "execution_time": "0.06s"
+            },
+            "positive": {
+              "activation_view_rows": 425,
+              "activation_view_attributes": 1,
+              "target_view_rows": 425,
+              "target_view_attirbutes": 2,
+              "no_of_discovered_redescriptions": 1,
+              "execution_time": "0.07s"
+            },
+            "execution_time_per_constraint": "0.13s"
+          },
+          "respondedexistence(PayOrder, DeliverOrder)": {
+            "negative": {
+              "activation_view_rows": 997,
+              "activation_view_attributes": 2,
+              "target_view_rows": 997,
+              "target_view_attirbutes": 1,
+              "no_of_discovered_redescriptions": 0,
+              "execution_time": "0.05s"
+            },
+            "positive": {
+              "activation_view_rows": 425,
+              "activation_view_attributes": 2,
+              "target_view_rows": 425,
+              "target_view_attirbutes": 1,
+              "no_of_discovered_redescriptions": 1,
+              "execution_time": "0.07s"
+            },
+            "execution_time_per_constraint": "0.12s"
+          },
+          "precedence(DeliverOrder, CloseOrder)": {
+            "negative": {
+              "activation_view_rows": 27,
+              "activation_view_attributes": 1,
+              "target_view_rows": 27,
+              "target_view_attirbutes": 1,
+              "no_of_discovered_redescriptions": 1,
+              "execution_time": "0.04s"
+            },
+            "positive": {
+              "activation_view_rows": 325,
+              "activation_view_attributes": 1,
+              "target_view_rows": 325,
+              "target_view_attirbutes": 1,
+              "no_of_discovered_redescriptions": 2,
+              "execution_time": "0.07s"
+            },
+            "execution_time_per_constraint": "0.11s"
+          }
+        }
+      }
+    }
+  }

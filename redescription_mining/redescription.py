@@ -12,6 +12,7 @@ from pandas.core.frame import DataFrame
 from log_print import Print
 import re
 from redescription_mining.data_model import RedescriptionDataModel
+import time
 
 class RedescriptionMining:
     def __init__(self):
@@ -29,9 +30,11 @@ class RedescriptionMining:
 
         full_config_path = os.path.abspath(config_path)
 
-        self.setConfiguration(full_config_path=full_config_path, algorithm=algorithm, redescription_data_model=redescription_data_model)
+        (lhs_len, rhs_len) = self.setConfiguration(full_config_path=full_config_path, algorithm=algorithm, redescription_data_model=redescription_data_model)
 
+        start_time_per_constraint = time.time()
         exec_clired.run([None, full_config_path])
+        end_time_per_constraint = round(time.time() - start_time_per_constraint, 2)
 
         self.reset_configuration(full_config_path)
 
@@ -39,7 +42,7 @@ class RedescriptionMining:
 
         Print.YELLOW.print('Redescriptions have been generated.')
 
-        return redescriptions
+        return redescriptions, lhs_len, rhs_len, end_time_per_constraint
 
     def setConfiguration(self, full_config_path: str, algorithm: str, redescription_data_model: RedescriptionDataModel):
         Print.YELLOW.print('Setting up configurations.')
@@ -60,6 +63,11 @@ class RedescriptionMining:
 
         with open(full_config_path, mode='w') as a:
             a.write(xml_string)
+
+        lhs_len = pd.read_csv(LHS_data, index_col=0).shape 
+        rhs_len = pd.read_csv(RHS_data, index_col=0).shape
+
+        return lhs_len, rhs_len
 
     def reset_configuration(self, full_config_path: str):
         temp = re.sub('\.txt', '-sample.txt', full_config_path)

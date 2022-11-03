@@ -30,3 +30,9 @@ class DeclareConstraint:
 
     def __eq__(self, other):
         return self.activation == other.activation and self.target == other.target and self.rule_type == other.rule_type
+
+    def str_representation(self):
+        if "recedence" in self.rule_type.lower():
+            return self.rule_type + "(" + self.target + ", " + self.activation + ")"
+        else:
+            return self.rule_type + "(" + self.activation + ", " + self.target + ")"
