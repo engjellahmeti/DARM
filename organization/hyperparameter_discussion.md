@@ -1,7 +1,7 @@
 # Hyperparameter Discussion
 
 ## Engjëll's Thoughts on the case
-The datasheet below contains three columns: relevant, inbetween and unrelevant. In my opinion, the relevant parameters are shown in **Relevant** column, for the parameters that I am having doubts they stand in the **Inbetween** column, and the parameters that I find unrelevant are shown in the **Irrelevant** column.
+The datasheet below contains three columns: relevant, inbetween and unrelevant. In my opinion, the relevant parameters are shown in **Relevant** column, for the parameters that I am having doubts they stand in the **Inbetween** column, and the parameters that I find unrelevant are shown in the **Irrelevant** column. To the hyperparameters I have added also the default values provided by SIREN, the default values are not my own values.
 
 | Relevant | Inbetween | Irrelevant |
 |:-------------|:--------------|:--------------|
