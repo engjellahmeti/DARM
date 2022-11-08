@@ -22,23 +22,25 @@ import time
 from datetime import datetime
 import json
 
-
 class Main:
     def __init__(self, extract_dsynts_on_leafs, algorithm, config_or_template, filename):
         self.algorithms = ['reremi', 'layeredtrees', 'splittrees', 'cartwheel']
-        self.algorithm = algorithm
         self.config_or_template = config_or_template
         self.filename = filename
         self.spl_trees = []
         self.metrics = Metrics()
-        with open('redescription_mining\execution_times.json', 'r') as a:
-            self.execution_times = json.load(a)
-            
-        if algorithm is not None:
+
+        if config_or_template is not None:
             self.ruleExt = RuleExtractor()
             self.redesc = RedescriptionMining()
             self.rxes = RXESApproach()
             self.nlg_ = NLG(extract_dsynts_on_leafs=extract_dsynts_on_leafs)
+
+            self.hyperparameters = self.setup_hyperparameters()
+            self.algorithm = self.hyperparameters['@mining_algo']
+            with open('redescription_mining\execution_times.json', 'r') as a:
+                self.execution_times = json.load(a)
+                
 
     # region Helper Methods
     def discover_redescription_for_each_constraint(self, frame: DataFrame, event_log_path: str, declare_constraint: DeclareConstraint, is_positive_or_negative_log: str, filename: str) -> DataFrame:
@@ -153,7 +155,34 @@ class Main:
 
         return negative, positive
 
+    def setup_hyperparameters(self):
+        with open('redescription_mining\hyperparameter.json', 'r') as a:
+            hyperparameters = json.load(a)
 
+        parameter_path = r'redescription_mining\configs\config.txt'
+        xml_string = open(parameter_path, mode='r').read()
+        
+        for parameter in hyperparameters.keys():
+            xml_string = xml_string.replace(parameter, str(hyperparameters[parameter]))
+
+        with open(parameter_path, mode='w') as a:
+            a.write(xml_string)
+
+        parameter_path = parameter_path.replace('.txt', '-sample.txt')
+        with open(parameter_path, mode='w') as a:
+            a.write(xml_string)
+
+        return hyperparameters
+    
+    def reset_hyperparameters(self):
+        xml_string = open(r'redescription_mining\configs\config-sample-reset.txt', mode='r').read()
+        
+        with open(r'redescription_mining\configs\config.txt', mode='w') as a:
+            a.write(xml_string)
+
+        with open(r'redescription_mining\configs\config-sample.txt', mode='w') as a:
+            a.write(xml_string)
+    
     # endregion
 
     # region 1. Input Declare File
@@ -571,12 +600,12 @@ if __name__ == '__main__':
     else:
         extract_dsynts_on_leafs = False
         input_type = 3
-        algorithm = 'reremi' # 'splittrees' reremi
-        config_or_template = 'template' # 'config'
+        # algorithm = 'splittrees' # 'splittrees' reremi
+        config_or_template = 'config' # 'config'
         filename = 'running-example'#'#credit-application-subset' #running-example' # road-traffic-fines,repair-example
         declare_filename = 'Running Example'#Credit Application Subset'#Running Example' # 'FirstPaperExample'  # Repair Example, Road Traffic Fines
-        main = Main(extract_dsynts_on_leafs=extract_dsynts_on_leafs, algorithm=algorithm, config_or_template=config_or_template, filename=filename)
-
+        main = Main(extract_dsynts_on_leafs=extract_dsynts_on_leafs, algorithm=None, config_or_template=config_or_template, filename=filename)
+        algorithm = main.algorithm
 
     if input_type == 1:
         generate_logs = True
@@ -626,7 +655,7 @@ if __name__ == '__main__':
 
         output = main.input_declare_file_with_only_one_event_log(is_positive_or_negative_log='positive', filename=filename, declare_file_path=declare_file_path)
 
-    if input_type > 3 or (negative is not None and positive is not None):
+    if input_type > 3:# or (negative is not None and positive is not None):
         traces = main.generate_traces_for_nlg_example_output(declare_filename=declare_filename, filename=filename, algorithm=algorithm)
         #
         negative_redescription_path = os.path.abspath('redescription_mining/results/'+filename+'-'+algorithm+'-negative.queries')
@@ -656,4 +685,5 @@ if __name__ == '__main__':
                     print('      {0}: {1}'.format(metric_key, result[metric_key]))
             print()
 
+    main.reset_hyperparameters()
     print()

@@ -50,15 +50,15 @@ class RedescriptionMining:
         RHS_data = os.path.abspath(redescription_data_model.target_view)
 
         xml_string = open(full_config_path, mode='r').read()
-        if 'LHS_data.csv' not in xml_string:
+        if '@LHS_data' not in xml_string:
             temp = re.sub('\.txt', '-sample.txt', full_config_path)
             xml_string = open(temp, mode='r').read()
 
         self.configuration = xml_string
 
-        xml_string = xml_string.replace('LHS_data.csv', LHS_data)
-        xml_string = xml_string.replace('RHS_data.csv', RHS_data)
-        xml_string = xml_string.replace('algorithm.csv', algorithm)
+        xml_string = xml_string.replace('@LHS_data', LHS_data)
+        xml_string = xml_string.replace('@RHS_data', RHS_data)
+        # xml_string = xml_string.replace('@algorithm', algorithm)
 
 
         with open(full_config_path, mode='w') as a:

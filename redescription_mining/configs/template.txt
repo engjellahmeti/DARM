@@ -2,7 +2,7 @@
 <parameter>
         <name>mining_algo</name>
         <info>Algorithm to use for mining, greedy ReReMi or based on classification trees (restrictions apply). (single option in {reremi,layeredtrees,splittrees,cartwheel})</info>
-        <value>algorithm.csv</value>
+        <value>@algorithm</value>
 </parameter>
 <parameter>
         <name>min_itm_in</name>
@@ -17,12 +17,12 @@
 <parameter>
         <name>LHS_data</name>
         <info>Complete filename for the left hand side data. (open text)</info>
-        <value>LHS_data.csv</value>
+        <value>@LHS_data</value>
 </parameter>
 <parameter>
         <name>RHS_data</name>
         <info>Complete filename for the right hand side data. (open text)</info>
-        <value>RHS_data.csv</value>
+        <value>@RHS_data</value>
 </parameter>
 <parameter>
         <name>NA_str</name>

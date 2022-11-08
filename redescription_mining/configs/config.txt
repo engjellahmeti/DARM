@@ -7,7 +7,7 @@
                         <name>mining_algo</name>
                         <label>Mining algorithm</label>
                         <info>Algorithm to use for mining, greedy ReReMi or based on classification trees (restrictions apply). (single option in {reremi,layeredtrees,splittrees,cartwheel})</info>
-                        <value>algorithm.csv</value>
+                        <value>@mining_algo</value>
                 </parameter>
         </section>
         <section>
@@ -16,13 +16,13 @@
                         <name>max_var_s0</name>
                         <label>LHS max number of variables</label>
                         <info>Maximum number of variables in a left-hand side query, maximum tree depth in tree-based algorithms. (open text)</info>
-                        <value>4</value>
+                        <value>@max_var_s0</value>
                 </parameter>
                 <parameter>
                         <name>max_var_s1</name>
                         <label>RHS max number of variables</label>
                         <info>Maximum number of variables in a right-hand side query, maximum tree depth in tree-based algorithms. (open text)</info>
-                        <value>4</value>
+                        <value>@max_var_s1</value>
                 </parameter>
         </section>
         <section>
@@ -31,37 +31,37 @@
                         <name>min_itm_c</name>
                         <label>Min contribution</label>
                         <info>Minimum contribution, number of supporting entities impacted by the addition of a literal in ReReMi or minimum node size in tree-based algorithms. Values between 0 and 1 are interpreted as ratio of the total number of entities. (open text)</info>
-                        <value>3.0</value>
+                        <value>@min_itm_c</value>
                 </parameter>
                 <parameter>
                         <name>min_itm_in</name>
                         <label>Min support</label>
                         <info>Minimum number of supporting entities. Values between 0 and 1 are interpreted as ratio of the total number of entities. (open text)</info>
-                        <value>0.05</value>
+                        <value>@min_itm_in</value>
                 </parameter>
                 <parameter>
                         <name>min_itm_out</name>
                         <label>Min uncovered</label>
                         <info>Minimum number of uncovered entities. Values between 0 and 1 are interpreted as ratio of the total number of entities. (open text)</info>
-                        <value>0.05</value>
+                        <value>@min_itm_out</value>
                 </parameter>
                 <parameter>
                         <name>min_impr</name>
                         <label>Min improvement</label>
                         <info>Minimum improvement score for an acceptable extension. (open text)</info>
-                        <value>0.0</value>
+                        <value>@min_impr</value>
                 </parameter>
                 <parameter>
                         <name>max_inits</name>
                         <label>Max initial candidates</label>
                         <info>Maximum number of initial candidates explored, pairs for ReReMi, initial targets for trees. -1 leads to expand all. (open text)</info>
-                        <value>100</value>
+                        <value>@max_inits</value>
                 </parameter>
                 <parameter>
                         <name>inits_productivity</name>
                         <label>Initial candidates productivity</label>
                         <info>Productivity when creating an initial pair of literals from non-Boolean variables. (single option in {low,medium,high})</info>
-                        <value>medium</value>
+                        <value>@inits_productivity</value>
                 </parameter>
         </section>
         <section>
@@ -70,25 +70,25 @@
                         <name>min_fin_in</name>
                         <label>Min support</label>
                         <info>Minimum number of supporting entities, applied for final filtering. Values between 0 and 1 are interpreted as ratio of the total number of entities. (open text)</info>
-                        <value>-1.0</value>
+                        <value>@min_fin_in</value>
                 </parameter>
                 <parameter>
                         <name>min_fin_out</name>
                         <label>Min uncovered</label>
                         <info>Minimum number of uncovered entities, applied for final filtering. Values between 0 and 1 are interpreted as ratio of the total number of entities. (open text)</info>
-                        <value>-1.0</value>
+                        <value>@min_fin_out</value>
                 </parameter>
                 <parameter>
                         <name>min_fin_acc</name>
                         <label>Min accuracy</label>
                         <info>Minimum accuracy, applied for final filtering. (open text)</info>
-                        <value>0.01</value>
+                        <value>@min_fin_acc</value>
                 </parameter>
                 <parameter>
                         <name>max_fin_pval</name>
                         <label>Max p-value</label>
                         <info>Maximum p-value, applied for final filtering. (open text)</info>
-                        <value>0.01</value>
+                        <value>@max_fin_pval</value>
                 </parameter>
         </section>
         <section>
@@ -97,13 +97,13 @@
                         <name>max_overlap_area</name>
                         <label>Max Area Overlap</label>
                         <info>Two redescriptions whose area overlap is beyond this ratio are considered redundant. (open text)</info>
-                        <value>0.5</value>
+                        <value>@max_overlap_area</value>
                 </parameter>
                 <parameter>
                         <name>max_overlap_rows</name>
                         <label>Max Rows Overlap</label>
                         <info>Two redescriptions whose row overlap is beyond this ratio are considered redundant. (open text)</info>
-                        <value>0.5</value>
+                        <value>@max_overlap_rows</value>
                 </parameter>
         </section>
 </section>
@@ -115,13 +115,13 @@
                         <name>nb_processes</name>
                         <label>Nb processes</label>
                         <info>Maximum number of mining processes to use in parallel. (open text)</info>
-                        <value>1</value>
+                        <value>@nb_processes</value>
                 </parameter>
                 <parameter>
                         <name>verbosity</name>
                         <label>Log verbosity</label>
                         <info>Verbosity of the mining process output. (range in [0, 10])</info>
-                        <value>4</value>
+                        <value>@verbosity</value>
                 </parameter>
         </section>
         <section>
@@ -130,43 +130,43 @@
                         <name>batch_out</name>
                         <label>Batch output</label>
                         <info>Maximum number of redescriptions returned from an expansion batch. (open text)</info>
-                        <value>1</value>
+                        <value>@batch_out</value>
                 </parameter>
                 <parameter>
                         <name>min_fin_var</name>
                         <label>Min total number of variables</label>
                         <info>Maximum number of variables per redescription, applied for final filtering. (open text)</info>
-                        <value>2</value>
+                        <value>@min_fin_var</value>
                 </parameter>
                 <parameter>
                         <name>in_weight</name>
                         <label>Weight Inside</label>
                         <info>Weight for entities inside selected area (only applies when such an area is specified). (open text)</info>
-                        <value>10</value>
+                        <value>@in_weight</value>
                 </parameter>
                 <parameter>
                         <name>out_weight</name>
                         <label>Weight Outside</label>
                         <info>Weight for entities outside selected area (only applies when such an area is specified). (open text)</info>
-                        <value>1</value>
+                        <value>@out_weight</value>
                 </parameter>
                 <parameter>
                         <name>var_compat</name>
                         <label>Var group compatibility</label>
                         <info>Fixes whether group ids should differ or match for variables to be considered compatible (gid=-1 is universally compatible). (single option in {differ,match})</info>
-                        <value>differ</value>
+                        <value>@var_compat</value>
                 </parameter>
                 <parameter>
                         <name>method_pval</name>
                         <label>p-value formula</label>
                         <info>Formula used for computing the p-value. (single option in {marg,supp,over})</info>
-                        <value>marg</value>
+                        <value>@method_pval</value>
                 </parameter>
                 <parameter>
                         <name>parts_type</name>
                         <label>Missing values belief</label>
                         <info>How to consider missing values when computing support statistics. (single option in {rejective,optimistic,pessimistic,basic,exclu})</info>
-                        <value>rejective</value>
+                        <value>@parts_type</value>
                 </parameter>
         </section>
         <section>
@@ -175,13 +175,13 @@
                         <name>max_rounds</name>
                         <label>Max rounds in CartWheel</label>
                         <info>Maximum number of alternations in CartWheel algorithm. (open text)</info>
-                        <value>10</value>
+                        <value>@max_rounds</value>
                 </parameter>
                 <parameter>
                         <name>split_criterion</name>
                         <label>Split criterion</label>
                         <info>Score used to evaluate splits during decision tree induction. (single option in {gini,entropy})</info>
-                        <value>gini</value>
+                        <value>@split_criterion</value>
                 </parameter>
         </section>
         <section>
@@ -190,25 +190,25 @@
                         <name>splittrees_init_depth</name>
                         <label>Init depth</label>
                         <info>Maximum tree depth for the split in the first round. (open text)</info>
-                        <value>1</value>
+                        <value>@splittrees_init_depth</value>
                 </parameter>
                 <parameter>
                         <name>splittrees_update_target</name>
                         <label>Update target</label>
                         <info>Update the target between tree growing rounds. (yes/no)</info>
-                        <value>no</value>
+                        <value>@splittrees_update_target</value>
                 </parameter>
                 <parameter>
                         <name>splittrees_both_sides_change</name>
                         <label>Both sides change</label>
                         <info>Require both sides to be different in successive tree growing rounds. (yes/no)</info>
-                        <value>no</value>
+                        <value>@splittrees_both_sides_change</value>
                 </parameter>
                 <parameter>
                         <name>splittrees_dyn_side</name>
                         <label>Dynamic side</label>
                         <info>Choose the side on which to grow the tree first depending on the source of the target (else always start with RHS). (yes/no)</info>
-                        <value>yes</value>
+                        <value>@splittrees_dyn_side</value>
                 </parameter>
         </section>
 </section>
@@ -220,69 +220,69 @@
                         <name>single_side_or</name>
                         <label>Single side OR</label>
                         <info>Restrict use of disjunction to only one side. (yes/no)</info>
-                        <value>yes</value>
+                        <value>@single_side_or</value>
                 </parameter>
                 <parameter>
                         <name>multi_cats</name>
                         <label>Multi categories</label>
                         <info>Allow combining multiple categories of a categorical variable. (yes/no)</info>
-                        <value>no</value>
+                        <value>@multi_cats</value>
                 </parameter>
                 <parameter>
                         <name>add_condition</name>
                         <label>Conditional</label>
                         <info>Allow making conditional redescriptions, if suitable data is provided. (yes/no)</info>
-                        <value>no</value>
+                        <value>@add_condition</value>
                 </parameter>
                 <parameter>
                         <name>neg_query_s0_1</name>
                         <label>LHS Literals Bool</label>
                         <info>Types of literals allowed in the left-hand side queries for Boolean literals. (multiple options in {Positive,Negative})</info>
-                        <value>Positive</value>
+                        <value>@neg_query_s0_1</value>
                 </parameter>
                 <parameter>
                         <name>neg_query_s0_2</name>
                         <label>LHS Literals Cat</label>
                         <info>Types of literals allowed in the left-hand side queries for categorical literals. (multiple options in {Positive,Negative})</info>
-                        <value>Positive</value>
+                        <value>@neg_query_s0_2</value>
                 </parameter>
                 <parameter>
                         <name>neg_query_s0_3</name>
                         <label>LHS Literals Num</label>
                         <info>Types of literals allowed in the left-hand side queries for numerical literals. (multiple options in {Positive,Negative})</info>
-                        <value>Positive</value>
+                        <value>@neg_query_s0_3</value>
                 </parameter>
                 <parameter>
                         <name>ops_query_s0</name>
                         <label>LHS Operators</label>
                         <info>Type of operators allowed in the left-hand side queries. (multiple options in {Conjunction,Disjunction})</info>
                         <value>Conjunction</value>
-                        <value>Disjunction</value>
+                        <value>@ops_query_s0</value>
                 </parameter>
                 <parameter>
                         <name>neg_query_s1_1</name>
                         <label>RHS Literals Bool</label>
                         <info>Types of literals allowed in the right-hand side queries for Boolean literals. (multiple options in {Positive,Negative})</info>
-                        <value>Positive</value>
+                        <value>@neg_query_s1_1</value>
                 </parameter>
                 <parameter>
                         <name>neg_query_s1_2</name>
                         <label>RHS Literals Cat</label>
                         <info>Types of literals allowed in the right-hand side queries for categorical literals. (multiple options in {Positive,Negative})</info>
-                        <value>Positive</value>
+                        <value>@neg_query_s1_2</value>
                 </parameter>
                 <parameter>
                         <name>neg_query_s1_3</name>
                         <label>RHS Literals Num</label>
                         <info>Types of literals allowed in the right-hand side queries for numerical literals. (multiple options in {Positive,Negative})</info>
-                        <value>Positive</value>
+                        <value>@neg_query_s1_3</value>
                 </parameter>
                 <parameter>
                         <name>ops_query_s1</name>
                         <label>RHS Operators</label>
                         <info>Type of operators allowed in the right-hand side queries. (multiple options in {Conjunction,Disjunction})</info>
                         <value>Conjunction</value>
-                        <value>Disjunction</value>
+                        <value>@ops_query_s1</value>
                 </parameter>
         </section>
         <section>
@@ -291,19 +291,19 @@
                         <name>min_pairscore</name>
                         <label>Min score</label>
                         <info>Minimum score for an initial pair to be considered. (open text)</info>
-                        <value>0.01</value>
+                        <value>@min_pairscore</value>
                 </parameter>
                 <parameter>
                         <name>pe_balance</name>
                         <label>Pairs-expand balance</label>
                         <info>Balance between generating initial pairs and expanding them (0 means generating all pairs first). (range in [0, 10])</info>
-                        <value>4</value>
+                        <value>@pe_balance</value>
                 </parameter>
                 <parameter>
                         <name>pair_sel</name>
                         <label>Expansion order</label>
                         <info>Order in which the initial pairs are processed, either overall next best score or alternating between side considering next best variables in turn. (single option in {overall,alternate})</info>
-                        <value>alternate</value>
+                        <value>@pair_sel</value>
                 </parameter>
         </section>
 </section>
@@ -315,43 +315,43 @@
                         <name>score.impacc</name>
                         <label>Accuracy improvement coefficient</label>
                         <info>Coefficient of the accuracy improvement for scoring extension candidates. (open text)</info>
-                        <value>1.0</value>
+                        <value>@score</value>
                 </parameter>
                 <parameter>
                         <name>score.rel_impacc</name>
                         <label>Relative Accurracy improvement coefficient</label>
                         <info>Coefficient of the relative accuracy improvement for scoring extension candidates. (open text)</info>
-                        <value>0.0</value>
+                        <value>@score</value>
                 </parameter>
                 <parameter>
                         <name>score.pval_red</name>
                         <label>Redescription p-value coefficient</label>
                         <info>Coefficient of the redescription p-value for scoring extension candidates. Negative values are interpreted as a threshold weighted by p-value factor. (open text)</info>
-                        <value>0.01</value>
+                        <value>@score</value>
                 </parameter>
                 <parameter>
                         <name>score.pval_query</name>
                         <label>Query p-value coefficient</label>
                         <info>Coefficient of the query p-value for scoring extension candidates. Negative values are interpreted as a threshold weighted by p-value factor. (open text)</info>
-                        <value>0.01</value>
+                        <value>@score</value>
                 </parameter>
                 <parameter>
                         <name>score.pval_fact</name>
                         <label>p-value factor</label>
                         <info>Weight for p-value in case of using thresholds for scoring extension candidates. (open text)</info>
-                        <value>1.0</value>
+                        <value>@score</value>
                 </parameter>
                 <parameter>
                         <name>batch_cap</name>
                         <label>Batch capacity</label>
                         <info>Maximum number of candidates expanded at each step of the search. (open text)</info>
-                        <value>4</value>
+                        <value>@batch_cap</value>
                 </parameter>
                 <parameter>
                         <name>amnesic</name>
                         <label>Amnesic</label>
                         <info>Not amnesic means the algorithm remembers previously generated redescriptions and avoid generating them again. (yes/no)</info>
-                        <value>no</value>
+                        <value>@amnesic</value>
                 </parameter>
         </section>
         <section>
@@ -360,31 +360,31 @@
                         <name>max_seg</name>
                         <label>Max number segments</label>
                         <info>Maximum number of segments, i.e. distinct values for a numerical variable. (open text)</info>
-                        <value>20</value>
+                        <value>@max_seg</value>
                 </parameter>
                 <parameter>
                         <name>lower_tail_agg</name>
                         <label>Lower tail aggregate</label>
                         <info>Threshold for the lower tail, when aggregating keeping only extreme values. (open text)</info>
-                        <value>0.0</value>
+                        <value>@lower_tail_agg</value>
                 </parameter>
                 <parameter>
                         <name>upper_tail_agg</name>
                         <label>Upper tail aggregate</label>
                         <info>Threshold for the upper tail, when aggregating keeping only extreme values. (open text)</info>
-                        <value>0.0</value>
+                        <value>@upper_tail_agg</value>
                 </parameter>
                 <parameter>
                         <name>max_agg</name>
                         <label>Max aggregation</label>
                         <info>Maximum number of buckets aggregated together. (open text)</info>
-                        <value>15</value>
+                        <value>@max_agg</value>
                 </parameter>
                 <parameter>
                         <name>max_prodbuckets</name>
                         <label>Max product buckets</label>
                         <info>Maximum product of the number of buckets on either side. (open text)</info>
-                        <value>5000</value>
+                        <value>@max_prodbuckets</value>
                 </parameter>
         </section>
 </section>
@@ -395,66 +395,66 @@
                 <parameter>
 						<name>LHS_data</name>
 						<info>Complete filename for the left hand side data. (open text)</info>
-						<value>LHS_data.csv</value>
+						<value>@LHS_data</value>
 				</parameter>
 				<parameter>
 						<name>RHS_data</name>
 						<info>Complete filename for the right hand side data. (open text)</info>
-						<value>RHS_data.csv</value>
+						<value>@RHS_data</value>
 				</parameter>	
                 <parameter>
                         <name>data_rep</name>
                         <label>Data repertory</label>
                         <info>Repertory where the data files are stored. (open text)</info>
-                        <value>__TMP_DIR__</value>
+                        <value>@data_rep</value>
                 </parameter>
                 <parameter>
                         <name>data_l</name>
                         <label>LHS data basename</label>
                         <info>Basename of the file containing the left hand side data. (open text)</info>
-                        <value>left</value>
+                        <value>@data_l</value>
                 </parameter>
                 <parameter>
                         <name>data_r</name>
                         <label>RHS data basename</label>
                         <info>Basename of the file containing the right hand side data. (open text)</info>
-                        <value>right</value>
+                        <value>@data_r</value>
                 </parameter>
                 <parameter>
                         <name>ext_l</name>
                         <label>LHS data extension</label>
                         <info>Extension of the file containing the left hand side data. (open text)</info>
-                        <value>.csv</value>
+                        <value>@ext_l</value>
                 </parameter>
                 <parameter>
                         <name>ext_r</name>
                         <label>RHS data extension</label>
                         <info>Extension of the file containing the right hand side data. (open text)</info>
-                        <value>.csv</value>
+                        <value>@ext_r</value>
                 </parameter>
                 <parameter>
                         <name>NA_str</name>
                         <label>NA representation</label>
                         <info>String representation for missing values (CSV format). (open text)</info>
-                        <value>nan</value>
+                        <value>@NA_str</value>
                 </parameter>
                 <parameter>
                         <name>delim_in</name>
                         <label>Delimiter</label>
                         <info>Field delimiter (CSV format). (single option in {(auto),TAB,;,,,SPC})</info>
-                        <value>,</value>
+                        <value>@delim_in</value>
                 </parameter>
                 <parameter>
                         <name>time_yearfirst</name>
                         <label>Time year first</label>
                         <info>Whether to interpret the first value in an ambiguous 3-integer date as the year (dateutils). (single option in {(auto),yes,no})</info>
-                        <value>(auto)</value>
+                        <value>@time_yearfirst</value>
                 </parameter>
                 <parameter>
                         <name>time_dayfirst</name>
                         <label>Time day first</label>
                         <info>Whether to interpret the first value in an ambiguous 3-integer date as the day (dateutils). (single option in {(auto),yes,no})</info>
-                        <value>(auto)</value>
+                        <value>@time_dayfirst</value>
                 </parameter>
         </section>
         <section>
@@ -463,31 +463,31 @@
                         <name>result_rep</name>
                         <label>Results repertory</label>
                         <info>Repertory where to save the results. (open text)</info>
-                        <value>__TMP_DIR__</value>
+                        <value>@result_rep</value>
                 </parameter>
                 <parameter>
                         <name>out_base</name>
                         <label>Results data filename</label>
                         <info>Name of the file where to store the results. (open text)</info>
-                        <value>results</value>
+                        <value>@out_base</value>
                 </parameter>
                 <parameter>
                         <name>ext_queries</name>
                         <label>Queries extension</label>
                         <info>Extension of the file where to save the queries. (open text)</info>
-                        <value>.queries</value>
+                        <value>@ext_queries</value>
                 </parameter>
                 <parameter>
                         <name>ext_support</name>
                         <label>Supports extension</label>
                         <info>Extension of the file where to save the supports. (open text)</info>
-                        <value>.supports</value>
+                        <value>@ext_support</value>
                 </parameter>
                 <parameter>
                         <name>ext_log</name>
                         <label>Log data extension</label>
                         <info>Extension of the file where to save log traces. (open text)</info>
-                        <value>.txt</value>
+                        <value>@ext_log</value>
                 </parameter>
                 <parameter>
                         <name>queries_file</name>
@@ -553,7 +553,7 @@
                         <name>extensions_rep</name>
                         <label>Extensions repertory</label>
                         <info>Repertory where extension data files are stored. (open text)</info>
-                        <value>__TMP_DIR__</value>
+                        <value>@extensions_rep</value>
                 </parameter>
                 <parameter>
                         <name>extensions_names</name>
