@@ -21,6 +21,8 @@ from typing import List, Optional, Tuple
 import time
 from datetime import datetime
 import json
+import mlflow
+from mlflow import log_metrics, log_params, log_text, log_dict, set_tags, set_tag
 
 class Main:
     def __init__(self, extract_dsynts_on_leafs, algorithm, config_or_template, filename):
@@ -36,7 +38,7 @@ class Main:
             self.rxes = RXESApproach()
             self.nlg_ = NLG(extract_dsynts_on_leafs=extract_dsynts_on_leafs)
 
-            self.hyperparameters = self.setup_hyperparameters()
+            self.hyperparameters, self.relevant_hyperparameters = self.setup_hyperparameters()
             self.algorithm = self.hyperparameters['@mining_algo']
             with open('redescription_mining\execution_times.json', 'r') as a:
                 self.execution_times = json.load(a)
@@ -156,14 +158,22 @@ class Main:
         return negative, positive
 
     def setup_hyperparameters(self):
+        relevant_hyperparameters = {}
         with open('redescription_mining\hyperparameter.json', 'r') as a:
             hyperparameters = json.load(a)
 
         parameter_path = r'redescription_mining\configs\config.txt'
         xml_string = open(parameter_path, mode='r').read()
         
+        relevant_found = False
         for parameter in hyperparameters.keys():
             xml_string = xml_string.replace(parameter, str(hyperparameters[parameter]))
+
+            if not relevant_found:
+                if parameter != '@inits_productivity':
+                    relevant_hyperparameters[parameter.replace('@', '')] = hyperparameters[parameter]
+                else:
+                    relevant_found = True    
 
         with open(parameter_path, mode='w') as a:
             a.write(xml_string)
@@ -172,7 +182,7 @@ class Main:
         with open(parameter_path, mode='w') as a:
             a.write(xml_string)
 
-        return hyperparameters
+        return hyperparameters, relevant_hyperparameters
     
     def reset_hyperparameters(self):
         xml_string = open(r'redescription_mining\configs\config-sample-reset.txt', mode='r').read()
@@ -183,6 +193,95 @@ class Main:
         with open(r'redescription_mining\configs\config-sample.txt', mode='w') as a:
             a.write(xml_string)
     
+    def write_mlflow_logs1(self):
+        # Log hyperparameters (key-value pair)
+        log_params(self.relevant_hyperparameters)
+        
+        metrics = {}
+        artifacts = {}
+
+        for query in ['negative', 'positive']:
+            path =  os.path.abspath('redescription_mining/results/') + '/{0}-{1}-{2}.queries'.format(self.filename, self.algorithm, query)
+            artifacts['{0} {1} {2}'.format(self.filename, self.algorithm, query)] = path
+
+            data = pd.read_csv(path)
+
+
+            for rule in data.iterrows():
+                rule = rule[1]
+                constraint = rule['constraint']
+
+                if 'prec' in constraint.lower():
+                    met_constraint = '{0}_{2} _ {1}_'.format(constraint, rule['activation_activity'], rule['target_activity']) 
+                    constraint = '{0}({2}, {1})'.format(constraint, rule['activation_activity'], rule['target_activity']) 
+
+                else:
+                    met_constraint = '{0}_{1} _ {2}_'.format(constraint, rule['activation_activity'], rule['target_activity']) 
+                    constraint = '{0}({1}, {2})'.format(constraint, rule['activation_activity'], rule['target_activity']) 
+                
+                metrics[met_constraint + '-' + query + ' accuracy'] =  rule['acc']
+                metrics[met_constraint + '-' + query + ' p-value'] =  rule['pval']
+
+                if constraint + '-' + query not in artifacts.keys():
+                    artifacts[constraint + '-' + query] = ''
+
+                artifacts[constraint + '-' + query] = artifacts[constraint + '-' + query] + ', {0} ~ {1}'.format(rule['query_activation'], rule['query_target']) 
+
+
+        log_dict(artifacts, 'artifact')
+        log_metrics(metrics)
+        set_tag('Algorithm', self.algorithm)
+
+    def write_mlflow_logs(self):
+        if not os.path.exists('mlruns/'):
+            os.makedirs('mlruns')
+        
+        mlflow_data = os.listdir('mlruns/')
+        if '.trash' in mlflow_data:
+            mlflow_data.remove('.trash')
+
+        if len(mlflow_data) == 0:
+            run_id = 0
+        else:
+            temp = [int(re.search(r'(\d+)[-a-b]*', x, re.S|re.I).group(1)) for x in mlflow_data]
+            run_id = temp[-1] + 1
+
+        run_id = str(run_id) + ' - ' + ('ReReMi' if self.algorithm == 'reremi' else 'SplitT') + '-' + self.filename
+        experiment_id = mlflow.create_experiment(str(run_id))
+        for query in ['negative', 'positive']:
+            path = 'redescription_mining/results/{0}-{1}-{2}.queries'.format(self.filename, self.algorithm, query)
+
+            data = pd.read_csv(os.path.abspath(path))
+            groups = data.groupby(by=['activation_activity', 'target_activity', 'constraint'])
+
+            for name, group in groups:
+                if 'prec' in name:
+                    constraint = '{0}({2}, {1})'.format(name[2], name[0], name[1]) 
+
+                else:
+                    constraint = '{0}({1}, {2})'.format(name[2], name[0], name[1]) 
+
+                tags = {}
+                tags['Declare Constraint'] = constraint
+                groupOfRules = pd.DataFrame(group, columns=group.columns)
+                for rule in groupOfRules.iterrows():
+                    rule = rule[1]
+
+                    metrics = {}
+                    metrics['accuracy'] =  rule['acc']
+                    metrics['p-value'] =  rule['pval']
+
+                    tags['Redescription'] = '{0} ~ {1}'.format(rule['query_activation'], rule['query_target']) 
+
+                    artifacts = {'results': path}
+                    
+                    with mlflow.start_run(run_name=query, experiment_id=experiment_id) as _:
+                        log_metrics(metrics=metrics)
+                        log_params(params=self.relevant_hyperparameters)
+                        log_text('result', path)
+                        log_dict(artifacts, 'artifact')
+                        set_tags(tags)
+                    
     # endregion
 
     # region 1. Input Declare File
@@ -538,7 +637,7 @@ class Main:
 
     #endregion
 
-    #region Extract Arguments
+    # region Extract Arguments
     def extract_arguments(self, argv):
         input_type: int = -1
         algorithm: str = ''
@@ -586,7 +685,8 @@ class Main:
         print('{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}'.format(input_type, algorithm, filename, extract_dsynts, declare_filename,
                                                         amount_of_traces, min_trace_length, max_trace_length))
         return (input_type, algorithm, filename, extract_dsynts, declare_filename, amount_of_traces, min_trace_length, max_trace_length)
-    #endregion
+    
+    # endregion
 
 if __name__ == '__main__':
     Print.YELLOW.print('The tool has started. ')
@@ -599,7 +699,7 @@ if __name__ == '__main__':
 
     else:
         extract_dsynts_on_leafs = False
-        input_type = 3
+        input_type = 0
         # algorithm = 'splittrees' # 'splittrees' reremi
         config_or_template = 'config' # 'config'
         filename = 'running-example'#'#credit-application-subset' #running-example' # road-traffic-fines,repair-example
@@ -685,5 +785,6 @@ if __name__ == '__main__':
                     print('      {0}: {1}'.format(metric_key, result[metric_key]))
             print()
 
+    main.write_mlflow_logs()
     main.reset_hyperparameters()
     print()

@@ -6,3 +6,4 @@ pyodbc==4.0.30
 pyter3==0.3
 nltk==3.7
 numpy==1.22.2
+mlflow==1.30.0

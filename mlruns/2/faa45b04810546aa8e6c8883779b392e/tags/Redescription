@@ -1,0 +1,1 @@
+( 3880.0<Price & ! 3921.0<Price & ! 5578.0<Amount ) | ( ! 9835.0<Amount & ! 3998.0<Price & 5578.0<Amount ) ~ ( ! 2.0<Discount & ! 42.0<Discount ) | ( ! 17.0<Discount & 2.0<Discount & ! 42.0<Discount ) | ( ! Resource=Customer & 42.0<Discount ) | ( 47.0<Discount & Resource=Customer & 42.0<Discount )
