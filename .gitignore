@@ -1,8 +1,6 @@
 venv
 nlg/tool/KPML
-*/__pycache__/*
 .vscode/*
-__pycache__/*
 *.gv
 *.zip
 activation-*.json
@@ -10,3 +8,4 @@ activation-*.png
 target-*.json
 target-*.png
 h2o.jar
+__pycache__

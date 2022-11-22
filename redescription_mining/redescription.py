@@ -6,13 +6,14 @@
 import os
 import shutil
 from clired import exec_clired
-from clired.classData import Data
 import pandas as pd
 from pandas.core.frame import DataFrame
 from log_print import Print
 import re
-from redescription_mining.data_model import RedescriptionDataModel
 import time
+from redescription_mining.data_model import RedescriptionDataModel
+from redescription_mining.new_approach.discover_decision_trees import discover_the_best_tree
+from redescription_mining.new_approach.transform_trees_into_redescription_rules import extract_rules, store_the_discovered_rules
 
 class RedescriptionMining:
     def __init__(self):
@@ -23,28 +24,41 @@ class RedescriptionMining:
         if len(redescription_data_model.activation_attributes) == 0 and len(redescription_data_model.target_attributes) == 0:
             return DataFrame()
 
-        if config_or_template == 'config':
-            config_path ="redescription_mining/configs/config.txt"
+        path_to_store_discovered_redescription_rules = os.path.abspath('redescription_mining/results/') + '/' + filename + '-' + algorithm + '-'+is_positive_or_negative_log+'.queries'
+        (lhs_len, rhs_len) = self.get_shapes_feature_vectors(redescription_data_model=redescription_data_model)
+        if algorithm == 'new-approach':
+            start_time_per_constraint = time.time()
+            performance = discover_the_best_tree(negative_or_positive=is_positive_or_negative_log, activation_path=redescription_data_model.activation_view, target_path=redescription_data_model.target_view)
+            end_time_per_constraint = round(time.time() - start_time_per_constraint, 2)
+
+            redescriptions = extract_rules(performance=performance, negative_or_positive=is_positive_or_negative_log)
+            
         else:
-            config_path ="redescription_mining/configs/template.txt"
+            if config_or_template == 'config':
+                config_path ="redescription_mining/configs/config.txt"
+            else:
+                config_path ="redescription_mining/configs/template.txt"
 
-        full_config_path = os.path.abspath(config_path)
+            full_config_path = os.path.abspath(config_path)
 
-        (lhs_len, rhs_len) = self.setConfiguration(full_config_path=full_config_path, algorithm=algorithm, redescription_data_model=redescription_data_model)
+            self.setConfiguration(full_config_path=full_config_path, redescription_data_model=redescription_data_model)
 
-        start_time_per_constraint = time.time()
-        exec_clired.run([None, full_config_path])
-        end_time_per_constraint = round(time.time() - start_time_per_constraint, 2)
+            start_time_per_constraint = time.time()
+            exec_clired.run([None, full_config_path])
+            end_time_per_constraint = round(time.time() - start_time_per_constraint, 2)
 
-        self.reset_configuration(full_config_path)
+            self.reset_configuration(full_config_path)
 
-        redescriptions = self.rename_redescriptions(redescriptions_path=os.path.abspath('__TMP_DIR__results.queries'), move_redescriptions_to_path=os.path.abspath('redescription_mining/results/') + '/' + filename + '-'+is_positive_or_negative_log+'.queries', redescription_data_model=redescription_data_model, activation_activity=activation_activity, target_activity=target_activity)
+            redescriptions = self.rename_redescriptions(redescriptions_path=os.path.abspath('__TMP_DIR__results.queries'), move_redescriptions_to_path=path_to_store_discovered_redescription_rules, redescription_data_model=redescription_data_model, activation_activity=activation_activity, target_activity=target_activity)
 
-        Print.YELLOW.print('Redescriptions have been generated.')
+            Print.YELLOW.print('Redescriptions have been generated.')
 
         return redescriptions, lhs_len, rhs_len, end_time_per_constraint
 
-    def setConfiguration(self, full_config_path: str, algorithm: str, redescription_data_model: RedescriptionDataModel):
+    def get_shapes_feature_vectors(self, redescription_data_model: RedescriptionDataModel):
+        return  pd.read_csv(redescription_data_model.activation_view, index_col=0).shape, pd.read_csv(redescription_data_model.target_view, index_col=0).shape
+
+    def setConfiguration(self, full_config_path: str, redescription_data_model: RedescriptionDataModel):
         Print.YELLOW.print('Setting up configurations.')
         LHS_data = os.path.abspath(redescription_data_model.activation_view)
         RHS_data = os.path.abspath(redescription_data_model.target_view)
@@ -56,18 +70,12 @@ class RedescriptionMining:
 
         self.configuration = xml_string
 
-        xml_string = xml_string.replace('@LHS_data', LHS_data)
-        xml_string = xml_string.replace('@RHS_data', RHS_data)
+        xml_string = xml_string.replace('@LHS_data', redescription_data_model.activation_view)
+        xml_string = xml_string.replace('@RHS_data', redescription_data_model.target_view)
         # xml_string = xml_string.replace('@algorithm', algorithm)
-
 
         with open(full_config_path, mode='w') as a:
             a.write(xml_string)
-
-        lhs_len = pd.read_csv(LHS_data, index_col=0).shape 
-        rhs_len = pd.read_csv(RHS_data, index_col=0).shape
-
-        return lhs_len, rhs_len
 
     def reset_configuration(self, full_config_path: str):
         temp = re.sub('\.txt', '-sample.txt', full_config_path)

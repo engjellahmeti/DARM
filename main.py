@@ -8,7 +8,6 @@ from feature_vectors.declare_constraint import DeclareConstraint
 from feature_vectors.rule_extractor import RuleExtractor
 from nlg.metrics import Metrics
 from redescription_mining.redescription import RedescriptionMining
-from event_log_generation.generate_logs import GenerateEventLogs
 from rxes_approach.rxes_file import RXESApproach
 import os
 from log_print import Print
@@ -17,11 +16,15 @@ from nlg.nlg import NLG
 import random as rd
 import sys, getopt
 from redescription_mining.data_model import RedescriptionDataModel
+from event_log_generation.get_declare_constraints import get_declare_constraints
+from event_log_generation.generate_logs import generate_logs
+
 from typing import List, Optional, Tuple
 import time
 from datetime import datetime
 import json
 import mlflow
+import h2o
 from mlflow import log_metrics, log_params, log_text, log_dict, set_tags, set_tag
 
 class Main:
@@ -40,6 +43,11 @@ class Main:
 
             self.hyperparameters, self.relevant_hyperparameters = self.setup_hyperparameters()
             self.algorithm = self.hyperparameters['@mining_algo']
+
+            if self.algorithm != 'reremi' and self.algorithm != 'splittrees':
+                h2o.init()
+                h2o.no_progress()
+
             with open('redescription_mining\execution_times.json', 'r') as a:
                 self.execution_times = json.load(a)
                 
@@ -52,8 +60,9 @@ class Main:
                                                                                         write_to_CSV=True,
                                                                                         remove_attributes=True)
 
+
         redescriptions, lhs_len, rhs_len, end_time_per_constraint = self.redesc.discover_redescriptions(redescription_data_model=redescription_data_model, is_positive_or_negative_log=is_positive_or_negative_log, activation_activity=declare_constraint.activation, target_activity=declare_constraint.target,
-                                                                config_or_template=self.config_or_template, filename=self.filename+'-'+self.algorithm, algorithm=self.algorithm) # algorithm='reremi')
+                                                                config_or_template=self.config_or_template, filename=self.filename, algorithm=self.algorithm) # algorithm='reremi')
 
         no_of_discovered_redescriptions = 0
         if not redescriptions.empty:
@@ -285,18 +294,17 @@ class Main:
     # endregion
 
     # region 1. Input Declare File
-    def input_declare_file(self, filename: str, declare_file_path: str, generate_logs: bool = True, only_negative_logs: bool = False, amount_of_traces: int = 10000) -> Optional[Tuple[DataFrame, DataFrame]]:
-        g = GenerateEventLogs()
-        declare_constraints = g.get_declare_constraints(declare_file_path=declare_file_path)
+    def input_declare_file(self, filename: str, declare_file_path: str, _generate_logs: bool = True, only_negative_logs: bool = False, amount_of_traces: int = 10000) -> Optional[Tuple[DataFrame, DataFrame]]:
+        declare_constraints = get_declare_constraints(declare_file_path=declare_file_path)
 
         negative_event_log_path = os.path.abspath('event_log_reader/logs/' + filename + '-negative.xes')
         positive_event_log_path = os.path.abspath('event_log_reader/logs/' + filename + '-positive.xes')
 
         if only_negative_logs:
-            g.generate_logs(declare_file_path=declare_file_path, event_log_location=negative_event_log_path)#, amount_of_traces=amount_of_traces)
+            generate_logs(declare_file_path=declare_file_path, event_log_location=negative_event_log_path)#, amount_of_traces=amount_of_traces)
                
-        elif generate_logs:
-            g.generate_logs(declare_file_path=declare_file_path, event_log_location=positive_event_log_path, both_positive_negative_event=True, amount_of_traces=amount_of_traces)
+        elif _generate_logs:
+            generate_logs(declare_file_path=declare_file_path, event_log_location=positive_event_log_path, both_positive_negative_event=True, amount_of_traces=amount_of_traces)
 
         negative, positive = self.discover_redescriptions(declare_constraints=declare_constraints, negative_event_log_path=negative_event_log_path, positive_event_log_path=positive_event_log_path, filename=filename, negative_or_positive=None if not only_negative_logs else 'negative')
 
@@ -329,11 +337,10 @@ class Main:
 
     # region 4. Input Declare File For One Type Only
     def input_declare_file_with_only_one_event_log(self, filename: str, is_positive_or_negative_log: str, declare_file_path: str, amount_of_traces: int = 1000) -> Optional[DataFrame]:
-        g = GenerateEventLogs()
-        declare_constraints = g.get_declare_constraints(declare_file_path=declare_file_path)
+        declare_constraints = get_declare_constraints(declare_file_path=declare_file_path)
         event_log_path = os.path.abspath('event_log_reader/logs/' + filename + '-'+is_positive_or_negative_log+'.xes')
 
-        g.generate_logs(declare_file_path=declare_file_path, event_log_location=event_log_path, amount_of_traces=amount_of_traces)
+        generate_logs(declare_file_path=declare_file_path, event_log_location=event_log_path, amount_of_traces=amount_of_traces)
         
         output, _ = self.discover_redescriptions(declare_constraints=declare_constraints, negative_event_log_path=negative_event_log_path, positive_event_log_path=positive_event_log_path, filename=filename, negative_or_positive=is_positive_or_negative_log)
              
@@ -446,9 +453,8 @@ class Main:
         negative_event_log_path = 'event_log_reader/logs/' + filename + '-negative.xes'
         positive_event_log_path = 'event_log_reader/logs/' + filename + '-positive.xes'
 
-        g = GenerateEventLogs()
         declare_file_path = os.path.abspath('event_log_generation/declare constraint files/{0}.decl'.format(declare_filename))
-        declare_constraints = g.get_declare_constraints(declare_file_path=declare_file_path)
+        declare_constraints = get_declare_constraints(declare_file_path=declare_file_path)
 
         result = {}
         for dc in declare_constraints:
@@ -484,10 +490,9 @@ class Main:
     def contraint_instance_extraction(self, is_positive_or_negative_log, declare_filename, filename, algorithm='reremi'):
         event_log_path = 'event_log_reader/logs/' + filename + '-{0}.xes'.format(is_positive_or_negative_log)
 
-        g = GenerateEventLogs()
         declare_file_path = os.path.abspath(
             'event_log_generation/declare constraint files/{0}.decl'.format(declare_filename))
-        declare_constraints = g.get_declare_constraints(declare_file_path=declare_file_path)
+        declare_constraints = get_declare_constraints(declare_file_path=declare_file_path)
 
         for dc in declare_constraints:
             (_, _, _, _) = self.ruleExt.extract_fulfilment(event_log_path=event_log_path,
@@ -699,7 +704,7 @@ if __name__ == '__main__':
 
     else:
         extract_dsynts_on_leafs = False
-        input_type = 0
+        input_type = 3
         # algorithm = 'splittrees' # 'splittrees' reremi
         config_or_template = 'config' # 'config'
         filename = 'running-example'#'#credit-application-subset' #running-example' # road-traffic-fines,repair-example
@@ -708,7 +713,7 @@ if __name__ == '__main__':
         algorithm = main.algorithm
 
     if input_type == 1:
-        generate_logs = True
+        _generate_logs = True
         only_negative_logs = False
         declare_file_path = os.path.abspath('event_log_generation/declare constraint files/{0}.decl'.format(declare_filename))
 
@@ -716,7 +721,7 @@ if __name__ == '__main__':
         amount_of_traces = 1000
         while (negBool and posBool) or negBool:
             if posBool:
-                (negative, positive) = main.input_declare_file(filename=filename, declare_file_path=declare_file_path, generate_logs=generate_logs, only_negative_logs=only_negative_logs, amount_of_traces=amount_of_traces)
+                (negative, positive) = main.input_declare_file(filename=filename, declare_file_path=declare_file_path, _generate_logs=_generate_logs, only_negative_logs=only_negative_logs, amount_of_traces=amount_of_traces)
                 if positive is not None and negative is not None:
                     posBool = False
                     negBool = False
@@ -725,7 +730,7 @@ if __name__ == '__main__':
             else:
                 break
                 onlyNegative = True
-                (negative, positive) = main.input_declare_file(filename=filename, declare_file_path=declare_file_path, generate_logs=generate_logs, only_negative_logs=only_negative_logs)
+                (negative, positive) = main.input_declare_file(filename=filename, declare_file_path=declare_file_path, _generate_logs=_generate_logs, only_negative_logs=only_negative_logs)
                 if negative.shape[0] > 0:
                     negBool = False
                 
@@ -743,10 +748,9 @@ if __name__ == '__main__':
         negative_event_log_path = 'event_log_reader/logs/'+filename+'-negative.xes'
         positive_event_log_path = 'event_log_reader/logs/'+filename+'-positive.xes'
 
-        g = GenerateEventLogs()
         declare_file_path = os.path.abspath('event_log_generation/declare constraint files/{0}.decl'.format(declare_filename))
 
-        declare_constraints = g.get_declare_constraints(declare_file_path=declare_file_path)
+        declare_constraints = get_declare_constraints(declare_file_path=declare_file_path)
 
         (negative, positive) = main.input_positive_and_event_logs_together_with_declare_constraints(positive_event_log_path=positive_event_log_path, negative_event_log_path=negative_event_log_path, declare_constraints=declare_constraints, filename=filename)
 
@@ -756,7 +760,7 @@ if __name__ == '__main__':
         output = main.input_declare_file_with_only_one_event_log(is_positive_or_negative_log='positive', filename=filename, declare_file_path=declare_file_path)
 
     if input_type > 3:# or (negative is not None and positive is not None):
-        traces = main.generate_traces_for_nlg_example_output(declare_filename=declare_filename, filename=filename, algorithm=algorithm)
+        # traces = main.generate_traces_for_nlg_example_output(declare_filename=declare_filename, filename=filename, algorithm=algorithm)
         #
         negative_redescription_path = os.path.abspath('redescription_mining/results/'+filename+'-'+algorithm+'-negative.queries')
         positive_redescription_path = os.path.abspath('redescription_mining/results/'+filename+'-'+algorithm+'-positive.queries')
