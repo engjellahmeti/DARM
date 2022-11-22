@@ -10,6 +10,7 @@ import pandas as pd
 from log_print import Print
 from typing import Tuple, List
 from pandas import DataFrame
+import os
 from redescription_mining.data_model import RedescriptionDataModel
 
 class RuleExtractor:
@@ -156,13 +157,11 @@ class RuleExtractor:
         return (activation_frame, target_frame)
 
     def write_to_CSV_(self, feature_vectors: List[FeatureVector], is_positive_or_negative_log: str) -> RedescriptionDataModel:
-        activation_path = 'feature_vectors/csv_feature_vectors/' + is_positive_or_negative_log + '/activation.csv'
-        target_path = 'feature_vectors/csv_feature_vectors/' + is_positive_or_negative_log + '/target.csv'
+        activation_path = os.path.abspath('feature_vectors/csv_feature_vectors/' + is_positive_or_negative_log + '/activation.csv')
+        target_path = os.path.abspath('feature_vectors/csv_feature_vectors/' + is_positive_or_negative_log + '/target.csv')
 
         if len(feature_vectors) > 0:
             (activation_frame, target_frame) = self.convert_feature_vectors_into_activation_and_target_frames(feature_vectors=feature_vectors)
-
-          
 
             activation_frame.to_csv(activation_path)
             target_frame.to_csv(target_path)
