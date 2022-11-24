@@ -3,6 +3,7 @@
     @Date: 11.11.2022
     @LastUpdate: 21.11.2022
 """
+import re
 
 class BinaryTreeNode:
     def __init__(self, key, left=None, left_edge=None, right=None, right_edge=None, type_of_tree=None, y_label=None):
@@ -50,15 +51,17 @@ class BinaryTree:
             left_node = node.left_node
             right_node = node.right_node
 
-            if '<' in node.key or '>' in node.key:
+            node_key = node.key
+            if '<' in node_key or '>' in node_key:
+                node_key = re.sub(r'\s+', '', node_key)
                 temp_num = ''
                 if id in rules.keys():
                     temp_num = rules[id]
-                    rules[id] += ' & ' + node.key
+                    rules[id] += ' & ' + node_key
                 else:
-                    rules[id] = node.key
+                    rules[id] = node_key
 
-                text = node.key.replace(node.left_edge, node.right_edge)
+                text = node_key.replace(node.left_edge, node.right_edge)
 
                 right_id = len(rules.keys())
                 if right_id in rules.keys():
