@@ -1,4 +1,3 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
 r2,7344.0<Amount<9642.0,Delivery=Slow,0.27699999999999997,0.0,21,65,33,280,Amount,OrderProduct,Delivery,DeliverOrder,response
-r10,18022.0<Price<19671.0 | 3941.0<Amount<6237.0,13.0<Discount<15.0,0.317,0.009000000000000001,22,6,13,67,"Price,Amount",OrderProduct,Discount,PayOrder,response
-r23,PaymentType=PayPal,Delivery=Slow,0.7140000000000001,0.008,2,0,5,20,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence
+r11,PaymentType=PayPal,Delivery=Slow,0.7140000000000001,0.008,2,0,5,20,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence
