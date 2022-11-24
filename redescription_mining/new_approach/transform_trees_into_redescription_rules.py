@@ -123,7 +123,7 @@ def fix_rule(rule, attributes, type_of_tree):
                             if min_value > find_float:
                                 min_value = find_float
 
-                        temp_rule.append('{0} =< {1}'.format(att, min_value))
+                        temp_rule.append('{0}<={1}'.format(att, min_value))
                 else:
                      if len(rule_per_element[rpe]) > 1:
                         max_value = float('-inf')
@@ -134,7 +134,7 @@ def fix_rule(rule, attributes, type_of_tree):
                             if max_value < find_float:
                                 max_value = find_float
 
-                        temp_rule.append('{0} >= {1}'.format(att, max_value))
+                        temp_rule.append('{0}>={1}'.format(att, max_value))
     
     temp_rule = ' & '.join(temp_rule)
 
@@ -227,12 +227,17 @@ def extract_rules(performance, negative_or_positive):
             if performance[key]['y_column_dtype'] != 'object':
                 tree_rules = fix_numerical_rules(rules=tree_rules, attribute=performance[key]['y_column'], y_column_min_val=performance[key]['y_column_min_val'], y_column_max_val=performance[key]['y_column_max_val'], type_of_tree=graph.type_of_tree)
 
+        
 
         performance[key]['graph'] = tree_graphs
         performance[key]['rules'] = tree_rules
         all_rules = all_rules + list(tree_rules.values())
+
+    _temp_r = {}
+    for i, item in enumerate(all_rules):
+        _temp_r['r{0}'.format(i)] = item
         
-    return all_rules
+    return _temp_r
 
 def store_the_discovered_rules(performance, path):#, redescription_data_model, activation_activity, target_activity):
     df = pd.DataFrame()
