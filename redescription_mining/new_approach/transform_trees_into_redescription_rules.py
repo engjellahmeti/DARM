@@ -11,6 +11,8 @@ import h2o
 import os
 from redescription_mining.new_approach.binary_tree import BinaryTree
 from redescription_mining.new_approach.discover_decision_trees import discover_the_best_tree
+from redescription_mining.evaluation.metrics import evaluate_rules_on_both_sides, support, jaccard_index, p_value
+from redescription_mining.data_model import RedescriptionDataModel
 import pandas as pd
 
 def change_label_name(label, keys):
@@ -73,11 +75,14 @@ def get_nodes_and_edges(path):
    
     trees = {}
     for tree in _trees:
-        trees[tree] = {}
-        _class = re.sub(r'Tree\s*\d+,\s*Class\s*', '', jmespath.search("objects[?name == '{0}'].label".format(tree), json_graph)[0])
-        trees[tree]['class'] = '' if 'Tree' in _class else _class 
-        trees[tree]['nodes'] = jmespath.search("objects[?name == '{0}'].nodes".format(tree), json_graph)[0]
-        trees[tree]['edges'] = jmespath.search("objects[?name == '{0}'].edges".format(tree), json_graph)[0]
+        _nodes_ = jmespath.search("objects[?name == '{0}'].nodes".format(tree), json_graph)
+        if len(_nodes_) > 0:
+            if len(_nodes_[0]) > 1:
+                trees[tree] = {}
+                _class = re.sub(r'Tree\s*\d+,\s*Class\s*', '', jmespath.search("objects[?name == '{0}'].label".format(tree), json_graph)[0])
+                trees[tree]['class'] = '' if 'Tree' in _class else _class
+                trees[tree]['nodes'] = _nodes_[0]
+                trees[tree]['edges'] = jmespath.search("objects[?name == '{0}'].edges".format(tree), json_graph)[0]
 
     return json_graph, trees
 
@@ -105,36 +110,36 @@ def fix_rule(rule, attributes, type_of_tree):
             for i in indexes[:-1]:
                 temp_rule.remove(i)
         
-        if len(indexes_num) > 1:
-            rule_per_element = {'<':[], '>':[]}
-            for element in ['<', '>']:
-                for i, item in enumerate(indexes_num):
-                    if element in item:
-                        rule_per_element[element].append(i)
+        # if len(indexes_num) > 1:
+        #     rule_per_element = {'<':[], '>':[]}
+        #     for element in ['<', '>']:
+        #         for i, item in enumerate(indexes_num):
+        #             if element in item and '{0}{1}'.format(element, '=') not in item:
+        #                 rule_per_element[element].append(i)
 
-            for rpe in rule_per_element.keys():
-                if rpe == '<':
-                    if len(rule_per_element[rpe]) > 1:
-                        min_value = float('inf')
-                        for item in rule_per_element[rpe]:
-                            temp_rule.remove(i)
+        #     for rpe in rule_per_element.keys():
+        #         if rpe == '<':
+        #             if len(rule_per_element[rpe]) > 1:
+        #                 min_value = float('inf')
+        #                 for item in rule_per_element[rpe]:
+        #                     temp_rule.remove(item)
 
-                            find_float = float(re.search(r'([0-9.]+)', item, re.S|re.I).group(1))
-                            if min_value > find_float:
-                                min_value = find_float
+        #                     find_float = float(re.search(r'([0-9.]+)', item, re.S|re.I).group(1))
+        #                     if min_value > find_float:
+        #                         min_value = find_float
 
-                        temp_rule.append('{0}<={1}'.format(att, min_value))
-                else:
-                     if len(rule_per_element[rpe]) > 1:
-                        max_value = float('-inf')
-                        for item in rule_per_element[rpe]:
-                            temp_rule.remove(i)
+        #                 temp_rule.append('{0}<={1}'.format(att, min_value))
+        #         else:
+        #              if len(rule_per_element[rpe]) > 1:
+        #                 max_value = float('-inf')
+        #                 for item in rule_per_element[rpe]:
+        #                     temp_rule.remove(item)
 
-                            find_float = float(re.search(r'([0-9.]+)', item, re.S|re.I).group(1))
-                            if max_value < find_float:
-                                max_value = find_float
+        #                     find_float = float(re.search(r'([0-9.]+)', item, re.S|re.I).group(1))
+        #                     if max_value < find_float:
+        #                         max_value = find_float
 
-                        temp_rule.append('{0}>={1}'.format(att, max_value))
+        #                 temp_rule.append('{0}>={1}'.format(att, max_value))
     
     temp_rule = ' & '.join(temp_rule)
 
@@ -174,8 +179,6 @@ def fix_numerical_rules(rules, attribute, y_column_min_val, y_column_max_val, ty
 
 
     return rules
-
-
 
 def extract_rules(performance, negative_or_positive):
     model_path = r'{0}\{1}'.format(os.path.abspath('redescription_mining/new_approach/experiment/results'), negative_or_positive)
@@ -233,61 +236,43 @@ def extract_rules(performance, negative_or_positive):
         performance[key]['rules'] = tree_rules
         all_rules = all_rules + list(tree_rules.values())
 
-    _temp_r = {}
+    _temp_r = {'rid':{}, 'query_activation': {}, 'query_target': {}}
     for i, item in enumerate(all_rules):
-        _temp_r['r{0}'.format(i)] = item
-        
+        rule = item.split(' => ')
+        _temp_r['rid'][i] = 'r{0}'.format(i)
+        _temp_r['query_activation'][i] = rule[0]
+        _temp_r['query_target'][i] = rule[1]
+                
     return _temp_r
 
-def store_the_discovered_rules(performance, path):#, redescription_data_model, activation_activity, target_activity):
+def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel, rules, metadata, activation_activity, target_activity):
     df = pd.DataFrame()
-    # rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
     rid,query_activation,query_target,acc,pval= [], [], [], [], []
-    id = 1
-    for key in performance:
-        for rule in performance[key]['rules']:
-            rid.append(id)
-            left, right = performance[key]['rules'][rule].split('=>')
-            query_activation.append(left.strip())
-            query_target.append(right.strip())
 
-            id+=1
+    df_a, df_t = evaluate_rules_on_both_sides(redescription_data_model=redescription_data_model, rules=rules)
     
+    for key in rules['rid'].keys():
+        rid.append(rules['rid'][key])
+        query_activation.append(rules['query_activation'][key])
+        query_target.append(rules['query_target'][key])
+
+        true_activation, true_target = support(df_a=df_a, df_t=df_t, rules=rules, position=key, metadata=metadata)
+
+        acc.append(jaccard_index(supp_activation=true_activation, supp_target=true_target))
+        pval.append(p_value(supp_activation=true_activation, supp_target=true_target, E=df_a.shape[0]))
+            
     df['rid'] = rid
     df['query_activation'] = query_activation
     df['query_target'] = query_target
-    # df['acc'] = 
-    # df['pval'] = 
+    df['acc'] = acc
+    df['pval'] = pval
     df['card_Exo'] = None
     df['card_Eox'] = None
     df['card_Exx'] = None
     df['card_Eoo'] = None
-    df['activation_vars'] = 'act_vars'
-    df['activation_activity'] = 'act_activity'
-    df['target_vars'] = 'target_Var'
-    df['target_activity'] = 'target_activity'
-    # df['activation_vars'] = redescription_data_model.activation_attributes
-    # df['activation_activity'] = activation_activity
-    # df['target_vars'] = redescription_data_model.target_attributes
-    # df['target_activity'] = target_activity
+    df['activation_vars'] = ', '.join(redescription_data_model.activation_attributes)
+    df['activation_activity'] = activation_activity
+    df['target_vars'] = ', '.join(redescription_data_model.target_attributes)
+    df['target_activity'] = target_activity
 
-
-
-
-if __name__ == '__main__':
-    filename = 'running-example'
-    algorithm = 'reremi'
-    negative_or_positive = 'positive'
-    
-    frame_path = os.path.abspath('feature_vectors\csv_feature_vectors\\' + negative_or_positive)
-    activation_path = frame_path + '\\activation.csv'
-    target_path = frame_path + '\\target.csv'
-    h2o.init()
-    h2o.no_progress()
-    performance = discover_the_best_tree(negative_or_positive=negative_or_positive, activation_path=activation_path, target_path=target_path)
-
-    extract_rules(performance=performance, negative_or_positive=negative_or_positive)
-
-    store_the_discovered_rules(performance, '')
-
-    print(performance)
+    return df

@@ -32,6 +32,8 @@ class RedescriptionMining:
             end_time_per_constraint = round(time.time() - start_time_per_constraint, 2)
 
             redescriptions = extract_rules(performance=performance, negative_or_positive=is_positive_or_negative_log)
+
+            redescriptions = store_the_discovered_rules(redescription_data_model=redescription_data_model, rules=redescriptions, metadata={'name': filename + '-' + algorithm, 'type':is_positive_or_negative_log}, activation_activity=activation_activity, target_activity=target_activity)
             
         else:
             if config_or_template == 'config':
@@ -81,6 +83,17 @@ class RedescriptionMining:
         temp = re.sub('\.txt', '-sample.txt', full_config_path)
         xml_string = open(temp, mode='r').read()
         with open(full_config_path, mode='w') as a:
+            a.write(xml_string)
+    
+    def reset_all_configurations(self):
+        full_config_path = os.path.abspath("redescription_mining/configs/config.txt")
+
+        temp = re.sub('\.txt', '-sample-reset.txt', full_config_path)
+        xml_string = open(temp, mode='r').read()
+        with open(full_config_path, mode='w') as a:
+            a.write(xml_string)
+
+        with open(re.sub('\.txt', '-sample.txt', full_config_path), mode='w') as a:
             a.write(xml_string)
 
     def rename_redescriptions(self, redescriptions_path: str, move_redescriptions_to_path: str, redescription_data_model: RedescriptionDataModel, activation_activity: str, target_activity: str):

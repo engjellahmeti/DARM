@@ -63,7 +63,7 @@ def create_the_tree(model, column_name,negative_or_positive='positive', filename
 
     os.system('java -cp "{0}\h2o_jar\h2o.jar" hex.genmodel.tools.PrintMojo --tree 0 -i "{1}\{2}.zip" -o "{1}\{2}.gv" -f 20 -d 3'.format(path, model_path, filename))
     
-    os.system('dot -Tpng "{0}\{1}.gv" -o "{0}\{1}-{2}.png"'.format(model_path, filename, column_name))
+    # os.system('dot -Tpng "{0}\{1}.gv" -o "{0}\{1}-{2}.png"'.format(model_path, filename, column_name))
     os.system('dot -Txdot_json "{0}\{1}.gv" -o "{0}\{1}-{2}.json"'.format(model_path, filename, column_name))
 
 def discover_the_best_tree_one_side(data, y, y_columns, dtypes, negative_or_positive='positive', filename='activation'):

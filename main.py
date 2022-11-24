@@ -18,7 +18,7 @@ import sys, getopt
 from redescription_mining.data_model import RedescriptionDataModel
 from event_log_generation.get_declare_constraints import get_declare_constraints
 from event_log_generation.generate_logs import generate_logs
-
+from redescription_mining.evaluation.transform_redescription_to_boolean_value import rules_to_boolean_value
 from typing import List, Optional, Tuple
 import time
 from datetime import datetime
@@ -51,7 +51,6 @@ class Main:
             with open('redescription_mining\execution_times.json', 'r') as a:
                 self.execution_times = json.load(a)
                 
-
     # region Helper Methods
     def discover_redescription_for_each_constraint(self, frame: DataFrame, event_log_path: str, declare_constraint: DeclareConstraint, is_positive_or_negative_log: str, filename: str) -> DataFrame:
         redescription_data_model: RedescriptionDataModel = self.ruleExt.extract_fulfilment(event_log_path=event_log_path,
@@ -89,6 +88,10 @@ class Main:
     def discover_redescriptions(self, declare_constraints: List[DeclareConstraint], negative_event_log_path: str, positive_event_log_path: str, filename: str, negative_or_positive: str = None):
         negative = None
         positive = None
+
+        if self.algorithm == 'new-approach':
+            negative = pd.DataFrame(columns=['rid', 'query_activation', 'query_target', 'acc', 'pval', 'card_Exo', 'card_Eox', 'card_Exx', 'card_Eoo', 'activation_vars', 'activation_activity', 'target_vars', 'target_activity', 'constraint'])
+            positive = pd.DataFrame(columns=['rid', 'query_activation', 'query_target', 'acc', 'pval', 'card_Exo', 'card_Eox', 'card_Exx', 'card_Eoo', 'activation_vars', 'activation_activity', 'target_vars', 'target_activity', 'constraint'])
 
         exec_data = {}
         start_time = time.time()
@@ -138,9 +141,12 @@ class Main:
                 tot_time = round(tot_time + temp, 2)
 
                 print()
+        
+
 
         end_time = str(round(time.time() - start_time, 2)) + 's'
         # print('Execution time for the {0} algorithm in {2} event logs is {1}. '.format(self.algorithm, end_time, filename))
+        self.redesc.reset_all_configurations()
 
         if filename not in self.execution_times.keys():
             self.execution_times[filename] = {}
@@ -450,6 +456,51 @@ class Main:
         return self.nlg_.transform_conll_to_dsynts(set_of_rules)
 
     def generate_traces_for_nlg_example_output(self, declare_filename, filename, algorithm='reremi'):
+        result = {}
+
+        redescription_path = os.path.abspath('redescription_mining/results/' + filename + '-' + algorithm + '-positive.queries')
+        if os.path.exists(redescription_path):
+            rules = pd.read_csv(redescription_path).groupby(['activation_activity', 'target_activity', 'constraint'])
+
+            negative_event_log_path = 'event_log_reader/logs/' + filename + '-negative.xes'
+
+            declare_file_path = os.path.abspath('event_log_generation/declare constraint files/{0}.decl'.format(declare_filename))
+            declare_constraints = get_declare_constraints(declare_file_path=declare_file_path)
+
+            for dc in declare_constraints:
+                is_positive_or_negative_log = 'negative'
+                redescription_data_model: RedescriptionDataModel = self.ruleExt.extract_fulfilment(event_log_path=negative_event_log_path,
+                                                                declare_constraint=dc,
+                                                                is_positive_or_negative_log=is_positive_or_negative_log,
+                                                                write_to_CSV=True,
+                                                                remove_attributes=True)
+
+                temp_group = rules.get_group((dc.activation, dc.target, dc.rule_type))
+                dc_rules = pd.DataFrame(temp_group, columns=temp_group.columns)
+                dc_rules = dc_rules[['rid', 'query_activation','query_target']].to_dict()
+
+                output = rules_to_boolean_value(df_a=pd.read_csv(redescription_data_model.activation_view, index_col=0), df_t=pd.read_csv(redescription_data_model.target_view, index_col=0), rules=dc_rules, for_deviant_traces=True)
+
+                _rules = {}
+                for column in output.columns:
+                    _rules[column] = output[column].where(output[column] == False)
+               
+                for key in output.keys():
+                    if key not in result.keys():
+                        result[key] = output[key]
+                    else:
+                        for rule in output[key].keys():
+                            if rule not in result[key].keys():
+                                result[key][rule] = output[key][rule]
+                            else:
+                                result[key][rule] = list(set(result[key][rule] + output[key][rule]))
+
+
+
+         
+        return result
+
+    def generate_traces_for_nlg_example_output__(self, declare_filename, filename, algorithm='reremi'):
         negative_event_log_path = 'event_log_reader/logs/' + filename + '-negative.xes'
         positive_event_log_path = 'event_log_reader/logs/' + filename + '-positive.xes'
 
@@ -760,7 +811,7 @@ if __name__ == '__main__':
         output = main.input_declare_file_with_only_one_event_log(is_positive_or_negative_log='positive', filename=filename, declare_file_path=declare_file_path)
 
     if input_type > 3:# or (negative is not None and positive is not None):
-        # traces = main.generate_traces_for_nlg_example_output(declare_filename=declare_filename, filename=filename, algorithm=algorithm)
+        traces = main.generate_traces_for_nlg_example_output(declare_filename=declare_filename, filename=filename, algorithm=algorithm)
         #
         negative_redescription_path = os.path.abspath('redescription_mining/results/'+filename+'-'+algorithm+'-negative.queries')
         positive_redescription_path = os.path.abspath('redescription_mining/results/'+filename+'-'+algorithm+'-positive.queries')
