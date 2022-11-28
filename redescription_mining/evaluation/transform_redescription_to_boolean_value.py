@@ -1,3 +1,9 @@
+"""
+    @Author: Engjëll Ahmeti
+    @Date: 20.11.2022
+    @LastUpdate: 25.11.2022
+"""
+
 import re
 import pandas as pd
 
@@ -157,9 +163,14 @@ def rules_to_boolean_value(df_a, df_t, rules, for_deviant_traces=False):
         df_a[rid] = df_a[rid].apply(func=_evaluate_subrules)
         df_t[rid] = df_t[rid].apply(func=_evaluate_subrules)
 
-        df[rid] = df_a[rid].combine(df_t[rid], func=_apply_implication)
+        if 'algorithm' in rules.keys():
+            df[rid + '-' + rules['algorithm'][key]] = df_a[rid].combine(df_t[rid], func=_apply_implication)
+        else:
+            df[rid] = df_a[rid].combine(df_t[rid], func=_apply_implication)
 
-    if for_deviant_traces:
+    if for_deviant_traces is None:
+        return df_a, df_t, df
+    elif for_deviant_traces:
         return df
     else:
         return df_a, df_t
