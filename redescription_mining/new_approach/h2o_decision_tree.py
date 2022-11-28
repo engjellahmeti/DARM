@@ -12,7 +12,10 @@ class H2ODecisionTree:
 
     def train(self, x, y, training_frame):
         self.model = H2ORandomForestEstimator(mtries=len(x), max_depth=len(x), nfolds=10)
-        self.model.train(x=x, y=y, training_frame=training_frame)
+        try:
+            self.model.train(x=x, y=y, training_frame=training_frame)
+        except Exception as e:
+            print(e)
 
     def predict(self, frame):
         return self.model.predict(frame)

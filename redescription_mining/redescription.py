@@ -14,12 +14,13 @@ import time
 from redescription_mining.data_model import RedescriptionDataModel
 from redescription_mining.new_approach.discover_decision_trees import discover_the_best_tree
 from redescription_mining.new_approach.transform_trees_into_redescription_rules import extract_rules, store_the_discovered_rules
+from feature_vectors.declare_constraint import DeclareConstraint
 
 class RedescriptionMining:
     def __init__(self):
         self.configuration = ''
 
-    def discover_redescriptions(self, redescription_data_model: RedescriptionDataModel, is_positive_or_negative_log: str, activation_activity: str, target_activity: str, algorithm: str = 'reremi', config_or_template='config', filename='results') -> DataFrame:
+    def discover_redescriptions(self, redescription_data_model: RedescriptionDataModel, is_positive_or_negative_log: str, activation_activity: str, target_activity: str, last_id: int, declare_constraint: DeclareConstraint, algorithm: str = 'reremi', config_or_template='config', filename='results') -> DataFrame:
         Print.YELLOW.print('Started extrating redescriptions. ')
         if len(redescription_data_model.activation_attributes) == 0 and len(redescription_data_model.target_attributes) == 0:
             return DataFrame()
@@ -31,7 +32,7 @@ class RedescriptionMining:
             performance = discover_the_best_tree(negative_or_positive=is_positive_or_negative_log, activation_path=redescription_data_model.activation_view, target_path=redescription_data_model.target_view)
             end_time_per_constraint = round(time.time() - start_time_per_constraint, 2)
 
-            redescriptions = extract_rules(performance=performance, negative_or_positive=is_positive_or_negative_log)
+            redescriptions, last_id = extract_rules(performance=performance, negative_or_positive=is_positive_or_negative_log, last_id=last_id, declare_constraint=declare_constraint)
 
             redescriptions = store_the_discovered_rules(redescription_data_model=redescription_data_model, rules=redescriptions, metadata={'name': filename + '-' + algorithm, 'type':is_positive_or_negative_log}, activation_activity=activation_activity, target_activity=target_activity)
             
@@ -55,7 +56,7 @@ class RedescriptionMining:
 
             Print.YELLOW.print('Redescriptions have been generated.')
 
-        return redescriptions, lhs_len, rhs_len, end_time_per_constraint
+        return redescriptions, lhs_len, rhs_len, end_time_per_constraint, last_id
 
     def get_shapes_feature_vectors(self, redescription_data_model: RedescriptionDataModel):
         return  pd.read_csv(redescription_data_model.activation_view, index_col=0).shape, pd.read_csv(redescription_data_model.target_view, index_col=0).shape

@@ -66,7 +66,7 @@ def create_the_tree(model, column_name,negative_or_positive='positive', filename
     # os.system('dot -Tpng "{0}\{1}.gv" -o "{0}\{1}-{2}.png"'.format(model_path, filename, column_name))
     os.system('dot -Txdot_json "{0}\{1}.gv" -o "{0}\{1}-{2}.json"'.format(model_path, filename, column_name))
 
-def discover_the_best_tree_one_side(data, y, y_columns, dtypes, negative_or_positive='positive', filename='activation'):
+def discover_the_best_tree_one_side(data, y, y_columns, dtypess, negative_or_positive='positive', filename='activation'):
     top_performance = {}
     for column in y_columns:
         data[column + '_as_y'] = y[column]
@@ -74,26 +74,27 @@ def discover_the_best_tree_one_side(data, y, y_columns, dtypes, negative_or_posi
         model = evaluate_h2o_model(data, list(data.columns)[:-1], list(data.columns)[-1], H2ODecisionTree())
 
         stats = model.all_statistics()
-        var_importance = model.varimp()
-        model_performance = model.model_performance()
+        if stats != 'No model available':
+            var_importance = model.varimp()
+            model_performance = model.model_performance()
 
-        print(model_performance)
+            print(model_performance)
 
-        data.drop([column + '_as_y'], axis=1, inplace=True)
+            data.drop([column + '_as_y'], axis=1, inplace=True)
 
-        top_performance[filename + '-' + column] = {
-                'type_of_tree': filename,
-                'y_column': column,
-                'y_column_dtype': dtypes[column]['dtype'],
-                'y_column_min_val': dtypes[column]['min_val'],
-                'y_column_max_val': dtypes[column]['max_val'],                
-                'variable_importance': var_importance,
-                'model': model,
-                'all_statistics': stats,
-                'model_performance': model_performance
-            }
+            top_performance[filename + '-' + column] = {
+                    'type_of_tree': filename,
+                    'y_column': column,
+                    'y_column_dtype': dtypess[column]['dtype'],
+                    'y_column_min_val': dtypess[column]['min_val'],
+                    'y_column_max_val': dtypess[column]['max_val'],                
+                    'variable_importance': var_importance,
+                    'model': model,
+                    'all_statistics': stats,
+                    'model_performance': model_performance
+                }
 
-        create_the_tree(model=model, column_name=column,negative_or_positive=negative_or_positive, filename=filename)
+            create_the_tree(model=model, column_name=column,negative_or_positive=negative_or_positive, filename=filename)
     
     return top_performance
 

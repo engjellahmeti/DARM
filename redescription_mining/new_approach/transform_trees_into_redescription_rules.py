@@ -180,7 +180,7 @@ def fix_numerical_rules(rules, attribute, y_column_min_val, y_column_max_val, ty
 
     return rules
 
-def extract_rules(performance, negative_or_positive):
+def extract_rules(performance, negative_or_positive, last_id, declare_constraint):
     model_path = r'{0}\{1}'.format(os.path.abspath('redescription_mining/new_approach/experiment/results'), negative_or_positive)
     all_rules = []
     
@@ -230,22 +230,26 @@ def extract_rules(performance, negative_or_positive):
             if performance[key]['y_column_dtype'] != 'object':
                 tree_rules = fix_numerical_rules(rules=tree_rules, attribute=performance[key]['y_column'], y_column_min_val=performance[key]['y_column_min_val'], y_column_max_val=performance[key]['y_column_max_val'], type_of_tree=graph.type_of_tree)
 
-        
-
         performance[key]['graph'] = tree_graphs
         performance[key]['rules'] = tree_rules
         all_rules = all_rules + list(tree_rules.values())
 
     _temp_r = {'rid':{}, 'query_activation': {}, 'query_target': {}}
+    temp_i = -1
     for i, item in enumerate(all_rules):
         rule = item.split(' => ')
-        _temp_r['rid'][i] = 'r{0}'.format(i)
+        _temp_r['rid'][i] = 'r{0}'.format(i + last_id)
         _temp_r['query_activation'][i] = rule[0]
         _temp_r['query_target'][i] = rule[1]
-                
-    return _temp_r
+        _temp_r['declare_constraint'] = declare_constraint.str_representation()
+        temp_i = i
 
-def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel, rules, metadata, activation_activity, target_activity):
+    if temp_i > -1:
+        last_id += temp_i + 1
+                
+    return _temp_r, last_id
+
+def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel, rules, metadata, activation_activity, target_activity, declare_constraint):
     df = pd.DataFrame()
     rid,query_activation,query_target,acc,pval= [], [], [], [], []
 

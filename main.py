@@ -2,30 +2,30 @@
 # @author Engjëll Ahmeti
 # @date 12/8/2020
 
-import re
 from pandas.core.frame import DataFrame
 from feature_vectors.declare_constraint import DeclareConstraint
 from feature_vectors.rule_extractor import RuleExtractor
 from nlg.metrics import Metrics
 from redescription_mining.redescription import RedescriptionMining
 from rxes_approach.rxes_file import RXESApproach
-import os
 from log_print import Print
-import pandas as pd
 from nlg.nlg import NLG
-import random as rd
-import sys, getopt
 from redescription_mining.data_model import RedescriptionDataModel
 from event_log_generation.get_declare_constraints import get_declare_constraints
 from event_log_generation.generate_logs import generate_logs
 from redescription_mining.evaluation.transform_redescription_to_boolean_value import rules_to_boolean_value
+from mlflow import log_metrics, log_params, log_text, log_dict, set_tags, set_tag
+from redescription_mining.evaluation.rule_quality_measures import execute_redescription_quality_measures
+import os
+import re
+import pandas as pd
+import sys, getopt
+import random as rd
 from typing import List, Optional, Tuple
 import time
-from datetime import datetime
 import json
 import mlflow
 import h2o
-from mlflow import log_metrics, log_params, log_text, log_dict, set_tags, set_tag
 
 class Main:
     def __init__(self, extract_dsynts_on_leafs, algorithm, config_or_template, filename):
@@ -52,7 +52,7 @@ class Main:
                 self.execution_times = json.load(a)
                 
     # region Helper Methods
-    def discover_redescription_for_each_constraint(self, frame: DataFrame, event_log_path: str, declare_constraint: DeclareConstraint, is_positive_or_negative_log: str, filename: str) -> DataFrame:
+    def discover_redescription_for_each_constraint(self, frame: DataFrame, event_log_path: str, declare_constraint: DeclareConstraint, is_positive_or_negative_log: str, filename: str, last_id: int) -> DataFrame:
         redescription_data_model: RedescriptionDataModel = self.ruleExt.extract_fulfilment(event_log_path=event_log_path,
                                                                                         declare_constraint=declare_constraint,
                                                                                         is_positive_or_negative_log=is_positive_or_negative_log,
@@ -60,8 +60,8 @@ class Main:
                                                                                         remove_attributes=True)
 
 
-        redescriptions, lhs_len, rhs_len, end_time_per_constraint = self.redesc.discover_redescriptions(redescription_data_model=redescription_data_model, is_positive_or_negative_log=is_positive_or_negative_log, activation_activity=declare_constraint.activation, target_activity=declare_constraint.target,
-                                                                config_or_template=self.config_or_template, filename=self.filename, algorithm=self.algorithm) # algorithm='reremi')
+        redescriptions, lhs_len, rhs_len, end_time_per_constraint, last_id = self.redesc.discover_redescriptions(redescription_data_model=redescription_data_model, is_positive_or_negative_log=is_positive_or_negative_log, activation_activity=declare_constraint.activation, target_activity=declare_constraint.target,
+                                                                config_or_template=self.config_or_template, filename=self.filename, algorithm=self.algorithm, last_id=last_id, declare_constraint=declare_constraint) # algorithm='reremi')
 
         no_of_discovered_redescriptions = 0
         if not redescriptions.empty:
@@ -74,7 +74,7 @@ class Main:
                 redescriptions['constraint'] = [declare_constraint.rule_type for x in range(0, len(redescriptions.index))]
                 frame = pd.concat([frame, redescriptions.copy()])
 
-        return frame, lhs_len, rhs_len, end_time_per_constraint, no_of_discovered_redescriptions
+        return frame, lhs_len, rhs_len, end_time_per_constraint, no_of_discovered_redescriptions, last_id
     
     def write_final_descriptions(self, negative: DataFrame, positive: DataFrame, filename: str) -> None:
         if negative is not None:
@@ -92,15 +92,32 @@ class Main:
         if self.algorithm == 'new-approach':
             negative = pd.DataFrame(columns=['rid', 'query_activation', 'query_target', 'acc', 'pval', 'card_Exo', 'card_Eox', 'card_Exx', 'card_Eoo', 'activation_vars', 'activation_activity', 'target_vars', 'target_activity', 'constraint'])
             positive = pd.DataFrame(columns=['rid', 'query_activation', 'query_target', 'acc', 'pval', 'card_Exo', 'card_Eox', 'card_Exx', 'card_Eoo', 'activation_vars', 'activation_activity', 'target_vars', 'target_activity', 'constraint'])
+            if os.path.exists('redescription_mining\evaluation\support.json'):
+                with open('redescription_mining\evaluation\support.json', 'r') as a:
+                    supports = json.load(a)
+                if filename + '-' + self.algorithm in supports.keys():
+                    if negative_or_positive:
+                        supports[filename + '-' + self.algorithm][negative_or_positive] = {}
+                    else:
+                        supports[filename + '-' + self.algorithm] = {}
+                        supports[filename + '-' + self.algorithm]['negative'] = {}
+                        supports[filename + '-' + self.algorithm]['positive'] = {}
+                with open('redescription_mining\evaluation\support.json', 'w') as a:
+                    json.dump(supports, a)
+        
+            from redescription_mining.evaluation.metrics import supports
+            supports
+
 
         exec_data = {}
         start_time = time.time()
         tot_time = 0.0
+        last_id, last_id_neg, last_id_pos = 0, 0, 0
         if negative_or_positive:
             for dc in declare_constraints:
                 print()
                 dc.__str__()
-                negative, lhs_len, rhs_len, end_time_per_constraint, no_of_discovered_redescriptions = self.discover_redescription_for_each_constraint(frame=negative, event_log_path=negative_event_log_path, declare_constraint=dc, is_positive_or_negative_log=negative_or_positive, filename=filename)
+                negative, lhs_len, rhs_len, end_time_per_constraint, no_of_discovered_redescriptions, last_id = self.discover_redescription_for_each_constraint(frame=negative, event_log_path=negative_event_log_path, declare_constraint=dc, is_positive_or_negative_log=negative_or_positive, filename=filename, last_id=last_id)
                 exec_data[dc.__str__] = {}
                 exec_data[dc.__str__][negative_or_positive] = {
                     'activation_view_rows': lhs_len[0],
@@ -117,7 +134,7 @@ class Main:
                 dc.__str__()
                 exec_data[dc.str_representation()] = {}
                
-                negative, lhs_len, rhs_len, neg_end_time_per_constraint, no_of_discovered_redescriptions = self.discover_redescription_for_each_constraint(frame=negative, event_log_path=negative_event_log_path, declare_constraint=dc, is_positive_or_negative_log='negative', filename=filename)
+                negative, lhs_len, rhs_len, neg_end_time_per_constraint, no_of_discovered_redescriptions, last_id_neg = self.discover_redescription_for_each_constraint(frame=negative, event_log_path=negative_event_log_path, declare_constraint=dc, is_positive_or_negative_log='negative', filename=filename, last_id=last_id_neg)
                 exec_data[dc.str_representation()]['negative'] = {
                     'activation_view_rows': lhs_len[0],
                     'activation_view_attributes': lhs_len[1],
@@ -127,7 +144,7 @@ class Main:
                     'execution_time': str(neg_end_time_per_constraint) + 's'
                 }
 
-                positive, lhs_len, rhs_len, end_time_per_constraint, no_of_discovered_redescriptions = self.discover_redescription_for_each_constraint(frame=positive, event_log_path=positive_event_log_path, declare_constraint=dc, is_positive_or_negative_log='positive', filename=filename)
+                positive, lhs_len, rhs_len, end_time_per_constraint, no_of_discovered_redescriptions, last_id_pos = self.discover_redescription_for_each_constraint(frame=positive, event_log_path=positive_event_log_path, declare_constraint=dc, is_positive_or_negative_log='positive', filename=filename, last_id=last_id_pos)
                 exec_data[dc.str_representation()]['positive'] = {
                     'activation_view_rows': lhs_len[0],
                     'activation_view_attributes': lhs_len[1],
