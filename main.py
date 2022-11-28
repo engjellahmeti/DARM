@@ -61,7 +61,7 @@ class Main:
 
 
         redescriptions, lhs_len, rhs_len, end_time_per_constraint, last_id = self.redesc.discover_redescriptions(redescription_data_model=redescription_data_model, is_positive_or_negative_log=is_positive_or_negative_log, activation_activity=declare_constraint.activation, target_activity=declare_constraint.target,
-                                                                config_or_template=self.config_or_template, filename=self.filename, algorithm=self.algorithm, last_id=last_id, declare_constraint=declare_constraint) # algorithm='reremi')
+                                                                config_or_template=self.config_or_template, filename=self.filename, algorithm=self.algorithm, last_id=last_id, declare_constraint=declare_constraint.str_representation()) # algorithm='reremi')
 
         no_of_discovered_redescriptions = 0
         if not redescriptions.empty:
@@ -118,8 +118,8 @@ class Main:
                 print()
                 dc.__str__()
                 negative, lhs_len, rhs_len, end_time_per_constraint, no_of_discovered_redescriptions, last_id = self.discover_redescription_for_each_constraint(frame=negative, event_log_path=negative_event_log_path, declare_constraint=dc, is_positive_or_negative_log=negative_or_positive, filename=filename, last_id=last_id)
-                exec_data[dc.__str__] = {}
-                exec_data[dc.__str__][negative_or_positive] = {
+                exec_data[dc.str_representation()] = {}
+                exec_data[dc.str_representation()][negative_or_positive] = {
                     'activation_view_rows': lhs_len[0],
                     'activation_view_attributes': lhs_len[1],
                     'target_view_rows': rhs_len[0],
@@ -762,6 +762,7 @@ class Main:
     # endregion
 
 if __name__ == '__main__':
+    execute_redescription_quality_measures({'name': 'running-example', 'type':'negative'})
     Print.YELLOW.print('The tool has started. ')
     config_or_template = 'template' # 'config'
     main = Main(extract_dsynts_on_leafs=None, algorithm=None, config_or_template=None, filename=None)

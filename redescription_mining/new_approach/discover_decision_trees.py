@@ -81,20 +81,24 @@ def discover_the_best_tree_one_side(data, y, y_columns, dtypess, negative_or_pos
             print(model_performance)
 
             data.drop([column + '_as_y'], axis=1, inplace=True)
+            
+            column = column.replace('_as_y', '')
+            try:
+                top_performance[filename + '-' + column] = {
+                        'type_of_tree': filename,
+                        'y_column': column,
+                        'y_column_dtype': dtypess[column]['dtype'],
+                        'y_column_min_val': dtypess[column]['min_val'],
+                        'y_column_max_val': dtypess[column]['max_val'],                
+                        'variable_importance': var_importance,
+                        'model': model,
+                        'all_statistics': stats,
+                        'model_performance': model_performance
+                    }
 
-            top_performance[filename + '-' + column] = {
-                    'type_of_tree': filename,
-                    'y_column': column,
-                    'y_column_dtype': dtypess[column]['dtype'],
-                    'y_column_min_val': dtypess[column]['min_val'],
-                    'y_column_max_val': dtypess[column]['max_val'],                
-                    'variable_importance': var_importance,
-                    'model': model,
-                    'all_statistics': stats,
-                    'model_performance': model_performance
-                }
-
-            create_the_tree(model=model, column_name=column,negative_or_positive=negative_or_positive, filename=filename)
+                create_the_tree(model=model, column_name=column,negative_or_positive=negative_or_positive, filename=filename)
+            except:
+                print('The found model does not lead to a length of the number of variables!')
     
     return top_performance
 

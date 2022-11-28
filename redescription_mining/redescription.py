@@ -14,13 +14,12 @@ import time
 from redescription_mining.data_model import RedescriptionDataModel
 from redescription_mining.new_approach.discover_decision_trees import discover_the_best_tree
 from redescription_mining.new_approach.transform_trees_into_redescription_rules import extract_rules, store_the_discovered_rules
-from feature_vectors.declare_constraint import DeclareConstraint
 
 class RedescriptionMining:
     def __init__(self):
         self.configuration = ''
 
-    def discover_redescriptions(self, redescription_data_model: RedescriptionDataModel, is_positive_or_negative_log: str, activation_activity: str, target_activity: str, last_id: int, declare_constraint: DeclareConstraint, algorithm: str = 'reremi', config_or_template='config', filename='results') -> DataFrame:
+    def discover_redescriptions(self, redescription_data_model: RedescriptionDataModel, is_positive_or_negative_log: str, activation_activity: str, target_activity: str, last_id: int, declare_constraint: str, algorithm: str = 'reremi', config_or_template='config', filename='results') -> DataFrame:
         Print.YELLOW.print('Started extrating redescriptions. ')
         if len(redescription_data_model.activation_attributes) == 0 and len(redescription_data_model.target_attributes) == 0:
             return DataFrame()

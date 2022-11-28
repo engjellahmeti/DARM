@@ -170,11 +170,11 @@ def fix_numerical_rules(rules, attribute, y_column_min_val, y_column_max_val, ty
         key, rule = item
 
         if key == len(temp_y_rules) -1:
-            temp_rule = attribute + '>=' + rule.split('=')[1]
+            temp_rule = rule.split('=')[1]  + '<' + attribute
             rules[key] = rules[key].replace(rule, temp_rule)
         
         else:
-            temp_rule = attribute + '<=' + rule.split('=')[1]
+            temp_rule = attribute + '<' + rule.split('=')[1]
             rules[key] = rules[key].replace(rule, temp_rule)
 
 
@@ -236,12 +236,13 @@ def extract_rules(performance, negative_or_positive, last_id, declare_constraint
 
     _temp_r = {'rid':{}, 'query_activation': {}, 'query_target': {}}
     temp_i = -1
+
     for i, item in enumerate(all_rules):
         rule = item.split(' => ')
         _temp_r['rid'][i] = 'r{0}'.format(i + last_id)
         _temp_r['query_activation'][i] = rule[0]
         _temp_r['query_target'][i] = rule[1]
-        _temp_r['declare_constraint'] = declare_constraint.str_representation()
+        _temp_r['declare_constraint'] = declare_constraint
         temp_i = i
 
     if temp_i > -1:
@@ -249,18 +250,18 @@ def extract_rules(performance, negative_or_positive, last_id, declare_constraint
                 
     return _temp_r, last_id
 
-def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel, rules, metadata, activation_activity, target_activity, declare_constraint):
+def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel, rules, metadata, activation_activity, target_activity):
     df = pd.DataFrame()
     rid,query_activation,query_target,acc,pval= [], [], [], [], []
 
-    df_a, df_t = evaluate_rules_on_both_sides(redescription_data_model=redescription_data_model, rules=rules)
+    df_a, df_t, df_rules_satisfied = evaluate_rules_on_both_sides(redescription_data_model=redescription_data_model, rules=rules, for_deviant_traces=None)
     
     for key in rules['rid'].keys():
         rid.append(rules['rid'][key])
         query_activation.append(rules['query_activation'][key])
         query_target.append(rules['query_target'][key])
 
-        true_activation, true_target = support(df_a=df_a, df_t=df_t, rules=rules, position=key, metadata=metadata)
+        true_activation, true_target = support(df_a=df_a, df_t=df_t, rules=rules, position=key, metadata=metadata, df_rules_satisfied=df_rules_satisfied)
 
         acc.append(jaccard_index(supp_activation=true_activation, supp_target=true_target))
         pval.append(p_value(supp_activation=true_activation, supp_target=true_target, E=df_a.shape[0]))

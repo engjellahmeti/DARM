@@ -31,9 +31,9 @@ def evaluate_rules_on_both_sides(redescription_data_model: RedescriptionDataMode
 def support(df_a, df_t, rules, position, metadata=None, df_rules_satisfied=pd.DataFrame()):
     if type(rules) == str:
         try:
-            rules = rules.split('?')
-            algorithm = rules[1]
-            rules = rules[0]
+            rules_ = rules.split('?')
+            algorithm = rules_[1]
+            rules = rules_[0]
             true_activation = supports[metadata['name'] + '-' + algorithm][metadata['type']][rules]['activation']
             true_target = supports[metadata['name'] + '-' + algorithm][metadata['type']][rules]['target']
             length_of_V = supports[metadata['name'] + '-' + algorithm][metadata['type']][rules]['|V|']
@@ -43,7 +43,7 @@ def support(df_a, df_t, rules, position, metadata=None, df_rules_satisfied=pd.Da
 
             return set(true_activation), set(true_target), (length_of_V, set(rule_satisfied), set(rule_not_satisfied), declare_constraint)
         except:
-            return None, None, (-1, None, '')
+            return None, None, (-1, None, None, '')
 
     does_not_exist = True
     if metadata and metadata['name'] in supports.keys():
@@ -79,7 +79,7 @@ def support(df_a, df_t, rules, position, metadata=None, df_rules_satisfied=pd.Da
                supports[metadata['name']][metadata['type']][rules['rid'][position]]['n_nota'] = rule_not_satisfied
         
         if 'declare_constraint' in rules.keys():
-            supports[metadata['name']][metadata['type']][rules['rid'][position]]['declare_constraint'] = rules['declare_constraint'][position]
+            supports[metadata['name']][metadata['type']][rules['rid'][position]]['declare_constraint'] = rules['declare_constraint']
 
         with open('redescription_mining\evaluation\support.json', 'w') as a:
             json.dump(supports, a)
@@ -88,7 +88,9 @@ def support(df_a, df_t, rules, position, metadata=None, df_rules_satisfied=pd.Da
     return set(true_activation), set(true_target)
 
 def jaccard_index(supp_activation, supp_target):
-    return len(supp_activation.intersection(supp_target))/(len(supp_activation.union(supp_target)) + .0)
+    if len(supp_activation.union(supp_target)) > 0:
+        return len(supp_activation.intersection(supp_target))/(len(supp_activation.union(supp_target)) + .0)
+    return 0
 
 def combination(E, n):
     prod_e = 1

@@ -43,7 +43,7 @@ class BinaryTree:
                 self.nodes[right_key] = BinaryTreeNode(right_key, type_of_tree=self.type_of_tree, y_label=self.y_label)
             self.nodes[key].right_edge = right_edge
             self.nodes[key].right_node = self.nodes[right_key]
-
+    
     def extract_rules(self, node, rules, id=0):
         left_id = id
         right_id = -1
@@ -53,6 +53,9 @@ class BinaryTree:
 
             node_key = node.key
             if '<' in node_key or '>' in node_key:
+                if '>' in node_key:
+                    print('method extract_rules in the binary tree just met > symbol')
+
                 node_key = re.sub(r'\s+', '', node_key)
                 temp_num = ''
                 if id in rules.keys():
@@ -61,7 +64,16 @@ class BinaryTree:
                 else:
                     rules[id] = node_key
 
-                text = node_key.replace(node.left_edge, node.right_edge)
+                split_node_key = node_key.split('<')
+                last_num = int(split_node_key[1][-1]) - 1
+                if last_num == -1:
+                    if split_node_key[1][-2] == '.':
+                        temp_split_node_key = int(split_node_key[1][0:-2]) - 1
+                        temp_key = str(temp_split_node_key) + '.9'
+                else:
+                    temp_key = split_node_key[1][0:-1] + str(last_num)
+                    
+                text = temp_key + '<' + split_node_key[0]
 
                 right_id = len(rules.keys())
                 if right_id in rules.keys():
