@@ -217,7 +217,12 @@ def extract_rules(performance, negative_or_positive, last_id, declare_constraint
 
                 if max_id != -1:
                     rule = rules[max_id]
-                    rule = re.sub(r'{0}={1}[0-9-]*'.format(y_column, max_value), r'{0}={1}'.format(y_column, trees[tree]['class']), rule)
+                    if trees[tree]['class'].lower() == 'true':
+                        rule = re.sub(r'{0}={1}[0-9-]*'.format(y_column, max_value), r'{0}'.format(y_column), rule)
+                    elif trees[tree]['class'].lower() == 'false':
+                        rule = re.sub(r'{0}={1}[0-9-]*'.format(y_column, max_value), r'! {0}'.format(y_column), rule)
+                    else:
+                        rule = re.sub(r'{0}={1}[0-9-]*'.format(y_column, max_value), r'{0}={1}'.format(y_column, trees[tree]['class']), rule)
 
                     rule = fix_rule(rule, performance[key]['variable_importance'].keys(), graph.type_of_tree)
 
@@ -227,7 +232,7 @@ def extract_rules(performance, negative_or_positive, last_id, declare_constraint
                     rules[rule] = fix_rule(rules[rule], performance[key]['variable_importance'].keys(), graph.type_of_tree)
                 tree_rules = rules
 
-            if performance[key]['y_column_dtype'] != 'object':
+            if performance[key]['y_column_dtype'] != 'object' and performance[key]['y_column_dtype'] != 'bool':
                 tree_rules = fix_numerical_rules(rules=tree_rules, attribute=performance[key]['y_column'], y_column_min_val=performance[key]['y_column_min_val'], y_column_max_val=performance[key]['y_column_max_val'], type_of_tree=graph.type_of_tree)
 
         performance[key]['graph'] = tree_graphs
@@ -247,6 +252,9 @@ def extract_rules(performance, negative_or_positive, last_id, declare_constraint
 
     if temp_i > -1:
         last_id += temp_i + 1
+    
+    for filename in os.listdir(model_path):
+        os.remove(model_path + '\\' + filename)
                 
     return _temp_r, last_id
 

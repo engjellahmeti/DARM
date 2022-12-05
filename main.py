@@ -15,7 +15,7 @@ from event_log_generation.get_declare_constraints import get_declare_constraints
 from event_log_generation.generate_logs import generate_logs
 from redescription_mining.evaluation.transform_redescription_to_boolean_value import rules_to_boolean_value
 from mlflow import log_metrics, log_params, log_text, log_dict, set_tags, set_tag
-from redescription_mining.evaluation.rule_quality_measures import execute_redescription_quality_measures
+from redescription_mining.evaluation.rule_quality_measures_v2 import execute_redescription_quality_measures
 import os
 import re
 import pandas as pd
@@ -44,10 +44,6 @@ class Main:
             self.hyperparameters, self.relevant_hyperparameters = self.setup_hyperparameters()
             self.algorithm = self.hyperparameters['@mining_algo']
 
-            if self.algorithm != 'reremi' and self.algorithm != 'splittrees':
-                h2o.init()
-                h2o.no_progress()
-
             with open('redescription_mining\execution_times.json', 'r') as a:
                 self.execution_times = json.load(a)
                 
@@ -56,6 +52,7 @@ class Main:
         redescription_data_model: RedescriptionDataModel = self.ruleExt.extract_fulfilment(event_log_path=event_log_path,
                                                                                         declare_constraint=declare_constraint,
                                                                                         is_positive_or_negative_log=is_positive_or_negative_log,
+                                                                                        filename=filename,
                                                                                         write_to_CSV=True,
                                                                                         remove_attributes=True)
 
@@ -770,16 +767,21 @@ if __name__ == '__main__':
     if len(sys.argv[1:]) > 0:
         (input_type, algorithm, filename, extract_dsynts_on_leafs, declare_filename, amount_of_traces, min_trace_length, max_trace_length) = main.extract_arguments(sys.argv[1:])
         main = Main(extract_dsynts_on_leafs=extract_dsynts_on_leafs, algorithm=algorithm, config_or_template=config_or_template, filename=filename)
+        algorithm = main.algorithm
 
     else:
         extract_dsynts_on_leafs = False
         input_type = 3
         # algorithm = 'splittrees' # 'splittrees' reremi
         config_or_template = 'config' # 'config'
-        filename = 'running-example'#'#credit-application-subset' #running-example' # road-traffic-fines,repair-example
-        declare_filename = 'Running Example'#Credit Application Subset'#Running Example' # 'FirstPaperExample'  # Repair Example, Road Traffic Fines
+        filename = 'credit-application-subset' #running-example' # road-traffic-fines,repair-example
+        declare_filename = 'Credit Application Subset'#Running Example' # 'FirstPaperExample'  # Repair Example, Road Traffic Fines
         main = Main(extract_dsynts_on_leafs=extract_dsynts_on_leafs, algorithm=None, config_or_template=config_or_template, filename=filename)
         algorithm = main.algorithm
+    
+    if algorithm != 'reremi' and algorithm != 'splittrees':
+        h2o.init()
+        h2o.no_progress()
 
     if input_type == 1:
         _generate_logs = True

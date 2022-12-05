@@ -89,7 +89,7 @@ class BinaryTree:
                 temp = ''
                 if id in rules.keys():
                     temp = rules[id]
-                if left_node:
+                if node.left_edge:
                     if ',' not in node.left_edge:
                         if node.left_edge.lower() == 'true':
                             text = node.key

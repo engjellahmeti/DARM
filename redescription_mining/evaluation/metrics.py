@@ -101,20 +101,26 @@ def combination(E, n):
     for j in range(n, 0, -1):
         prod_n *= j
     
+    temp = prod_e // prod_n
+    
     prod_e_n = 1
     for k in range(E-n, 0, -1):
         prod_e_n *= k
 
-    return prod_e/(prod_n * prod_e_n) 
+    try:
+        return temp/prod_e_n
+    except Exception as e:
+        print(e)
+        return float(str(temp//prod_e_n)[0:10])
 
 def p_value(supp_activation, supp_target, E):
-    p1 = len(supp_activation)/E
-    p2 = len(supp_target)/E
+    pda = len(supp_activation)/E
+    pdt = len(supp_target)/E
 
     o = supp_activation.intersection(supp_target)
     n = np.arange(len(o), E + 1)
     
-    lambda_pv = lambda _n: combination(E, _n) * math.pow((p1 * p2), _n) * math.pow((1- p1 * p2), (E-_n))
+    lambda_pv = lambda _n: combination(E, _n) * math.pow((pda * pdt), _n) * math.pow((1- pda * pdt), (E-_n))
     lambda_pv = np.vectorize(lambda_pv)
 
     n = lambda_pv(n)

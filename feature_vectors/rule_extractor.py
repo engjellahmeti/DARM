@@ -15,7 +15,7 @@ from feature_vectors.declare_constraint import DeclareConstraint
 from redescription_mining.data_model import RedescriptionDataModel
 
 class RuleExtractor:
-    def extract_fulfilment(self, event_log_path: str, declare_constraint: DeclareConstraint, is_positive_or_negative_log: str,
+    def extract_fulfilment(self, event_log_path: str, declare_constraint: DeclareConstraint, is_positive_or_negative_log: str, filename: str,
                            remove_attributes: bool = False, write_to_CSV: bool = True) -> RedescriptionDataModel:
         event_log_reader = EventLogReader()
 
@@ -28,7 +28,7 @@ class RuleExtractor:
                 is_positive_or_negative_log))
 
         frames_exist = True
-        if not os.path.exists(os.path.abspath('feature_vectors/csv_feature_vectors/{0}/activation-{1}.csv'.format(is_positive_or_negative_log, declare_constraint.str_representation()))):
+        if not os.path.exists(os.path.abspath('feature_vectors/csv_feature_vectors/{0}/activation-{1}-{2}.csv'.format(is_positive_or_negative_log, filename, declare_constraint.str_representation()))):
             frames_exist = False
             for caseID in cases.keys():
                 id_a = []
@@ -103,7 +103,7 @@ class RuleExtractor:
 
         if write_to_CSV:
             redescription_data_model: RedescriptionDataModel = self.write_to_CSV_(feature_vectors=feature_vectors,
-                                                                            is_positive_or_negative_log=is_positive_or_negative_log, declare_constraint=declare_constraint, frames_exist=frames_exist)
+                                                                            is_positive_or_negative_log=is_positive_or_negative_log, declare_constraint=declare_constraint, frames_exist=frames_exist, filename=filename)
 
             Print.YELLOW.print("'Feature Vectors' have been created.")
 
@@ -120,12 +120,23 @@ class RuleExtractor:
             target_cols = feature_vectors[0].to.keys()
             target_frame = pd.DataFrame(columns=target_cols)
 
-        for index, row in enumerate(feature_vectors):
-            activation_frame.loc[row.trace + '-' + str(index)] = row.fromm.values()
+        # for index, row in enumerate(feature_vectors):
+        #     activation_frame.loc[row.trace + '-' + str(index)] = row.fromm.values()
 
-            target_frame.loc[row.trace+ '-' + str(index)] = row.to.values()
+        #     target_frame.loc[row.trace+ '-' + str(index)] = row.to.values()
 
-        return (activation_frame, target_frame)
+            index_list = []
+            for index, row in enumerate(feature_vectors):
+                index_list.append(row.trace + '-' + str(index))
+                activation_frame = activation_frame.append(row.fromm, ignore_index=True)
+                target_frame = target_frame.append(row.to, ignore_index=True)
+
+            activation_frame[''] = index_list
+            activation_frame.set_index('', inplace=True) 
+            target_frame[''] = index_list
+            target_frame.set_index('', inplace=True)
+
+            return (activation_frame, target_frame)
 
     def convert_feature_vectors_into_activation_and_target_frames_for_traces(self, feature_vectors: List[FeatureVector]) -> Tuple[DataFrame, DataFrame]:
         if len(feature_vectors) > 0:
@@ -152,9 +163,9 @@ class RuleExtractor:
 
         return (activation_frame, target_frame)
 
-    def write_to_CSV_(self, feature_vectors: List[FeatureVector], is_positive_or_negative_log: str, declare_constraint: DeclareConstraint, frames_exist=False) -> RedescriptionDataModel:
-        activation_path = os.path.abspath('feature_vectors/csv_feature_vectors/{0}/activation-{1}.csv'.format(is_positive_or_negative_log, declare_constraint.str_representation()))
-        target_path = os.path.abspath('feature_vectors/csv_feature_vectors/{0}/target-{1}.csv'.format(is_positive_or_negative_log, declare_constraint.str_representation()))
+    def write_to_CSV_(self, feature_vectors: List[FeatureVector], is_positive_or_negative_log: str, declare_constraint: DeclareConstraint, filename: str, frames_exist=False) -> RedescriptionDataModel:
+        activation_path = os.path.abspath('feature_vectors/csv_feature_vectors/{0}/activation-{1}-{2}.csv'.format(is_positive_or_negative_log, filename, declare_constraint.str_representation()))
+        target_path = os.path.abspath('feature_vectors/csv_feature_vectors/{0}/target-{1}-{2}.csv'.format(is_positive_or_negative_log, filename, declare_constraint.str_representation()))
 
         if frames_exist:
             activation_frame, target_frame = pd.read_csv(activation_path, index_col=0), pd.read_csv(target_path, index_col=0)
