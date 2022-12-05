@@ -8,3 +8,5 @@ nltk==3.7
 numpy==1.22.2
 mlflow==1.30.0
 h2o==3.38.0.2
+matplotlib==3.6.2
+seaborn==0.12.1

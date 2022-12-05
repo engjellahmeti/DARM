@@ -14,11 +14,11 @@ import re
 import math
 
 
-if not os.path.exists(r'redescription_mining\evaluation\rule_quality_measures.json'):
-    with open(r'redescription_mining\evaluation\rule_quality_measures.json', 'w') as a:
+if not os.path.exists(r'redescription_mining\evaluation\rule_quality_measures_v2.json'):
+    with open(r'redescription_mining\evaluation\rule_quality_measures_v2.json', 'w') as a:
         a.write('{}')
 
-with open(r'redescription_mining\evaluation\rule_quality_measures.json', 'r') as a:
+with open(r'redescription_mining\evaluation\rule_quality_measures_v2.json', 'r') as a:
     rule_quality_measures = json.load(a)
 
 
@@ -44,7 +44,7 @@ def aej(rule, position_of_rule, rules, metadata):
     supp_act_r_i, supp_tar_r_i, _= support(df_a=None, df_t=None, rules=rule['rid'] + '?' + rule['algorithm'], position=0, metadata=metadata)
 
     if not supp_act_r_i:
-        return
+        return 0.0
 
     supp_r_i = supp_act_r_i.intersection(supp_tar_r_i)
 
@@ -66,8 +66,7 @@ def aej(rule, position_of_rule, rules, metadata):
     _jacc = lambda_apply_intersection_of_descriptions(_jacc)
     _jacc = lambda_apply_jaccard_to_redescriptions(_jacc)
 
-
-    return (1 / (total_amount_rules - 1)) * _jacc.sum()
+    return (1 / (total_amount_rules - 1.0)) * _jacc.sum() 
 
 #  the measure providing information about the redundancy of attributes contained in redescription queries, called the average redescription attribute Jaccard index, is defined as:
 def aaj(rule, position_of_rule, rules):
@@ -92,7 +91,7 @@ def aaj(rule, position_of_rule, rules):
     _jacc = lambda_apply_jaccard_to_redescriptions(_jacc)
 
 
-    return (1 / (total_amount_rules - 1)) * _jacc.sum()
+    return (1 / (total_amount_rules - 1.0)) * _jacc.sum()
 
 # To emphasize importance of the redescription size from the point of understandability (|a t t r(R)|≥20 considered to be highly complex to understand)
 def r_size(rule):
@@ -160,7 +159,7 @@ def Lift(support_activation, support_target, E):
         return 0
 
 # Pearson's correlation coefficient
-def R(support_activation, not_support_activation, support_target, not_support_target, E):
+def Pearson(support_activation, not_support_activation, support_target, not_support_target, E):
     n_at = len(support_activation.intersection(support_target))
     n_a = len(support_activation)
     n_t = len(support_target)
@@ -190,29 +189,40 @@ def define_values_for_measures(rule, position_of_rule, rules, metadata):
 
     # get supp(q1) & supp(q2) where r_j = (q1, q2)
     get_rule_satisfactions = lambda x: [support(df_a=None, df_t=None, rules=rules[x]['rid'] + '?' + rules[x]['algorithm'], position=x, metadata=metadata)]
-
-    # get sup(r_j) = supp(q1) intersection supp(q2) 
-    apply_get_rules_from_the_same_declare_constraint = lambda r_j: r_j if declare_constraint == r_j[0][2][3] else None
-
-
     lambda_get_rule_satisfactions = np.vectorize(get_rule_satisfactions)
-    lambda_apply_get_rules_from_the_same_declare_constraint = np.vectorize(apply_get_rules_from_the_same_declare_constraint)
-
     _jacc = lambda_get_rule_satisfactions(jacc.copy())
-    _jacc = lambda_apply_get_rules_from_the_same_declare_constraint(_jacc)
 
-    results = {'declare_constraint':declare_constraint , 'Bayes Factor': {}, 'Centered Confidence': {}, 'Confidence': {}, 'Information Gain': {}, 'Lift': {}, 'Pearson correlation coefficient': {}}
-    for i, item in enumerate(_jacc):
-        get_id = jacc[i]
-        if item and str(item) != 'nan':
-            results['Bayes Factor'][rules[get_id]['rid'] + '-' + rules[get_id]['algorithm']] = BF(support_activation=rule_satisfied, support_target=item[0][1], not_support_target=item[0][2])
-            results['Centered Confidence'][rules[get_id]['rid'] + '-' + rules[get_id]['algorithm']] = CenConf(support_activation=rule_satisfied, support_target=item[0][1], E=E)
-            results['Confidence'][rules[get_id]['rid'] + '-' + rules[get_id]['algorithm']] = Conf(support_activation=rule_satisfied, support_target=item[0][1])
-            results['Information Gain'][rules[get_id]['rid'] + '-' + rules[get_id]['algorithm']] = IG(support_activation=rule_satisfied, support_target=item[0][1], E=E)
-            results['Lift'][rules[get_id]['rid'] + '-' + rules[get_id]['algorithm']] = Lift(support_activation=rule_satisfied, support_target=item[0][1], E=E)
-            results['Pearson correlation coefficient'][rules[get_id]['rid'] + '-' + rules[get_id]['algorithm']] = R(support_activation=rule_satisfied, not_support_activation=rule_not_satisfied, support_target=item[0][1], not_support_target=item[0][2], E=E)
+    bf_lambda = lambda x: BF(support_activation=rule_satisfied, support_target=x[0][1], not_support_target=x[0][2])
+    lambda_bf_lambda = np.vectorize(bf_lambda)
+    _jacc_bf = lambda_bf_lambda(_jacc.copy())
+    bf = (1 / (total_amount_rules - 1.0)) * _jacc_bf.sum()
 
-    return results
+    cenconf_lambda = lambda x: CenConf(support_activation=rule_satisfied, support_target=x[0][1], E=E)
+    lambda_cenconf_lambda = np.vectorize(cenconf_lambda)
+    _jacc_cenconf= lambda_cenconf_lambda(_jacc.copy())
+    cenconf = (1 / (total_amount_rules - 1.0)) * _jacc_cenconf.sum()
+
+    conf_lambda = lambda x:  Conf(support_activation=rule_satisfied, support_target=x[0][1])
+    lambda_conf_lambda = np.vectorize(conf_lambda)
+    _jacc_conf = lambda_conf_lambda(_jacc.copy())
+    conf = (1 / (total_amount_rules - 1.0)) * _jacc_conf.sum()
+
+    ig_lambda = lambda x: IG(support_activation=rule_satisfied, support_target=x[0][1], E=E)
+    lambda_ig_lambda = np.vectorize(ig_lambda)
+    _jacc_ig = lambda_ig_lambda(_jacc.copy())
+    ig = (1 / (total_amount_rules - 1.0)) * _jacc_ig.sum()
+    
+    lift_lambda = lambda x:  Lift(support_activation=rule_satisfied, support_target=x[0][1], E=E)
+    lambda_lift_lambda = np.vectorize(lift_lambda)
+    _jacc_lift = lambda_lift_lambda(_jacc.copy())
+    lift = (1 / (total_amount_rules - 1.0)) * _jacc_lift.sum()
+    
+    pearson_lambda = lambda x: Pearson(support_activation=rule_satisfied, not_support_activation=rule_not_satisfied, support_target=x[0][1], not_support_target=x[0][2], E=E)
+    lambda_pearson_lambda = np.vectorize(pearson_lambda)
+    _jacc_pearson = lambda_pearson_lambda(_jacc.copy())
+    pearson = (1 / (total_amount_rules - 1.0)) * _jacc_pearson.sum()
+
+    return bf, cenconf, conf, ig, lift, pearson
 
 def execute_redescription_quality_measures(metadata):
     algorithms = ['reremi', 'splittrees', 'new-approach']
@@ -221,8 +231,8 @@ def execute_redescription_quality_measures(metadata):
         rule_quality_measures[metadata['name']] = {}
 
     for algorithm in algorithms:
-        if algorithm not in rule_quality_measures[metadata['name']].keys():
-            rule_quality_measures[metadata['name']][algorithm] = {}
+        if metadata['type'] not in rule_quality_measures[metadata['name']].keys():
+            rule_quality_measures[metadata['name']][metadata['type']] = {}
 
         if not df.empty:
             df1 = pd.read_csv(r'redescription_mining\results\{0}-{1}-{2}.queries'.format(metadata['name'], algorithm, metadata['type']))
@@ -250,7 +260,7 @@ def execute_redescription_quality_measures(metadata):
         temp = groups.get_group(dc)
         rules = pd.DataFrame(temp, columns=temp.columns)
         rules['declare_constraint'] = str_representation
-        rules = rules[['algorithm', 'rid', 'query_activation','query_target', 'declare_constraint']].to_dict()
+        rules = rules[['algorithm', 'rid', 'query_activation','query_target', 'declare_constraint', 'activation_vars', 'target_vars']].to_dict()
 
         df_a, df_t, df_rules_satisfied = evaluate_rules_on_both_sides(redescription_data_model=rdm, rules=rules, for_deviant_traces=None)
 
@@ -260,39 +270,46 @@ def execute_redescription_quality_measures(metadata):
             _ = support(df_a=df_a, df_t=df_t, rules=rules, position=position, metadata=_metadata, df_rules_satisfied=df_rules_satisfied)
     
     
-    all_rules_temp = df[['algorithm', 'rid', 'query_activation','query_target', 'activation_vars', 'target_vars']].to_dict()
+        all_rules = {}
+        for index, i in enumerate(rules['rid'].keys()):
+            all_rules[index]= {
+                'algorithm': rules['algorithm'][i],
+                'rid': rules['rid'][i],
+                'query_activation': rules['query_activation'][i],
+                'query_target': rules['query_target'][i],
+                'activation_vars': rules['activation_vars'][i],
+                'target_vars': rules['target_vars'][i]
 
-    all_rules = {}
-    for i in all_rules_temp['rid'].keys():
-        all_rules[i]= {
-            'algorithm': all_rules_temp['algorithm'][i],
-            'rid': all_rules_temp['rid'][i],
-            'query_activation': all_rules_temp['query_activation'][i],
-            'query_target': all_rules_temp['query_target'][i],
-            'activation_vars': all_rules_temp['activation_vars'][i],
-            'target_vars': all_rules_temp['target_vars'][i]
+            }
 
-        }
+        for i in all_rules.keys():
+            temp = all_rules.copy()
+            rule = temp[i]
+            temp.pop(i, None)
+            _aej = aej(rule=rule, position_of_rule=i, rules=temp, metadata=metadata)
+            _aaj = aaj(rule=rule, position_of_rule=i, rules=temp)
+            _r_size= r_size(rule)
 
-    for i in all_rules.keys():
-        temp = all_rules.copy()
-        rule = temp[i]
-        temp.pop(i, None)
-        _aej = aej(rule=rule, position_of_rule=i, rules=temp, metadata=metadata)
-        _aaj = aaj(rule=rule, position_of_rule=i, rules=temp)
-        _r_size= r_size(rule)
+            bf, cenconf, conf, ig, lift, pearson = define_values_for_measures(rule=rule, position_of_rule=i, rules=temp, metadata=metadata)
+            
+            if str_representation not in  rule_quality_measures[metadata['name']][metadata['type']].keys():
+                rule_quality_measures[metadata['name']][metadata['type']][str_representation]= {}
+            if rule['algorithm'] not in  rule_quality_measures[metadata['name']][metadata['type']][str_representation].keys():
+                rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']] = {}
+            if rule['rid'] not in rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']].keys():
+                rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']] = {}
 
-        # get the other metrics
-        results = define_values_for_measures(rule=rule, position_of_rule=i, rules=temp, metadata=metadata)
-        
-        if rule['rid'] not in rule_quality_measures[metadata['name']][rule['algorithm']].keys():
-            rule_quality_measures[metadata['name']][rule['algorithm']][rule['rid']] = {}
+            
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['AEJ'] = _aej
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['AAJ'] = _aaj
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['R Size'] = _r_size
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['Bayes Factor'] = bf
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['Centered Confidence'] = cenconf
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['Confidence'] = conf
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['Information Gain'] = ig
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['Lift'] = lift
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['Pearson correlation coefficient'] = pearson
 
 
-        rule_quality_measures[metadata['name']][rule['algorithm']][rule['rid']]['AEJ'] = _aej
-        rule_quality_measures[metadata['name']][rule['algorithm']][rule['rid']]['AAJ'] = _aaj
-        rule_quality_measures[metadata['name']][rule['algorithm']][rule['rid']]['R Size'] = _r_size
-        rule_quality_measures[metadata['name']][rule['algorithm']][rule['rid']].update(results)    
-
-    with open(r'redescription_mining\evaluation\rule_quality_measures.json', 'w') as a:
-        json.dump(rule_quality_measures, a)
+        with open(r'redescription_mining\evaluation\rule_quality_measures_v2.json', 'w') as a:
+            json.dump(rule_quality_measures, a)
