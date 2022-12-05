@@ -1,8 +1,8 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
-r2,3697.0<Price,Delivery=Fast,0.151,0.0,105,2,19,263,Price,OrderProduct,Delivery,DeliverOrder,response
-r5,4709.0<Amount,Resource=Company,0.589,0.0,99,12,159,83,Amount,OrderProduct,Resource,PayOrder,response
-r7,Amount<4704.0,Resource=Customer,0.428,0.0,12,99,83,159,Amount,OrderProduct,Resource,PayOrder,response
-r9,Delivery=Fast,17.0<Discount<47.0,0.107,0.001,0,176,21,228,Delivery,DeliverOrder,Discount,PayOrder,respondedexistence
-r11,17.0<Discount<47.0,Delivery=Fast,0.107,0.001,176,0,21,228,Discount,PayOrder,Delivery,DeliverOrder,respondedexistence
-r12,PaymentType=Transfer,Delivery=Slow,1.0,0.0,0,0,304,21,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence
-r13,PaymentType=PayPal,Delivery=Fast,1.0,0.0,0,0,21,304,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence
+r49,3697.0<Price,Delivery=Fast,0.151,0.0,105,2,19,263,Price,OrderProduct,Delivery,DeliverOrder,response
+r55,4709.0<Amount,Resource=Company,0.589,0.0,99,12,159,83,Amount,OrderProduct,Resource,PayOrder,response
+r57,Amount<4704.0,Resource=Customer,0.428,0.0,12,99,83,159,Amount,OrderProduct,Resource,PayOrder,response
+r61,Delivery=Fast,17.0<Discount<47.0,0.107,0.001,0,176,21,228,Delivery,DeliverOrder,Discount,PayOrder,respondedexistence
+r64,17.0<Discount<47.0,Delivery=Fast,0.107,0.001,176,0,21,228,Discount,PayOrder,Delivery,DeliverOrder,respondedexistence
+r67,PaymentType=Transfer,Delivery=Slow,1.0,0.0,0,0,304,21,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence
+r68,PaymentType=PayPal,Delivery=Fast,1.0,0.0,0,0,21,304,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence

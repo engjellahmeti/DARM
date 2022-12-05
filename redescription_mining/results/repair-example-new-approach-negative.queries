@@ -1,0 +1,10 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r0,Resource=Solver,Resource=Solver,0.14285714285714285,0.4719493016702591,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r1,( Resource=Solver | Resource=System ),Resource=System,0.5714285714285714,0.0032180547216186387,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r2,Resource=Tester,Resource=Tester,0.5818181818181818,0.002594674182532378,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r3,( Resource=Solver | Resource=System ),ComplexityOfRepair=Medium,0.22033898305084745,0.4071382873926684,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r4,Resource=Solver,ComplexityOfRepair=Simple,0.2222222222222222,0.3939122785793864,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r5,( Resource=System | Resource=Tester ),ComplexityOfRepair=Complex,0.4027777777777778,0.33696135811854844,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r6,Resource=Tester,Resource=Tester & ComplexityOfRepair=Complex,0.32653061224489793,0.020042155494245168,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r7,Resource=System,Resource=System & ComplexityOfRepair=Medium,0.0625,0.5327702133638318,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r8,Resource=Solver,( Resource=Solver | Resource=System ) & ComplexityOfRepair=Simple,0.2222222222222222,0.08002107306574771,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response

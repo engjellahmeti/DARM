@@ -1,0 +1,28 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r0,Amount<49565.5 & 49187.4<Amount,Resource=BankManager,0.01639344262295082,0.008548681326489331,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r1,50178.4<Amount & Salary<32928.5,AssessmentType=Complex,0.7977044476327116,0.0,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r2,Amount<50705.5 & Amount<30525.0,AssessmentCost<224.0,0.3668639053254438,4.133923777895925e-37,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r3,50705.4<Amount & Salary<31424.5,AssessmentCost<165.762,0.3710843373493976,0.0,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r4,Amount<50705.5 & 30524.9<Amount,AssessmentCost<100.047,0.12020033388981637,8.934364382725392e-11,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r5,50705.4<Amount & 31424.4<Salary,121.459<AssessmentCost,0.07327586206896551,0.999131838772837,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r6,Salary<7749.931,AssessmentCost<100.5 & Resource=BankManager & AssessmentCost<182.0,0.16531895777178796,0.9289346019573876,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r7,Salary<7749.931,100.4<AssessmentCost & Resource=BankManager & AssessmentCost<182.0,0.029315960912052116,0.4746371310000051,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r8,Salary<6345.151,AssessmentCost<100.5 & Resource=CreditAssessmentOfficer & AssessmentType=Simple,0.016414141414141416,0.8122376899327629,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r9,Salary<5626.769,AssessmentCost<100.5 & Resource=BankManager & 181.9<AssessmentCost,0.0,1.0,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r10,Salary<12958.083,AssessmentCost<100.5 & Resource=CreditAssessmentOfficer & AssessmentType=Complex,0.034323432343234324,0.14559228181061284,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r11,Salary<6345.151,100.4<AssessmentCost & Resource=CreditAssessmentOfficer & AssessmentType=Simple,0.035175879396984924,0.251345485308044,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r12,Salary<5626.769,100.4<AssessmentCost & Resource=BankManager & 181.9<AssessmentCost,0.034954407294832825,0.014207947477256018,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r13,12958.083<Salary,100.4<AssessmentCost & Resource=CreditAssessmentOfficer & AssessmentType=Complex,0.11854838709677419,0.9099732743095373,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r14,Amount<52922.605,AssessmentCost<100.5 & AssessmentType=Simple & Resource=CreditAssessmentOfficer,0.05008635578583765,0.0007401055770847122,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r15,Amount<80419.414,100.4<AssessmentCost & Resource=BankManager & AssessmentCost<179.0,0.02965599051008304,0.40961081244014325,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r16,Amount<78604.94,AssessmentCost<100.5 & AssessmentType=Complex & AssessmentCost<94.5,0.014302741358760428,0.500834246958174,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r17,Amount<62935.23,AssessmentCost<100.5 & AssessmentType=Simple & Resource=BankManager,0.42752293577981654,6.6968370150131965e-43,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r18,Amount<61426.5,AssessmentCost<100.5 & AssessmentType=Complex & 94.4<AssessmentCost,0.05360134003350084,0.01035795302023557,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r19,Amount<73728.836,100.4<AssessmentCost & Resource=CreditAssessmentOfficer & AssessmentType=Simple,0.03744798890429958,0.09346731059451137,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r20,Amount<66988.82,100.4<AssessmentCost & Resource=BankManager & 178.9<AssessmentCost,0.037800687285223365,0.02207481655809527,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r21,92407.914<Amount,100.4<AssessmentCost & Resource=CreditAssessmentOfficer & AssessmentType=Complex,0.5297383029341792,0.0,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r22,Result=Rejected,Salary<4573.06,0.21875,0.0025838933437185925,,,,,Result,OutcomeNotification,"Salary, Amount",ApplyForCredit,precedence
+r23,Result=Accepted,7274.463<Salary,0.47959183673469385,0.05253465380591682,,,,,Result,OutcomeNotification,"Salary, Amount",ApplyForCredit,precedence
+r24,Result=Accepted,Amount<60849.723,0.6038338658146964,0.2778265437415385,,,,,Result,OutcomeNotification,"Salary, Amount",ApplyForCredit,precedence
+r25,Result=Rejected,67340.88<Amount,0.15602836879432624,0.12004689896735429,,,,,Result,OutcomeNotification,"Salary, Amount",ApplyForCredit,precedence
+r26,Result=Accepted,6893.4<Salary & Amount<79703.5,0.3867595818815331,0.02779095495511532,,,,,Result,OutcomeNotification,"Salary, Amount",ApplyForCredit,precedence

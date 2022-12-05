@@ -1,0 +1,14 @@
+rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
+r0,NotificationType=P & ( Resource=Admin | Resource=System ),Amount<6068.379,0.17647058823529413,0.00012760145721739776,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r1,NotificationType=C & ( Resource=Admin | Resource=System ),Amount<6068.379,0.3430034129692833,0.9966559668853583,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r2,NotificationType=P & Resource=Police,Amount<6127.406,0.09302325581395349,0.005826968804749422,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r3,NotificationType=C & Resource=Police,6127.406<Amount,0.2088235294117647,0.16818308465253795,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r4,Resource=Admin,7871.4<Amount,0.03587443946188341,0.049875294940689416,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r5,Resource=Police,Amount<422.5,0.030973451327433628,0.08173259407747371,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r6,Resource=System,Amount<7793.5,0.3385579937304075,0.33325836771127065,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r7,NotificationType=C,4953.9<Amount,0.9854014598540146,9.377904545698049e-16,,,,,"Resource, NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r8,4973.4<Amount,Resource=Admin,0.9490740740740741,7.295251518955529e-13,,,,,Amount,AddPenalty,Resource,SendForCreditCollection,response
+r9,Amount<4973.5,Resource=Police,0.7681159420289855,6.37813930703938e-54,,,,,Amount,AddPenalty,Resource,SendForCreditCollection,response
+r10,Amount<107.5,Resource=System,0.05,0.05398801531537488,,,,,Amount,AddPenalty,Resource,SendForCreditCollection,response
+r11,Amount<3116.366,Resource=Police,0.5036496350364964,8.966805700866828e-35,,,,,Amount,AddPenalty,Resource,SendForCreditCollection,response
+r12,5965.253<Amount,( Resource=Admin | Resource=System ),0.4329411764705882,0.0022715918706805965,,,,,Amount,AddPenalty,Resource,SendForCreditCollection,response

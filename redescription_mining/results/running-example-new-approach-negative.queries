@@ -1,23 +1,24 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
-r0,Price<3825.5 & Amount<4337.5,Delivery=Fast,0.5463576158940397,1.708987155331567e-05,,,,,"Price, Amount",OrderProduct,Delivery,DeliverOrder,response
+r0,Price<3825.5 & Amount<4074.0,Delivery=Fast,0.5016611295681063,3.854116576859034e-05,,,,,"Price, Amount",OrderProduct,Delivery,DeliverOrder,response
 r1,Price<5151.136,Delivery=Fast,0.6389776357827476,3.1099361262771225e-05,,,,,"Price, Amount",OrderProduct,Delivery,DeliverOrder,response
 r2,11458.602<Price,Delivery=Slow,0.36486486486486486,2.1066483028773003e-07,,,,,"Price, Amount",OrderProduct,Delivery,DeliverOrder,response
 r3,Amount<3440.282,Delivery=Fast,0.4820359281437126,0.0714703780265953,,,,,"Price, Amount",OrderProduct,Delivery,DeliverOrder,response
 r4,5176.092<Amount,Delivery=Slow,0.32432432432432434,5.169367602867185e-06,,,,,"Price, Amount",OrderProduct,Delivery,DeliverOrder,response
-r5,8217.9<Amount,Resource=Company,0.05,0.16918167764696151,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r6,Amount<1769.5 & Amount<546.5,Discount<2.5,0.13636363636363635,0.13262664949824557,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r7,1769.4<Amount & Amount<9477.5,Discount<8.236,0.44761904761904764,0.878280615955318,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r8,Amount<1769.5 & 546.4<Amount,Discount<5.8,0.08163265306122448,0.5012858313816545,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r9,1769.4<Amount & 9477.4<Amount,17.667<Discount,0.2,0.0452504479299019,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r10,Price<11113.089,Discount<11.5 & Discount<10.5,0.41935483870967744,0.5531222496399303,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r11,Price<13355.615,11.4<Discount & Discount<14.5,0.0963855421686747,0.8773840325849853,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r12,Price<5299.75,Discount<11.5 & 10.4<Discount,0.1,0.2232840796836657,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r13,10234.8<Price,11.4<Discount & 14.4<Discount,0.08064516129032258,0.5332505477322614,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r14,Amount<4436.922,Discount<23.5 & Resource=Customer,0.4811320754716981,0.4649235600854423,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r5,8217.9<Amount & Amount<8301.5,Resource=Company,0.5,0.018349663026132886,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r6,Amount<1769.5 & Price<11946.0,Discount<2.429,0.21739130434782608,0.030447978177952133,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r7,1769.4<Amount & Amount<9453.5,Discount<7.904,0.4095238095238095,0.9082433603867475,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r8,Amount<1769.5 & 11945.9<Price,Discount<5.0,0.05,0.5965238552671303,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r9,1769.4<Amount & 9453.4<Amount,17.667<Discount,0.2,0.0452504479299019,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r10,Price<11276.737,Discount<11.5 & Discount<4.5,0.23684210526315788,0.6694271021089016,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r11,Price<12655.619,11.4<Discount & Discount<23.5,0.14634146341463414,0.8690413302659732,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r12,Price<9192.519,Discount<11.5 & 4.4<Discount,0.3235294117647059,0.23502844662653494,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r13,8457.0<Price,11.4<Discount & 23.4<Discount,0.0,0.999999999999999,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r14,Amount<5665.24,Discount<23.5 & Discount<4.5,0.2,0.8692597324952904,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
 r15,Amount<9619.0,23.4<Discount,0.0,1.000000000000003,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
-r16,8286.0<Amount,Discount<23.5 & Resource=Company,0.0,0.9999999999999993,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
+r16,4764.727<Amount,Discount<23.5 & 4.4<Discount,0.3118279569892473,0.8525070042500429,,,,,"Price, Amount",OrderProduct,"Resource, Discount",PayOrder,response
 r17,Delivery=Fast,Resource=Company,0.001256281407035176,0.5500932917852673,,,,,Delivery,DeliverOrder,"Resource, Discount",PayOrder,respondedexistence
 r18,Delivery=Fast,Resource=Company,0.001256281407035176,0.5500932917852673,,,,,Delivery,DeliverOrder,"Resource, Discount",PayOrder,respondedexistence
 r19,Resource=Company,Delivery=Fast,0.001256281407035176,0.5500932917852673,,,,,"Resource, Discount",PayOrder,Delivery,DeliverOrder,respondedexistence
 r20,Resource=Company,Delivery=Fast,0.001256281407035176,0.5500932917852673,,,,,"Resource, Discount",PayOrder,Delivery,DeliverOrder,respondedexistence
-r21,PaymentType=PayPal,Delivery=Slow,0.7142857142857143,0.008489307226366209,,,,,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence
+r21,PaymentType=Transfer,Delivery=Fast,0.9090909090909091,0.10177312323990848,,,,,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence
+r22,PaymentType=PayPal,Delivery=Slow,0.7142857142857143,0.008489307226366209,,,,,PaymentType,CloseOrder,Delivery,DeliverOrder,precedence

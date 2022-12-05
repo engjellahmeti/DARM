@@ -1,5 +1,5 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
-r28,NotificationType=C,5000.0<Amount,0.985,0.0,4,4,540,111,NotificationType,InsertFineNotification,Amount,AddPenalty,response
-r32,NotificationType=P,! 5000.0<Amount,0.9329999999999999,0.0,4,4,111,540,NotificationType,InsertFineNotification,Amount,AddPenalty,response
-r57,5000.0<Amount,! Resource=Police,0.963,0.0,25,7,835,106,Amount,AddPenalty,Resource,SendForCreditCollection,response
-r61,! 5000.0<Amount,Resource=Police,0.768,0.0,7,25,106,835,Amount,AddPenalty,Resource,SendForCreditCollection,response
+r509,NotificationType=C,5000.0<Amount,0.985,0.0,4,4,540,111,NotificationType,InsertFineNotification,Amount,AddPenalty,response
+r513,NotificationType=P,! 5000.0<Amount,0.9329999999999999,0.0,4,4,111,540,NotificationType,InsertFineNotification,Amount,AddPenalty,response
+r538,5000.0<Amount,! Resource=Police,0.963,0.0,25,7,835,106,Amount,AddPenalty,Resource,SendForCreditCollection,response
+r542,! 5000.0<Amount,Resource=Police,0.768,0.0,7,25,106,835,Amount,AddPenalty,Resource,SendForCreditCollection,response
