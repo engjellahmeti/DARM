@@ -1,0 +1,1 @@
+Resource=Tester ~ ! DefectFixed & Resource=Solver & 2.4<NumberRepairs

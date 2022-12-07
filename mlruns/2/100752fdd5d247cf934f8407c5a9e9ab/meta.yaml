@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/bt307952/Documents/Paper/paper-extension/DARM/mlruns/2/100752fdd5d247cf934f8407c5a9e9ab/artifacts
+end_time: 1670405027753
+entry_point_name: ''
+experiment_id: '2'
+lifecycle_stage: active
+run_id: 100752fdd5d247cf934f8407c5a9e9ab
+run_name: negative
+run_uuid: 100752fdd5d247cf934f8407c5a9e9ab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1670405027503
+status: 3
+tags: []
+user_id: bt307952

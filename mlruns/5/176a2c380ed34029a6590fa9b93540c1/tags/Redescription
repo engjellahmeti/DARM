@@ -1,0 +1,1 @@
+NotificationType=C & ( Resource=Admin | Resource=System ) ~ 6044.942<Amount

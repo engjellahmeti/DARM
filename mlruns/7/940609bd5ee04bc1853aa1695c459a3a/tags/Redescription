@@ -1,0 +1,1 @@
+( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & ( Resource=Solver | Resource=Tester ) ~ 2.709<NumberRepairs

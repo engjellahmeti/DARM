@@ -1,0 +1,1 @@
+( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & Resource=System ~ NumberRepairs<2.235

@@ -1,0 +1,1 @@
+Resource=System ~ ( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & ( Resource=Solver | Resource=Tester )

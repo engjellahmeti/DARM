@@ -1,0 +1,1 @@
+( ! 26485.0<Salary & 50256.0<Amount ) ~ ( AssessmentType=Complex & ! 101.0<AssessmentCost ) | 101.0<AssessmentCost

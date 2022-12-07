@@ -1,0 +1,1 @@
+( Resource=Tester & ! Resource=Solver ) ~ Resource=Tester

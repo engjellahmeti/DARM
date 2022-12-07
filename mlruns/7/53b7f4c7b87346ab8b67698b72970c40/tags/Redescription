@@ -1,0 +1,1 @@
+ComplexityOfRepair=Simple ~ NumberRepairs<2.5 & 0.4<NumberRepairs & NumberRepairs<1.5

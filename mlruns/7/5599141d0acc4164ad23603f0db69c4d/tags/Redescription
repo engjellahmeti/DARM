@@ -1,0 +1,1 @@
+Resource=System ~ ( Resource=System | Resource=Tester ) & DefectFixed & 1.4<NumberRepairs

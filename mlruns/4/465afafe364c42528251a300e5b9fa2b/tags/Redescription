@@ -1,0 +1,1 @@
+( NotificationType=C | NotificationType=c ) & Resource=Police ~ Amount<6515.524
