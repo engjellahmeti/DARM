@@ -262,6 +262,9 @@ class Main:
         set_tag('Algorithm', self.algorithm)
 
     def write_mlflow_logs(self):
+        with open(r'redescription_mining\evaluation\rule_quality_measures_v2.json', 'r') as a:
+            rule_quality_measures = json.load(a)
+
         if not os.path.exists('mlruns/'):
             os.makedirs('mlruns')
         
@@ -270,21 +273,20 @@ class Main:
             mlflow_data.remove('.trash')
 
         if len(mlflow_data) == 0:
-            run_id = 0
+            run_id = 1
         else:
-            temp = [int(re.search(r'(\d+)[-a-b]*', x, re.S|re.I).group(1)) for x in mlflow_data]
-            run_id = temp[-1] + 1
+            run_id = int(len(mlflow_data)/2) + 1
 
-        run_id = str(run_id) + ' - ' + ('ReReMi' if self.algorithm == 'reremi' else 'SplitT') + '-' + self.filename
-        experiment_id = mlflow.create_experiment(str(run_id))
         for query in ['negative', 'positive']:
+            temp_run_id = str(run_id) + '-' + ('ReReMi' if self.algorithm == 'reremi' else 'SplitT' if self.algorithm == 'splittrees' else 'New Approach') + '-' + query[0:3] + '-' + self.filename 
+            experiment_id = mlflow.create_experiment(str(temp_run_id))
             path = 'redescription_mining/results/{0}-{1}-{2}.queries'.format(self.filename, self.algorithm, query)
 
             data = pd.read_csv(os.path.abspath(path))
             groups = data.groupby(by=['activation_activity', 'target_activity', 'constraint'])
 
             for name, group in groups:
-                if 'prec' in name:
+                if 'prec' in name[2].lower():
                     constraint = '{0}({2}, {1})'.format(name[2], name[0], name[1]) 
 
                 else:
@@ -295,10 +297,12 @@ class Main:
                 groupOfRules = pd.DataFrame(group, columns=group.columns)
                 for rule in groupOfRules.iterrows():
                     rule = rule[1]
+                    rid = rule['rid']
 
-                    metrics = {}
-                    metrics['accuracy'] =  rule['acc']
-                    metrics['p-value'] =  rule['pval']
+                    metrics = rule_quality_measures[self.filename][query][constraint][self.algorithm][rid]
+                    self.relevant_hyperparameters['Declare constraint'] = constraint
+                    # metrics['accuracy'] =  rule['acc']
+                    # metrics['p-value'] =  rule['pval']
 
                     tags['Redescription'] = '{0} ~ {1}'.format(rule['query_activation'], rule['query_target']) 
 

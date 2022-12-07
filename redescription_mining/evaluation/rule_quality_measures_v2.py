@@ -260,7 +260,7 @@ def execute_redescription_quality_measures(metadata):
         temp = groups.get_group(dc)
         rules = pd.DataFrame(temp, columns=temp.columns)
         rules['declare_constraint'] = str_representation
-        rules = rules[['algorithm', 'rid', 'query_activation','query_target', 'declare_constraint', 'activation_vars', 'target_vars']].to_dict()
+        rules = rules[['algorithm', 'rid', 'query_activation','query_target', 'declare_constraint', 'activation_vars', 'target_vars', 'acc', 'pval']].to_dict()
 
         df_a, df_t, df_rules_satisfied = evaluate_rules_on_both_sides(redescription_data_model=rdm, rules=rules, for_deviant_traces=None)
 
@@ -278,7 +278,9 @@ def execute_redescription_quality_measures(metadata):
                 'query_activation': rules['query_activation'][i],
                 'query_target': rules['query_target'][i],
                 'activation_vars': rules['activation_vars'][i],
-                'target_vars': rules['target_vars'][i]
+                'target_vars': rules['target_vars'][i],
+                'acc': rules['acc'][i],
+                'pval': rules['pval'][i]
 
             }
 
@@ -299,7 +301,8 @@ def execute_redescription_quality_measures(metadata):
             if rule['rid'] not in rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']].keys():
                 rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']] = {}
 
-            
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['Jaccard Index'] = rule['acc']
+            rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['p-value'] = rule['pval']
             rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['AEJ'] = _aej
             rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['AAJ'] = _aaj
             rule_quality_measures[metadata['name']][metadata['type']][str_representation][rule['algorithm']][rule['rid']]['R Size'] = _r_size

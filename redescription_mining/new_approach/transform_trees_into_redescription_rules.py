@@ -260,19 +260,23 @@ def extract_rules(performance, negative_or_positive, last_id, declare_constraint
 
 def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel, rules, metadata, activation_activity, target_activity):
     df = pd.DataFrame()
-    rid,query_activation,query_target,acc,pval= [], [], [], [], []
+    rid, query_activation, query_target, acc, pval= [], [], [], [], []
 
     df_a, df_t, df_rules_satisfied = evaluate_rules_on_both_sides(redescription_data_model=redescription_data_model, rules=rules, for_deviant_traces=None)
     
     for key in rules['rid'].keys():
-        rid.append(rules['rid'][key])
-        query_activation.append(rules['query_activation'][key])
-        query_target.append(rules['query_target'][key])
-
         true_activation, true_target = support(df_a=df_a, df_t=df_t, rules=rules, position=key, metadata=metadata, df_rules_satisfied=df_rules_satisfied)
+        jacc_value = jaccard_index(supp_activation=true_activation, supp_target=true_target)
+        print('Redescription {0}: {1} -> {2} ======= acc: {3}'.format(rules['rid'][key], rules['query_activation'][key], rules['query_target'][key], jacc_value))
 
-        acc.append(jaccard_index(supp_activation=true_activation, supp_target=true_target))
-        pval.append(p_value(supp_activation=true_activation, supp_target=true_target, E=df_a.shape[0]))
+        if jacc_value > 0.0:
+            rid.append(rules['rid'][key])
+            query_activation.append(rules['query_activation'][key])
+            query_target.append(rules['query_target'][key])
+
+
+            acc.append(jacc_value)
+            pval.append(p_value(supp_activation=true_activation, supp_target=true_target, E=df_a.shape[0]))
             
     df['rid'] = rid
     df['query_activation'] = query_activation

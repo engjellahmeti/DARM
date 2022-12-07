@@ -1,23 +1,22 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
-r0,( Resource=Solver | Resource=System ),Resource=Solver,0.9533417402269861,0.030162298287224273,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
-r1,Resource=System,Resource=Tester,0.019316493313521546,0.29033379276699683,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
-r2,Resource=Tester,Resource=System,0.4,4.672501289210947e-16,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
-r3,Resource=System,ComplexityOfRepair=Medium,0.45264623955431754,0.11350182603451184,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r0,Resource=Tester,Resource=System,0.4,4.672501289210947e-16,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r1,( Resource=Solver | Resource=System ),Resource=Solver,0.9533417402269861,0.030162298287224273,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r2,Resource=System,Resource=Tester,0.019316493313521546,0.29033379276699683,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r3,Resource=System,ComplexityOfRepair=Simple,0.4504881450488145,0.106438803839695,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
 r4,( Resource=Solver | Resource=Tester ),ComplexityOfRepair=Complex,0.2919254658385093,1.0548791735785204e-14,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
-r5,Resource=System,ComplexityOfRepair=Simple,0.4504881450488145,0.106438803839695,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
-r6,Resource=Tester,Resource=System & ( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ),0.375,9.673335981912825e-13,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
-r7,Resource=System,( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & ( Resource=Solver | Resource=Tester ),0.8426666666666667,0.0003830785528460172,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
-r8,Resource=Solver,ComplexityOfRepair=Complex & Resource=Solver,0.2785714285714286,3.1054319225994326e-14,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r5,Resource=System,ComplexityOfRepair=Medium,0.45264623955431754,0.11350182603451184,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r6,Resource=Solver,ComplexityOfRepair=Complex & Resource=Solver,0.2785714285714286,3.1054319225994326e-14,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r7,Resource=Tester,Resource=System & ComplexityOfRepair=Simple,0.25,4.856535859932395e-07,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
+r8,Resource=System,( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & ( Resource=Solver | Resource=Tester ),0.8426666666666667,0.0003830785528460172,,,,,Resource,Register,"Resource, ComplexityOfRepair",InformUser,response
 r9,Resource=Tester,Resource=Solver,0.02914798206278027,0.20810052380872268,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r10,Resource=System & ( ComplexityOfRepair=Complex | ComplexityOfRepair=Simple ),Resource=System,0.16666666666666666,1.121762535496867e-05,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r11,Resource=System & ComplexityOfRepair=Medium,Resource=Tester,0.12162162162162163,8.982642015882657e-05,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r10,Resource=System & ( ComplexityOfRepair=Complex | ComplexityOfRepair=Medium ),Resource=System,0.15,7.365175089892563e-05,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r11,Resource=System & ComplexityOfRepair=Simple,Resource=Tester,0.09333333333333334,0.0015241522160055873,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
 r12,Resource=Tester,! DefectFixed,0.04779411764705882,0.00971313875158886,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r13,( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & Resource=System,NumberRepairs<2.263,0.12987012987012986,0.0008355816651490213,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r14,ComplexityOfRepair=Complex,NumberRepairs<3.0,0.0,1.00000000000002,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r15,( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & ( Resource=Solver | Resource=Tester ),2.727<NumberRepairs,0.5782073813708261,0.8175681491010035,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r13,( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & Resource=System,NumberRepairs<2.235,0.12987012987012986,0.0008355816651490213,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r15,( ComplexityOfRepair=Medium | ComplexityOfRepair=Simple ) & ( Resource=Solver | Resource=Tester ),2.709<NumberRepairs,0.5782073813708261,0.8175681491010035,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
 r16,Resource=Solver,Resource=Solver & DefectFixed,0.4114285714285714,0.04299336533851056,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r17,Resource=System,( Resource=System | Resource=Tester ) & DefectFixed & 1.4<NumberRepairs,0.4268292682926829,9.382801785174412e-18,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r18,Resource=Tester,! DefectFixed & Resource=Solver & 2.4<NumberRepairs,0.06046511627906977,0.0014142970334168955,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r19,ComplexityOfRepair=Complex,2.4<NumberRepairs & Resource=System,0.10945273631840796,0.0490320678036237,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r20,ComplexityOfRepair=Simple,NumberRepairs<2.5 & 0.4<NumberRepairs & ( Resource=System | Resource=Tester ),0.05365853658536585,0.01738299463718049,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
-r21,ComplexityOfRepair=Medium,NumberRepairs<0.5 & ( Resource=Solver | Resource=Tester ) & DefectFixed,0.024154589371980676,0.10552560631199012,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r17,Resource=Tester,! DefectFixed & Resource=Solver & 2.4<NumberRepairs,0.06046511627906977,0.0014142970334168955,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r18,Resource=System,( Resource=System | Resource=Tester ) & DefectFixed & 1.4<NumberRepairs,0.4268292682926829,9.382801785174412e-18,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r19,ComplexityOfRepair=Simple,NumberRepairs<2.5 & 0.4<NumberRepairs & NumberRepairs<1.5,0.07655502392344497,0.011120274995868592,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r20,ComplexityOfRepair=Medium,0.4<NumberRepairs & Resource=Solver & DefectFixed,0.21511627906976744,0.5878104556027635,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
+r21,ComplexityOfRepair=Complex,2.4<NumberRepairs & Resource=System & DefectFixed,0.07291666666666667,0.1236654486723719,,,,,"Resource, ComplexityOfRepair",InformUser,"Resource, DefectFixed, NumberRepairs",ArchiveRepair,response
