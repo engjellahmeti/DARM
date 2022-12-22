@@ -13,6 +13,7 @@ from pandas import DataFrame
 import os
 from feature_vectors.declare_constraint import DeclareConstraint
 from redescription_mining.data_model import RedescriptionDataModel
+import re
 
 class RuleExtractor:
     def extract_fulfilment(self, event_log_path: str, declare_constraint: DeclareConstraint, is_positive_or_negative_log: str, filename: str,
@@ -166,9 +167,12 @@ class RuleExtractor:
     def write_to_CSV_(self, feature_vectors: List[FeatureVector], is_positive_or_negative_log: str, declare_constraint: DeclareConstraint, filename: str, frames_exist=False) -> RedescriptionDataModel:
         activation_path = os.path.abspath('feature_vectors/csv_feature_vectors/{0}/activation-{1}-{2}.csv'.format(is_positive_or_negative_log, filename, declare_constraint.str_representation()))
         target_path = os.path.abspath('feature_vectors/csv_feature_vectors/{0}/target-{1}-{2}.csv'.format(is_positive_or_negative_log, filename, declare_constraint.str_representation()))
-
+        
         if frames_exist:
             activation_frame, target_frame = pd.read_csv(activation_path, index_col=0), pd.read_csv(target_path, index_col=0)
+            if is_positive_or_negative_log == 'negative':
+                self.neg_traces(activation_frame=activation_frame, target_frame=target_frame)
+
             return RedescriptionDataModel(activation_view=activation_path, activation_attributes=list(activation_frame.columns), target_view=target_path, target_attributes=list(target_frame.columns))
         else:
             if len(feature_vectors) > 0:
@@ -176,14 +180,8 @@ class RuleExtractor:
 
                 activation_frame.to_csv(activation_path)
                 target_frame.to_csv(target_path)
-
-                # if is_positive_or_negative_log == 'negative':
-                #     (activation_frameTrace, target_frameTrace) = self.convert_feature_vectors_into_activation_and_target_frames_for_traces(
-                #         feature_vectors=feature_vectors)
-                #     merged_trace = 'feature_vectors/csv_feature_vectors/' + is_positive_or_negative_log + '/traces.csv'
-                #     merged = pd.merge(how='inner', on='Trace', left=activation_frameTrace, right=target_frameTrace)
-                #     merged.drop_duplicates(subset=['Trace'], inplace=True)
-                #     merged.to_csv(merged_trace)
+                if is_positive_or_negative_log == 'negative':
+                    self.neg_traces(activation_frame=activation_frame, target_frame=target_frame)
 
                 return RedescriptionDataModel(activation_view=activation_path, activation_attributes=list(activation_frame.columns), target_view=target_path, target_attributes=list(target_frame.columns))
 
@@ -194,4 +192,19 @@ class RuleExtractor:
                     a.write('')
 
                 return RedescriptionDataModel(activation_view=activation_path, activation_attributes=[], target_view=target_path, target_attributes=[])
+    
+    def neg_traces(self, activation_frame, target_frame):
+        merged_frame = pd.DataFrame()
+        index = [re.sub(r'-\d+', '', x) for x in list(activation_frame.index)]
+        merged_frame['Trace'] = index
+
+        for col in activation_frame.columns:
+            merged_frame[col] = activation_frame[col].tolist()
+
+        for col_t in target_frame.columns:
+            merged_frame[col_t] = target_frame[col_t].tolist()
+
+        merged_trace = 'feature_vectors/csv_feature_vectors/negative/traces.csv'
+        merged_frame.to_csv(merged_trace)
+
             

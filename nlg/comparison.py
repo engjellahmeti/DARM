@@ -21,7 +21,7 @@ class Comparison:
         negListt = []
         posListt = []
         days = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth', 5: 'fifth', 6: 'sixth', 7: 'seventh', 8: 'eigth',
-                9: 'ninth', 10: 'tenth', 11: 'eleventh'}
+                9: 'ninth', 10: 'tenth', 11: 'eleventh', 12: 'twelfth', 13: 'thirteenth', 14: 'fourteenth', 15: 'fifteenth', 16: 'sixteenth', 17: 'seventeenth', 18: 'eightteenth', 19: 'nineteenth', 20: 'twentieth'}
         Print.GREEN.print(
             'Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature: ')
         index = 1
@@ -29,6 +29,8 @@ class Comparison:
 
 
         for row in self.setOfRules:
+            if index > 20:
+                break
             ruleId = row[0].ruleID
             if ruleId is not None:
                 Print.END.print('The {1} mined negative rule  is \'{0} ({2})\' and its subrules comparisons to the positive subrules are below:'.format(Print.RED.__call__(row[0].__str__()), days[index], ruleId))

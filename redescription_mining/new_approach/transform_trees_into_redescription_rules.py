@@ -14,6 +14,7 @@ from redescription_mining.new_approach.discover_decision_trees import discover_t
 from redescription_mining.evaluation.metrics import evaluate_rules_on_both_sides, support, jaccard_index, p_value
 from redescription_mining.data_model import RedescriptionDataModel
 import pandas as pd
+import math
 
 def change_label_name(label, keys):
     if ('<' not in label and '>' not in label) and label in keys:
@@ -170,11 +171,11 @@ def fix_numerical_rules(rules, attribute, y_column_min_val, y_column_max_val, ty
         key, rule = item
 
         if key == len(temp_y_rules) -1:
-            temp_rule = rule.split('=')[1]  + '<' + attribute
+            temp_rule = str(int(math.ceil(float(rule.split('=')[1]))))   + '<' + attribute
             rules[key] = rules[key].replace(rule, temp_rule)
         
         else:
-            temp_rule = attribute + '<' + rule.split('=')[1]
+            temp_rule = attribute + '<' + str(int(math.floor(float(rule.split('=')[1]))))
             rules[key] = rules[key].replace(rule, temp_rule)
 
 
@@ -269,7 +270,7 @@ def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel,
         jacc_value = jaccard_index(supp_activation=true_activation, supp_target=true_target)
         print('Redescription {0}: {1} -> {2} ======= acc: {3}'.format(rules['rid'][key], rules['query_activation'][key], rules['query_target'][key], jacc_value))
 
-        if jacc_value > 0.0:
+        if jacc_value >= 0.1:
             rid.append(rules['rid'][key])
             query_activation.append(rules['query_activation'][key])
             query_target.append(rules['query_target'][key])
@@ -287,9 +288,9 @@ def store_the_discovered_rules(redescription_data_model: RedescriptionDataModel,
     df['card_Eox'] = None
     df['card_Exx'] = None
     df['card_Eoo'] = None
-    df['activation_vars'] = ', '.join(redescription_data_model.activation_attributes)
+    df['activation_vars'] = ','.join(redescription_data_model.activation_attributes)
     df['activation_activity'] = activation_activity
-    df['target_vars'] = ', '.join(redescription_data_model.target_attributes)
+    df['target_vars'] = ','.join(redescription_data_model.target_attributes)
     df['target_activity'] = target_activity
 
     return df

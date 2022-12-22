@@ -122,8 +122,8 @@ class NLG:
     def extractConstraint(self, attributes, rule, activity):
         attribute = None
         for att in attributes:
-            if att in rule:
-                attribute = att
+            if att.strip() in rule:
+                attribute = att.strip()
 
         first = None
         second = None
@@ -230,7 +230,7 @@ class NLG:
 
     def find_deviant_traces(self, filename):
         comparison = Comparison(None)
-        if 'splittrees' in filename:
+        if 'reremi' not in filename:
             return comparison.deviantTracesSplitTrees(filename, self.nlp)
         else:
             return comparison.deviantTraces_v2(filename, self.nlp)

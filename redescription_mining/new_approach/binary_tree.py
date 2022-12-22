@@ -4,6 +4,7 @@
     @LastUpdate: 21.11.2022
 """
 import re
+import math
 
 class BinaryTreeNode:
     def __init__(self, key, left=None, left_edge=None, right=None, right_edge=None, type_of_tree=None, y_label=None):
@@ -57,23 +58,18 @@ class BinaryTree:
                     print('method extract_rules in the binary tree just met > symbol')
 
                 node_key = re.sub(r'\s+', '', node_key)
+                split_node_key = node_key.split('<')
+                the_literal = split_node_key[0]
+                the_value = int(math.floor(float(split_node_key[1])))
                 temp_num = ''
                 if id in rules.keys():
                     temp_num = rules[id]
-                    rules[id] += ' & ' + node_key
+                    rules[id] += ' & ' + the_literal + '<' + str(the_value)
                 else:
-                    rules[id] = node_key
+                    rules[id] = the_literal + '<' + str(the_value)
 
-                split_node_key = node_key.split('<')
-                last_num = int(split_node_key[1][-1]) - 1
-                if last_num == -1:
-                    if split_node_key[1][-2] == '.':
-                        temp_split_node_key = int(split_node_key[1][0:-2]) - 1
-                        temp_key = str(temp_split_node_key) + '.9'
-                else:
-                    temp_key = split_node_key[1][0:-1] + str(last_num)
-                    
-                text = temp_key + '<' + split_node_key[0]
+                the_value = the_value - 1
+                text = str(the_value) + '<' + the_literal
 
                 right_id = len(rules.keys())
                 if right_id in rules.keys():
