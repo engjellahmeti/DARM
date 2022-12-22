@@ -1,3 +1,5 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
-r89,( ! 114743.0<Amount & 108071.0<Amount ),( 80.0<AssessmentCost & ! 94.0<AssessmentCost ),1.0,0.003,0,0,7,17,Amount,ApplyForCredit,AssessmentCost,Assessment,response
-r92,( 3421.0<Salary & ! 12556.0<Salary ),87.0<AssessmentCost<100.0,0.857,0.006,1,0,6,17,Salary,ApplyForCredit,AssessmentCost,Assessment,response
+r39,( ! 114743.0<Amount & 108071.0<Amount ),( 80.0<AssessmentCost & ! 94.0<AssessmentCost ),1.0,0.003,0,0,7,17,Amount,ApplyForCredit,AssessmentCost,Assessment,response
+r37,( ! 106411.0<Amount & 3570.0<Salary & ! 14742.0<Salary ),( ! 125.0<AssessmentCost & 100.0<AssessmentCost ),1.0,0.006,0,0,3,21,"Salary,Amount",ApplyForCredit,AssessmentCost,Assessment,response
+r42,( 3421.0<Salary & ! 12556.0<Salary ),87.0<AssessmentCost<100.0,0.857,0.006,1,0,6,17,Salary,ApplyForCredit,AssessmentCost,Assessment,response
+r50,( ! 109351.0<Amount & 105320.0<Amount & 13839.0<Salary ),( ! 92.0<AssessmentCost & ! AssessmentType=Complex ),0.8,0.009000000000000001,0,1,4,19,"Salary,Amount",ApplyForCredit,"AssessmentType,AssessmentCost",Assessment,response

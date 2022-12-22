@@ -1,6 +1,4 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
-r0,109448.4<Amount & Amount<117158.5 & 115169.9<Amount,AssessmentType=Complex,0.2857142857142857,0.11473765320305415,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
-r1,Salary<12239.0,AssessmentCost<225.0 & AssessmentCost<84.5 & AssessmentCost<64.5,0.08333333333333333,0.7875236322311854,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
-r3,Salary<7714.857,AssessmentCost<225.0 & 84.4<AssessmentCost & AssessmentCost<127.5,0.5,0.11039368249946672,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
-r4,Salary<86152.0,AssessmentCost<225.0 & AssessmentCost<84.5 & 64.4<AssessmentCost,0.043478260869565216,0.986776627539282,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
-r5,32780.5<Salary,AssessmentCost<225.0 & 84.4<AssessmentCost & 127.4<AssessmentCost,0.1,0.7229974144779299,,,,,"Salary, Amount",ApplyForCredit,"Resource, AssessmentType, AssessmentCost",Assessment,response
+r0,109448.0<Amount & Amount<117158.0 & 115169.0<Amount,AssessmentType=Complex,0.2857142857142857,0.11473765320305415,,,,,"Salary,Amount",ApplyForCredit,"Resource,AssessmentType,AssessmentCost",Assessment,response
+r3,Salary<7714.0,AssessmentCost<225.0 & 84.0<AssessmentCost & AssessmentCost<127.0,0.5,0.11039368249946672,,,,,"Salary,Amount",ApplyForCredit,"Resource,AssessmentType,AssessmentCost",Assessment,response
+r5,32780.0<Salary,AssessmentCost<225.0 & 84.0<AssessmentCost & 127.0<AssessmentCost,0.1,0.7229974144779299,,,,,"Salary,Amount",ApplyForCredit,"Resource,AssessmentType,AssessmentCost",Assessment,response
