@@ -473,7 +473,7 @@ class Main:
     def get_dsynts(self, set_of_rules):
         return self.nlg_.transform_conll_to_dsynts(set_of_rules)
 
-    def generate_traces_for_nlg_example_output(self, declare_filename, filename, algorithm='reremi'):
+    def generate_traces_for_nlg_example_output_created_new(self, declare_filename, filename, algorithm='reremi'):
         result = {}
 
         redescription_path = os.path.abspath('redescription_mining/results/' + filename + '-' + algorithm + '-positive.queries')
@@ -491,7 +491,8 @@ class Main:
                                                                 declare_constraint=dc,
                                                                 is_positive_or_negative_log=is_positive_or_negative_log,
                                                                 write_to_CSV=True,
-                                                                remove_attributes=True)
+                                                                remove_attributes=True, filename=filename)
+                
 
                 temp_group = rules.get_group((dc.activation, dc.target, dc.rule_type))
                 dc_rules = pd.DataFrame(temp_group, columns=temp_group.columns)
@@ -518,7 +519,7 @@ class Main:
          
         return result
 
-    def generate_traces_for_nlg_example_output__(self, declare_filename, filename, algorithm='reremi'):
+    def generate_traces_for_nlg_example_output(self, declare_filename, filename, algorithm='reremi'):
         negative_event_log_path = 'event_log_reader/logs/' + filename + '-negative.xes'
         positive_event_log_path = 'event_log_reader/logs/' + filename + '-positive.xes'
 
@@ -532,7 +533,7 @@ class Main:
                                                             declare_constraint=dc,
                                                             is_positive_or_negative_log=is_positive_or_negative_log,
                                                             write_to_CSV=True,
-                                                            remove_attributes=True)
+                                                            remove_attributes=True, filename=filename)
 
 
             if os.path.exists(os.path.abspath('redescription_mining/results/' + filename + '-' + algorithm + '-positive.queries')):
@@ -662,7 +663,7 @@ class Main:
         positive_df = pd.read_csv(os.path.abspath('redescription_mining/results/' + filename + '-' + algorithm + '-positive.queries'))
         return (positive_df.shape[0], deviant_df.shape[0])
 
-    def evaluation_metrics(self, filename=None, algorithm=None, n_for_rouge=2):
+    def text_evaluation_metrics(self, filename=None, algorithm=None, n_for_rouge=2):
         results = {}
         if not filename or not algorithm:
             list_of_files = os.listdir('nlg/output/')
@@ -763,7 +764,7 @@ class Main:
     # endregion
 
 if __name__ == '__main__':
-    execute_redescription_quality_measures({'name': 'running-example', 'type':'negative'})
+    # execute_redescription_quality_measures({'name': 'running-example', 'type':'negative'})
     Print.YELLOW.print('The tool has started. ')
     config_or_template = 'template' # 'config'
     main = Main(extract_dsynts_on_leafs=None, algorithm=None, config_or_template=None, filename=None)
@@ -778,8 +779,8 @@ if __name__ == '__main__':
         input_type = 3
         # algorithm = 'splittrees' # 'splittrees' reremi
         config_or_template = 'config' # 'config'
-        filename = 'credit-application-subset' #running-example' # road-traffic-fines,repair-example
-        declare_filename = 'Credit Application Subset'#Running Example' # 'FirstPaperExample'  # Repair Example, Road Traffic Fines
+        filename = 'running-example'#credit-application-subset' #running-example' # road-traffic-fines,repair-example
+        declare_filename = 'Running Example'#Credit Application Subset'#' # 'FirstPaperExample'  # Repair Example, Road Traffic Fines
         main = Main(extract_dsynts_on_leafs=extract_dsynts_on_leafs, algorithm=None, config_or_template=config_or_template, filename=filename)
         algorithm = main.algorithm
     
@@ -854,7 +855,7 @@ if __name__ == '__main__':
             a.write(output)
         
         
-        results = main.evaluation_metrics(filename, algorithm) #os.path.abspath('nlg/output/repair-example-reremi.txt'))
+        results = main.text_evaluation_metrics(filename, algorithm) #os.path.abspath('nlg/output/repair-example-reremi.txt'))
 
         for key in results.keys():
             result = results[key]

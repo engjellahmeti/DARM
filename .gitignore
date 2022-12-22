@@ -12,3 +12,4 @@ __pycache__
 csv_feature_vectors
 mlruns
 support.json
+redescription_mining/evaluation/plots/previous
