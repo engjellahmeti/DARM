@@ -52,7 +52,7 @@ class NLG:
 
         return final
 
-    def findParentheses(self, listOfRules):
+    def findParentheses(self, listOfRules, attributes):
         parentheses = []
         index1 = -1
         in_ = False
@@ -76,9 +76,19 @@ class NLG:
                     parentheses.append(rule)
 
                 elif parentheses_closed:
+                    is_boolean = True
                     for item in ['=', '<', '>']:
                         if item in rule:
                             parentheses.append(rule)
+                            is_boolean = False
+
+                    if is_boolean:
+                        for attribute in attributes:
+                            if rule.lower().strip() == attribute.lower().strip():
+                                parentheses.append(rule)
+                            elif rule.lower().strip() == '! ' + attribute.lower().strip():
+                                parentheses.append(rule)
+
 
         return parentheses
 
@@ -130,7 +140,7 @@ class NLG:
         constraint_ = None
 
         if attribute is None:
-            print()
+            return None
 
         negation = False
         if '!' in rule:
@@ -170,7 +180,7 @@ class NLG:
         listOfRules = [str(x).strip() for x in listOfRules]
         self.activationOrTarget = activationOrTarget
         if '(' in listOfRules:
-            listOfRules = self.findParentheses(listOfRules)
+            listOfRules = self.findParentheses(listOfRules, attributes)
 
         ruleGenerated = None
 

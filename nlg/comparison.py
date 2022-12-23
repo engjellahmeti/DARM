@@ -1010,7 +1010,7 @@ class Comparison:
 
     def extractSplitTrees(self, rule, vars):
         dict = []
-        for attribute in vars:
+        for index_track, attribute in enumerate(vars):
             for first, last in re.findall(r'([0-9.]+)[<>]+' + attribute + '[<>]+([0-9.]+)', rule, re.S | re.I):
                 rule = re.sub(first+'[<>]+' + attribute + second, '', rule)
                 first = re.sub(r'\.[0]+', '', first)
@@ -1052,11 +1052,11 @@ class Comparison:
                     rule = re.sub(attribute + '=' + first, '', rule)
                     dict.append((attribute, [(first, False, '=')]))
 
-            # for item in re.search(attribute, rule, re.S | re.I):
-            #     if re.search('!\s*' + attribute, rule, re.S | re.I):
-            #         dict.append((attribute, [('False', True, '=')]))
-            #     else:
-            #         dict.append((attribute, [('True', False, '=')]))
+            for item in re.findall(r'\s+' + attribute, rule, re.S | re.I):
+                if re.search('!\s*' + attribute, rule, re.S | re.I):
+                    dict.append((attribute, [('False', True, '=')]))
+                else:
+                    dict.append((attribute, [('True', False, '=')]))
 
         return dict
 
