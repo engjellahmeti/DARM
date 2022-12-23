@@ -1185,16 +1185,16 @@ The fourth mined negative rule  is 'If the order payment type is PayPal that imp
           - The delivery for the event 'Deliver Order' is Slow in the negative rule, while in the positive rule r239, it is Fast.
 
 Concrete examples of traces that failed:
-The process execution with 'Case No. 41' is deviant because the product amount is not smaller than 4709 (r109, r123) and the product price is not smaller than 10319 (r111).
-The process execution with 'Case No. 74' is deviant because the product price is not smaller than 3880 (r158) and the process is not executed by Customer (r119, r123).
-The process execution with 'Case No. 64' is deviant because the process is not executed by Customer (r115) and the process is not executed by Company (r121, r158).
-The process execution with 'Case No. 50' is deviant because the process is not executed by Customer (r111, r115) and the product amount is not below 4709 (r109).
-The process execution with 'Case No. 175' is deviant because the product price is above 3998 (r119) and the process is not executed by Company (r117, r158).
 The process execution with 'Case No. 10' is deviant because the process is not executed by Customer (r115, r117) and the product price is smaller than 12008 (r123).
+The process execution with 'Case No. 41' is deviant because the product amount is not smaller than 4709 (r109, r123) and the product price is not smaller than 10319 (r111).
+The process execution with 'Case No. 50' is deviant because the process is not executed by Customer (r111, r115) and the product amount is not below 4709 (r109).
+The process execution with 'Case No. 64' is deviant because the process is not executed by Customer (r115) and the process is not executed by Company (r121, r158).
 The process execution with 'Case No. 69' is deviant because the product amount goes lower than 4709 (r111), the process is not executed by Customer (r115) and the product price is not below 3998 (r119).
+The process execution with 'Case No. 74' is deviant because the product price is not smaller than 3880 (r158) and the process is not executed by Customer (r119, r123).
+The process execution with 'Case No. 90' is deviant because the order delivery is unequal to Slow (r235) and the order payment type is not Transfer (r239).
 The process execution with 'Case No. 154' is deviant because the order delivery is not Slow (r235) and the order payment type is not Transfer (r239).
 The process execution with 'Case No. 169' is deviant because the order payment type is not Transfer (r235) and the order delivery differs from Fast (r239).
-The process execution with 'Case No. 200' is deviant because the order delivery is not Slow (r235) and the order payment type differs from Transfer (r239).
 The process execution with 'Case No. 174' is deviant because the order payment type is not Transfer (r235) and the order delivery is unequal to Fast (r239).
+The process execution with 'Case No. 175' is deviant because the product price is above 3998 (r119) and the process is not executed by Company (r117, r158).
 The process execution with 'Case No. 192' is deviant because the order delivery is not Slow (r235) and the order payment type is not Transfer (r239).
-The process execution with 'Case No. 90' is deviant because the order delivery is unequal to Slow (r235) and the order payment type is not Transfer (r239).
+The process execution with 'Case No. 200' is deviant because the order delivery is not Slow (r235) and the order payment type differs from Transfer (r239).

@@ -1,0 +1,82 @@
+--------------------Negative rules--------------------
+
+   Rule r0:  109448<Amount & Amount<117158 & 115169<Amount => AssessmentType=Complex
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 109448\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 117158\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 115169\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex type :determiner the) :range (first / object :lex complex\. :number mass)) 
+
+   Rule r3:  Salary<7714 => AssessmentCost<225 & 84<AssessmentCost & AssessmentCost<127
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 7714\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 225\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 84\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 127\. :determiner zero) ) 
+
+   Rule r5:  32780<Salary => AssessmentCost<225 & 84<AssessmentCost & 127<AssessmentCost
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 32780\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 225\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 84\. :determiner zero) )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 127\. :determiner zero) )
+
+--------------------Positive rules--------------------
+
+   Rule r1:  50178<Amount & Salary<23558 => AssessmentType=Complex
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 50178\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 23558\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex type :determiner the) :range (first / object :lex complex\. :number mass)) 
+
+   Rule r3:  50705<Amount & Salary<26450 => AssessmentCost<166
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 50705\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 26450\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 166\. :determiner zero) ) 
+
+   Rule r4:  Amount<50705 & 2388<Salary => AssessmentCost<102
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 50705\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 2388\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 102\. :determiner zero) ) 
+
+   Rule r10:  Salary<23851 => AssessmentCost<100 & Resource=CreditAssessmentOfficer & AssessmentType=Simple
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 23851\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 100\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex creditassessmentofficer\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex type :determiner the) :range (first / object :lex simple\. :number mass)) 
+
+   Rule r12:  Salary<11521 => 100<AssessmentCost & AssessmentCost<242 & Resource=CreditAssessmentOfficer
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 11521\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 100\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 242\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex creditassessmentofficer\. :number mass)) 
+
+   Rule r14:  Amount<86833 => AssessmentCost<100 & AssessmentType=Simple & AssessmentCost<179
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 86833\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 100\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex type :determiner the) :range (first / object :lex simple\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 179\. :determiner zero) ) 
+
+   Rule r21:  93423<Amount => 100<AssessmentCost & AssessmentType=Complex & Resource=CreditAssessmentOfficer
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 93423\. :determiner zero) )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex cost :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 100\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex type :determiner the) :range (first / object :lex complex\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex creditassessmentofficer\. :number mass)) 
+
+   Rule r22:  Result=Rejected => Salary<4573
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex result :determiner the) :range (first / object :lex rejected\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 4573\. :determiner zero) ) 
+
+   Rule r23:  Result=Accepted => 7274<Salary
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex result :determiner the) :range (first / object :lex accepted\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 7274\. :determiner zero) )
+
+   Rule r24:  Result=Accepted => Amount<60849
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex result :determiner the) :range (first / object :lex accepted\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 60849\. :determiner zero) ) 
+
+   Rule r25:  Result=Rejected => 67340<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex result :determiner the) :range (first / object :lex rejected\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 67340\. :determiner zero) )
+
+   Rule r26:  Result=Accepted => 6893<Salary & Amount<80928
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex result :determiner the) :range (first / object :lex accepted\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex salary :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 6893\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 80928\. :determiner zero) ) 
+

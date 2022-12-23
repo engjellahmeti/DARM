@@ -20,16 +20,14 @@ The second mined negative rule  is 'If the notification type is equal to P that 
 
 Concrete examples of traces that failed:
 The process execution with 'Case No. 17' is deviant because the penalty amount is smaller than 5000 (r57), the notification type is unequal to P (r32) and the process is not executed by Police (r61).
-The process execution with 'Case No. 22' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the notification type differs from P (r32).
-The process execution with 'Case No. 82' is deviant because the penalty amount is not bigger than 5000 (r28, r57) and the notification type is not P (r32).
-The process execution with 'Case No. 806' is deviant because the penalty amount is above 5000 (r32), the process is not executed by Police (r61) and the notification type is unequal to C (r28).
-The process execution with 'Case No. 98' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the notification type is unequal to P (r32).
-The process execution with 'Case No. 41' is deviant because the notification type differs from P (r32), the process is not executed by Police (r61) and the penalty amount is smaller than 5000 (r57).
-The process execution with 'Case No. 92' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the process is not executed by Police (r61).
-The process execution with 'Case No. 893' is deviant because the process is not executed by Police (r57) and the penalty amount is above 5000 (r61).
 The process execution with 'Case No. 19' is deviant because the penalty amount is not bigger than 5000 (r57) and the process is not executed by Police (r61).
 The process execution with 'Case No. 21' is deviant because the penalty amount doesn't exceed 5000 (r57) and the process is not executed by Police (r61).
-The process execution with 'Case No. 891' is deviant because the penalty amount is not smaller than 5000 (r61).
+The process execution with 'Case No. 22' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the notification type differs from P (r32).
+The process execution with 'Case No. 41' is deviant because the notification type differs from P (r32), the process is not executed by Police (r61) and the penalty amount is smaller than 5000 (r57).
+The process execution with 'Case No. 82' is deviant because the penalty amount is not bigger than 5000 (r28, r57) and the notification type is not P (r32).
+The process execution with 'Case No. 92' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the process is not executed by Police (r61).
 The process execution with 'Case No. 93' is deviant because the penalty amount is not smaller than 5000 (r61).
-The process execution with 'Case No. 87' is deviant because t(r61).
-The process execution with 'Case No. 91' is deviant because t(r61).
+The process execution with 'Case No. 98' is deviant because the penalty amount is smaller than 5000 (r28, r57) and the notification type is unequal to P (r32).
+The process execution with 'Case No. 806' is deviant because the penalty amount is above 5000 (r32), the process is not executed by Police (r61) and the notification type is unequal to C (r28).
+The process execution with 'Case No. 891' is deviant because the penalty amount is not smaller than 5000 (r61).
+The process execution with 'Case No. 893' is deviant because the process is not executed by Police (r57) and the penalty amount is above 5000 (r61).

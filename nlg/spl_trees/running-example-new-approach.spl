@@ -1,0 +1,160 @@
+--------------------Negative rules--------------------
+
+   Rule r0:  Price<3825 & Amount<4044 => Delivery=Fast
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3825\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 4044\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r1:  Price<5151 => Delivery=Fast
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 5151\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r2:  11458<Price => Delivery=Slow
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 11458\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r3:  Amount<3440 => Delivery=Fast
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3440\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r4:  5176<Amount => Delivery=Slow
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5176\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r7:  1769<Amount & Amount<6064 => Discount<9
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 1769\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 6064\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 9\. :determiner zero) ) 
+
+   Rule r8:  Amount<1769 & 5246<Price => Discount<3
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 1769\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5246\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3\. :determiner zero) ) 
+
+   Rule r9:  1769<Amount & 6063<Amount => 4<Discount
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 1769\. :determiner zero) )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 6063\. :determiner zero) )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 4\. :determiner zero) )
+
+   Rule r10:  Price<12544 => Discount<11 & Discount<3
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 12544\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 11\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3\. :determiner zero) ) 
+
+   Rule r11:  Price<14277 => 11<Discount & Discount<23
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 14277\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 11\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 23\. :determiner zero) ) 
+
+   Rule r12:  Price<9945 => Discount<11 & 3<Discount
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 9945\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 11\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 3\. :determiner zero) )
+
+   Rule r14:  Amount<5383 => Discount<23 & Discount<10
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 5383\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 23\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 10\. :determiner zero) ) 
+
+   Rule r16:  4123<Amount => Discount<23 & 10<Discount
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 4123\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 23\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 10\. :determiner zero) )
+
+   Rule r21:  PaymentType=Transfer => Delivery=Fast
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex payment type :determiner the) :range (first / object :lex transfer\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+--------------------Positive rules--------------------
+
+   Rule r1:  Price<2772 => Delivery=Slow
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 2772\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r2:  7834<Price => Delivery=Fast
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 7834\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r4:  6253<Amount => Delivery=Slow
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 6253\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r5:  4707<Amount & Price<8816 => Resource=Company
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 4707\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 8816\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex company\. :number mass)) 
+
+   Rule r7:  6595<Amount & Price<3956 => Discount<21
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 6595\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3956\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 21\. :determiner zero) ) 
+
+   Rule r8:  Amount<6595 & 138<Amount => Discount<25
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 6595\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 138\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 25\. :determiner zero) ) 
+
+   Rule r10:  Price<2812 => Discount<15 & Resource=Company
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 2812\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 15\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex company\. :number mass)) 
+
+   Rule r11:  Price<3753 => 15<Discount & Discount<41
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3753\. :determiner zero) ) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 15\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 41\. :determiner zero) ) 
+
+   Rule r12:  Price<3193 => Discount<15 & Resource=Customer
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3193\. :determiner zero) ) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 15\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex customer\. :number mass)) 
+
+   Rule r13:  2656<Price => 15<Discount & 41<Discount
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex price :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 2656\. :determiner zero) )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 15\. :determiner zero) )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 41\. :determiner zero) )
+
+   Rule r15:  Amount<6869 => Resource=Company & Discount<44
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 6869\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex company\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 44\. :determiner zero) ) 
+
+   Rule r16:  Amount<4919 => Resource=Customer & 10<Discount
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 4919\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex customer\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 10\. :determiner zero) )
+
+   Rule r18:  Delivery=Slow => Resource=Company
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex company\. :number mass)) 
+
+   Rule r19:  Delivery=Slow => Discount<22
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 22\. :determiner zero) ) 
+
+   Rule r21:  Delivery=Fast => 20<Discount & Discount<31
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 20\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 31\. :determiner zero) ) 
+
+   Rule r22:  20<Discount & Discount<41 => Delivery=Fast
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 20\. :determiner zero) )
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 41\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r23:  Resource=Company => Delivery=Slow
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex company\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r24:  Discount<22 => Delivery=Slow
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex discount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 22\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex slow\. :number mass)) 
+
+   Rule r26:  PaymentType=PayPal => Delivery=Fast
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex payment type :determiner the) :range (first / object :lex paypal\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+
+   Rule r27:  PaymentType=PayPal => Delivery=Fast
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex payment type :determiner the) :range (first / object :lex paypal\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex delivery :determiner the) :range (first / object :lex fast\. :number mass)) 
+

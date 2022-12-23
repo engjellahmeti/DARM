@@ -1,9 +1,9 @@
 rid,query_activation,query_target,acc,pval,card_Exo,card_Eox,card_Exx,card_Eoo,activation_vars,activation_activity,target_vars,target_activity,constraint
-r0,( NotificationType=C | NotificationType=c ) & ( Resource=Admin | Resource=System ),Amount<6393.96,0.6330275229357798,0.001089228856645259,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
-r1,NotificationType=P & ( Resource=Admin | Resource=System ),Amount<6393.96,0.15503875968992248,0.9838212791670787,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
-r3,NotificationType=P & Resource=Police,6515.524<Amount,0.37037037037037035,0.0006542401889407203,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
-r4,Resource=Police,5594.4<Amount,0.4057971014492754,0.0009841288954206583,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r0,( NotificationType=C | NotificationType=c ) & ( Resource=Admin | Resource=System ),Amount<6393.0,0.6330275229357798,0.001089228856645259,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r1,NotificationType=P & ( Resource=Admin | Resource=System ),Amount<6393.0,0.15503875968992248,0.9838212791670787,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r3,NotificationType=P & Resource=Police,6515.0<Amount,0.37037037037037035,0.0006542401889407203,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r4,Resource=Police,5594.0<Amount,0.4057971014492754,0.0009841288954206583,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
 r5,Resource=System,Amount<6949.0,0.48484848484848486,0.2708489283317046,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
 r6,Resource=Admin,Amount<5026.0,0.4024390243902439,0.0016012001477630122,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
-r8,NotificationType=P,4974.9<Amount,0.9342105263157895,4.4065953142628073e-10,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
+r8,NotificationType=P,4974.0<Amount,0.9342105263157895,4.4065953142628073e-10,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response
 r9,NotificationType=C,Amount<4975.0,0.9240506329113924,1.2684862410159282e-09,,,,,"Resource,NotificationType",InsertFineNotification,Amount,AddPenalty,response

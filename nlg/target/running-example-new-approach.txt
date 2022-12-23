@@ -1,0 +1,252 @@
+--> The negative event log has the following rules:
+            1. If the product price is smaller than 3825 and the product amount is below 4044 that implies that the order delivery is equal to Fast. (r0)
+            2. If the product price is smaller than 5151 that implies that the order delivery is Fast. (r1)
+            3. If the product price is bigger than 11458 that implies the order delivery is equal to Slow. (r2)
+            4. If the product amount is below 3440 that implies the order delivery is equal to Fast. (r3)
+            5. If the product amount doesn't go lower than 5176 that implies the order delivery is equal to Slow. (r4)
+            6. If the product amount doesn't go lower than 1769 and the product amount is lesser than 6064 that implies the order discount is smaller than 9. (r7)
+            7. If the product amount is below 1769 and the product price doesn't go lower than 5246 that implies the order discount is below 3. (r8)
+            8. If the product amount exceeds 1769 and the product amount exceeds 6063 that implicates that the order discount is bigger than 4. (r9)
+            9. If the product price is lesser than 12544 that implicates that the order discount is below 11 and the order discount is lesser than 3. (r10)
+            10. If the product price is lower than 14277 that implies that the order discount doesn't go lower than 11 and the order discount is lesser than 23. (r11)
+            11. If the product price is below 9945 that implies that the order discount is lesser than 11 and the order discount exceeds 3. (r12)
+            12. If the product amount is lesser than 5383 that implies the order discount is lesser than 23 and the order discount is lesser than 10. (r14)
+            13. If the product amount exceeds 4123 that implicates that the order discount is lower than 23 and the order discount is bigger than 10. (r16)
+            14. If the order payment type is Transfer that implicates that the order delivery is equal to Fast. (r21)
+
+--> While the positive event log has the following rules:
+            1. If the product price is lesser than 2772 that implies the order delivery is Slow. (r1)
+            2. If the product price is bigger than 7834 that implies that the order delivery is equal to Fast. (r2)
+            3. If the product amount doesn't go lower than 6253 that implies that the order delivery is equal to Slow. (r4)
+            4. If the product amount doesn't go lower than 4707 and the product price is below 8816 that implicates that the order resource is Company. (r5)
+            5. If the product amount exceeds 6595 and the product price is lesser than 3956 that implies that the order discount is smaller than 21. (r7)
+            6. If the product amount is below 6595 and the product amount doesn't go lower than 138 that implies the order discount is below 25. (r8)
+            7. If the product price is below 2812 that implicates that the order discount is below 15 and the process is executed by Company. (r10)
+            8. If the product price is lesser than 3753 that implies the order discount is bigger than 15 and the order discount is below 41. (r11)
+            9. If the product price is smaller than 3193 that implies the order discount is lower than 15 and the process is executed by Customer. (r12)
+            10. If the product price exceeds 2656 that implies that the order discount exceeds 15 and the order discount is bigger than 41. (r13)
+            11. If the product amount is smaller than 6869 that implies the order resource is Company and the order discount is smaller than 44. (r15)
+            12. If the product amount is smaller than 4919 that implicates that the order resource is Customer and the order discount doesn't go lower than 10. (r16)
+            13. If the order delivery is equal to Slow that implies the order resource is Company. (r18)
+            14. If the order delivery is Slow that implies the order discount is below 22. (r19)
+            15. If the order delivery is Fast that implicates that the order discount doesn't go lower than 20 and the order discount is below 31. (r21)
+            16. If the order discount is bigger than 20 and the order discount is smaller than 41 that implies the order delivery is equal to Fast. (r22)
+            17. If the process is executed by Company that implies that the order delivery is equal to Slow. (r23)
+            18. If the order discount is lesser than 22 that implies that the order delivery is equal to Slow. (r24)
+            19. If the order payment type is PayPal that implies that the order delivery is equal to Fast. (r26)
+            20. If the order payment type is PayPal that implicates that the order delivery is Fast. (r27)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the product price is bigger than 11458 that implies that the order delivery is Slow. (r2)' and its subrules comparisons to the positive subrules are below:
+          - The price for the event 'Order Product' is bigger than 11458 in the negative rule, while in the positive rule r1, it is lower than 2772.
+          - The delivery for the event 'Deliver Order' is Slow in the negative rule, while in the positive rule r2, it is equal to Fast.
+
+The second mined negative rule  is 'If the product amount exceeds 1769 and the product amount is bigger than 6063 that implies that the order discount exceeds 4. (r9)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Order Product' exceeds 1769 in the negative rule, while in the positive rule r5, it exceeds 4707.
+          - The amount for the event 'Order Product' exceeds 1769 in the negative rule, while in the positive rule r7, it exceeds 6595.
+          - The amount for the event 'Order Product' is bigger than 6063 in the negative rule, while in the positive rule r7, it exceeds 6595.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r7, it is lower than 21.
+          - The amount for the event 'Order Product' exceeds 1769 in the negative rule, while in the positive rule r8, it is below 6595.
+          - The amount for the event 'Order Product' is bigger than 6063 in the negative rule, while in the positive rule r8, it is below 6595.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r8, it is smaller than 25.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r10, it is below 15.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r11, it is bigger than 15.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r11, it is lower than 41.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r12, it is below 15.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r13, it exceeds 15.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The amount for the event 'Order Product' exceeds 1769 in the negative rule, while in the positive rule r15, it is below 6869.
+          - The amount for the event 'Order Product' is bigger than 6063 in the negative rule, while in the positive rule r15, it is below 6869.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r15, it is smaller than 44.
+          - The amount for the event 'Order Product' exceeds 1769 in the negative rule, while in the positive rule r16, it is below 4919.
+          - The amount for the event 'Order Product' is bigger than 6063 in the negative rule, while in the positive rule r16, it is below 4919.
+          - The discount for the event 'Pay Order' exceeds 4 in the negative rule, while in the positive rule r16, it exceeds 10.
+
+The third mined negative rule  is 'If the product amount is bigger than 1769 and the product amount is below 6064 that implies that the order discount is lower than 9. (r7)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Order Product' is bigger than 1769 in the negative rule, while in the positive rule r5, it doesn't go lower than 4707.
+          - The amount for the event 'Order Product' is below 6064 in the negative rule, while in the positive rule r5, it doesn't go lower than 4707.
+          - The amount for the event 'Order Product' is bigger than 1769 in the negative rule, while in the positive rule r7, it exceeds 6595.
+          - The amount for the event 'Order Product' is below 6064 in the negative rule, while in the positive rule r7, it exceeds 6595.
+          - The amount for the event 'Order Product' is bigger than 1769 in the negative rule, while in the positive rule r8, it is lower than 6595.
+          - The amount for the event 'Order Product' is below 6064 in the negative rule, while in the positive rule r8, it exceeds 138.
+          - The discount for the event 'Pay Order' is lower than 9 in the negative rule, while in the positive rule r11, it is bigger than 15.
+          - The discount for the event 'Pay Order' is lower than 9 in the negative rule, while in the positive rule r13, it exceeds 15.
+          - The discount for the event 'Pay Order' is lower than 9 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The amount for the event 'Order Product' is bigger than 1769 in the negative rule, while in the positive rule r15, it is smaller than 6869.
+          - The amount for the event 'Order Product' is bigger than 1769 in the negative rule, while in the positive rule r16, it is smaller than 4919.
+          - The amount for the event 'Order Product' is below 6064 in the negative rule, while in the positive rule r16, it is smaller than 4919.
+          - The discount for the event 'Pay Order' is lower than 9 in the negative rule, while in the positive rule r16, it is bigger than 10.
+
+The fourth mined negative rule  is 'If the product amount doesn't go lower than 4123 that implies that the order discount is lower than 23 and the order discount exceeds 10. (r16)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Order Product' doesn't go lower than 4123 in the negative rule, while in the positive rule r5, it doesn't go lower than 4707.
+          - The amount for the event 'Order Product' doesn't go lower than 4123 in the negative rule, while in the positive rule r7, it doesn't go lower than 6595.
+          - The discount for the event 'Pay Order' is lower than 23 in the negative rule, while in the positive rule r7, it is lesser than 21.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r7, it is lesser than 21.
+          - The amount for the event 'Order Product' doesn't go lower than 4123 in the negative rule, while in the positive rule r8, it is lower than 6595.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r8, it is lesser than 25.
+          - The discount for the event 'Pay Order' is lower than 23 in the negative rule, while in the positive rule r10, it is lesser than 15.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r10, it is lesser than 15.
+          - The discount for the event 'Pay Order' is lower than 23 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r11, it is lesser than 41.
+          - The discount for the event 'Pay Order' is lower than 23 in the negative rule, while in the positive rule r12, it is lesser than 15.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r12, it is lesser than 15.
+          - The discount for the event 'Pay Order' is lower than 23 in the negative rule, while in the positive rule r13, it doesn't go lower than 15.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r13, it doesn't go lower than 15.
+          - The discount for the event 'Pay Order' is lower than 23 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The amount for the event 'Order Product' doesn't go lower than 4123 in the negative rule, while in the positive rule r15, it is lower than 6869.
+          - The discount for the event 'Pay Order' exceeds 10 in the negative rule, while in the positive rule r15, it is lesser than 44.
+          - The amount for the event 'Order Product' doesn't go lower than 4123 in the negative rule, while in the positive rule r16, it is below 4919.
+          - The discount for the event 'Pay Order' is lower than 23 in the negative rule, while in the positive rule r16, it is bigger than 10.
+
+The fifth mined negative rule  is 'If the product amount exceeds 5176 that implicates that the order delivery is Slow. (r4)' and its subrules comparisons to the positive subrules are below:
+          - The delivery for the event 'Deliver Order' is Slow in the negative rule, while in the positive rule r2, it is Fast.
+          - The amount for the event 'Order Product' exceeds 5176 in the negative rule, while in the positive rule r4, it doesn't go lower than 6253.
+
+The sixth mined negative rule  is 'If the product amount is lower than 1769 and the product price exceeds 5246 that implicates that the order discount is smaller than 3. (r8)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Order Product' is lower than 1769 in the negative rule, while in the positive rule r5, it is bigger than 4707.
+          - The price for the event 'Order Product' exceeds 5246 in the negative rule, while in the positive rule r5, it is smaller than 8816.
+          - The amount for the event 'Order Product' is lower than 1769 in the negative rule, while in the positive rule r7, it is bigger than 6595.
+          - The price for the event 'Order Product' exceeds 5246 in the negative rule, while in the positive rule r7, it is below 3956.
+          - The amount for the event 'Order Product' is lower than 1769 in the negative rule, while in the positive rule r8, it doesn't go lower than 138.
+          - The price for the event 'Order Product' exceeds 5246 in the negative rule, while in the positive rule r10, it is smaller than 2812.
+          - The price for the event 'Order Product' exceeds 5246 in the negative rule, while in the positive rule r11, it is lesser than 3753.
+          - The discount for the event 'Pay Order' is smaller than 3 in the negative rule, while in the positive rule r11, it doesn't go lower than 15.
+          - The price for the event 'Order Product' exceeds 5246 in the negative rule, while in the positive rule r12, it is lower than 3193.
+          - The discount for the event 'Pay Order' is smaller than 3 in the negative rule, while in the positive rule r13, it doesn't go lower than 15.
+          - The discount for the event 'Pay Order' is smaller than 3 in the negative rule, while in the positive rule r13, it doesn't go lower than 41.
+          - The discount for the event 'Pay Order' is smaller than 3 in the negative rule, while in the positive rule r16, it exceeds 10.
+
+The seventh mined negative rule  is 'If the product amount is lower than 3440 that implicates that the order delivery is Fast. (r3)' and its subrules comparisons to the positive subrules are below:
+          - The delivery for the event 'Deliver Order' is Fast in the negative rule, while in the positive rule r1, it is Slow.
+          - The amount for the event 'Order Product' is lower than 3440 in the negative rule, while in the positive rule r4, it doesn't go lower than 6253.
+          - The delivery for the event 'Deliver Order' is Fast in the negative rule, while in the positive rule r4, it is equal to Slow.
+
+The eigth mined negative rule  is 'If the product amount is lesser than 5383 that implicates that the order discount is below 23 and the order discount is below 10. (r14)' and its subrules comparisons to the positive subrules are below:
+          - The amount for the event 'Order Product' is lesser than 5383 in the negative rule, while in the positive rule r5, it exceeds 4707.
+          - The amount for the event 'Order Product' is lesser than 5383 in the negative rule, while in the positive rule r7, it exceeds 6595.
+          - The discount for the event 'Pay Order' is below 23 in the negative rule, while in the positive rule r7, it is smaller than 21.
+          - The amount for the event 'Order Product' is lesser than 5383 in the negative rule, while in the positive rule r8, it doesn't go lower than 138.
+          - The discount for the event 'Pay Order' is below 23 in the negative rule, while in the positive rule r10, it is lower than 15.
+          - The discount for the event 'Pay Order' is below 23 in the negative rule, while in the positive rule r11, it is bigger than 15.
+          - The discount for the event 'Pay Order' is below 10 in the negative rule, while in the positive rule r11, it is bigger than 15.
+          - The discount for the event 'Pay Order' is below 23 in the negative rule, while in the positive rule r12, it is below 15.
+          - The discount for the event 'Pay Order' is below 23 in the negative rule, while in the positive rule r13, it is bigger than 15.
+          - The discount for the event 'Pay Order' is below 10 in the negative rule, while in the positive rule r13, it is bigger than 15.
+          - The discount for the event 'Pay Order' is below 23 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The discount for the event 'Pay Order' is below 10 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The amount for the event 'Order Product' is lesser than 5383 in the negative rule, while in the positive rule r16, it is smaller than 4919.
+          - The discount for the event 'Pay Order' is below 23 in the negative rule, while in the positive rule r16, it doesn't go lower than 10.
+          - The discount for the event 'Pay Order' is below 10 in the negative rule, while in the positive rule r16, it doesn't go lower than 10.
+
+The ninth mined negative rule  is 'If the order payment type is equal to Transfer that implies that the order delivery is equal to Fast. (r21)' and its subrules comparisons to the positive subrules are below:
+          - The payment type for the event 'Close Order' is equal to Transfer in the negative rule, while in the positive rule r26, it is PayPal.
+          - The payment type for the event 'Close Order' is equal to Transfer in the negative rule, while in the positive rule r27, it is equal to PayPal.
+
+The tenth mined negative rule  is 'If the product price is lesser than 12544 that implies the order discount is below 11 and the order discount is lesser than 3. (r10)' and its subrules comparisons to the positive subrules are below:
+          - The price for the event 'Order Product' is lesser than 12544 in the negative rule, while in the positive rule r5, it is smaller than 8816.
+          - The price for the event 'Order Product' is lesser than 12544 in the negative rule, while in the positive rule r7, it is lesser than 3956.
+          - The price for the event 'Order Product' is lesser than 12544 in the negative rule, while in the positive rule r10, it is lesser than 2812.
+          - The price for the event 'Order Product' is lesser than 12544 in the negative rule, while in the positive rule r11, it is lesser than 3753.
+          - The discount for the event 'Pay Order' is below 11 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The discount for the event 'Pay Order' is lesser than 3 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The price for the event 'Order Product' is lesser than 12544 in the negative rule, while in the positive rule r12, it is lesser than 3193.
+          - The price for the event 'Order Product' is lesser than 12544 in the negative rule, while in the positive rule r13, it doesn't go lower than 2656.
+          - The discount for the event 'Pay Order' is below 11 in the negative rule, while in the positive rule r13, it is bigger than 15.
+          - The discount for the event 'Pay Order' is lesser than 3 in the negative rule, while in the positive rule r13, it is bigger than 15.
+          - The discount for the event 'Pay Order' is below 11 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The discount for the event 'Pay Order' is lesser than 3 in the negative rule, while in the positive rule r13, it exceeds 41.
+          - The discount for the event 'Pay Order' is below 11 in the negative rule, while in the positive rule r16, it is bigger than 10.
+          - The discount for the event 'Pay Order' is lesser than 3 in the negative rule, while in the positive rule r16, it is bigger than 10.
+
+The eleventh mined negative rule  is 'If the product price is lesser than 14277 that implies that the order discount is bigger than 11 and the order discount is lesser than 23. (r11)' and its subrules comparisons to the positive subrules are below:
+          - The price for the event 'Order Product' is lesser than 14277 in the negative rule, while in the positive rule r5, it is smaller than 8816.
+          - The price for the event 'Order Product' is lesser than 14277 in the negative rule, while in the positive rule r7, it is below 3956.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r7, it is lesser than 21.
+          - The discount for the event 'Pay Order' is lesser than 23 in the negative rule, while in the positive rule r7, it is lesser than 21.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r8, it is lower than 25.
+          - The price for the event 'Order Product' is lesser than 14277 in the negative rule, while in the positive rule r10, it is smaller than 2812.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r10, it is lesser than 15.
+          - The discount for the event 'Pay Order' is lesser than 23 in the negative rule, while in the positive rule r10, it is lesser than 15.
+          - The price for the event 'Order Product' is lesser than 14277 in the negative rule, while in the positive rule r11, it is below 3753.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The discount for the event 'Pay Order' is lesser than 23 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r11, it is smaller than 41.
+          - The price for the event 'Order Product' is lesser than 14277 in the negative rule, while in the positive rule r12, it is lower than 3193.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r12, it is lower than 15.
+          - The discount for the event 'Pay Order' is lesser than 23 in the negative rule, while in the positive rule r12, it is lower than 15.
+          - The price for the event 'Order Product' is lesser than 14277 in the negative rule, while in the positive rule r13, it is bigger than 2656.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r13, it doesn't go lower than 15.
+          - The discount for the event 'Pay Order' is lesser than 23 in the negative rule, while in the positive rule r13, it doesn't go lower than 15.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r13, it is bigger than 41.
+          - The discount for the event 'Pay Order' is lesser than 23 in the negative rule, while in the positive rule r13, it is bigger than 41.
+          - The discount for the event 'Pay Order' is bigger than 11 in the negative rule, while in the positive rule r15, it is lesser than 44.
+          - The discount for the event 'Pay Order' is lesser than 23 in the negative rule, while in the positive rule r16, it is bigger than 10.
+
+The twelfth mined negative rule  is 'If the product price is lesser than 3825 and the product amount is lower than 4044 that implies that the order delivery is equal to Fast. (r0)' and its subrules comparisons to the positive subrules are below:
+          - The price for the event 'Order Product' is lesser than 3825 in the negative rule, while in the positive rule r1, it is smaller than 2772.
+          - The delivery for the event 'Deliver Order' is equal to Fast in the negative rule, while in the positive rule r1, it is equal to Slow.
+          - The price for the event 'Order Product' is lesser than 3825 in the negative rule, while in the positive rule r2, it is bigger than 7834.
+          - The amount for the event 'Order Product' is lower than 4044 in the negative rule, while in the positive rule r4, it exceeds 6253.
+          - The delivery for the event 'Deliver Order' is equal to Fast in the negative rule, while in the positive rule r4, it is equal to Slow.
+
+The thirteenth mined negative rule  is 'If the product price is smaller than 5151 that implies the order delivery is Fast. (r1)' and its subrules comparisons to the positive subrules are below:
+          - The price for the event 'Order Product' is smaller than 5151 in the negative rule, while in the positive rule r1, it is smaller than 2772.
+          - The delivery for the event 'Deliver Order' is Fast in the negative rule, while in the positive rule r1, it is Slow.
+          - The price for the event 'Order Product' is smaller than 5151 in the negative rule, while in the positive rule r2, it doesn't go lower than 7834.
+          - The delivery for the event 'Deliver Order' is Fast in the negative rule, while in the positive rule r4, it is equal to Slow.
+
+The fourteenth mined negative rule  is 'If the product price is smaller than 9945 that implicates that the order discount is lower than 11 and the order discount exceeds 3. (r12)' and its subrules comparisons to the positive subrules are below:
+          - The price for the event 'Order Product' is smaller than 9945 in the negative rule, while in the positive rule r5, it is smaller than 8816.
+          - The price for the event 'Order Product' is smaller than 9945 in the negative rule, while in the positive rule r7, it is smaller than 3956.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r7, it is smaller than 21.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r8, it is below 25.
+          - The price for the event 'Order Product' is smaller than 9945 in the negative rule, while in the positive rule r10, it is below 2812.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r10, it is below 15.
+          - The price for the event 'Order Product' is smaller than 9945 in the negative rule, while in the positive rule r11, it is smaller than 3753.
+          - The discount for the event 'Pay Order' is lower than 11 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r11, it exceeds 15.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r11, it is below 41.
+          - The price for the event 'Order Product' is smaller than 9945 in the negative rule, while in the positive rule r12, it is lower than 3193.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r12, it is lesser than 15.
+          - The price for the event 'Order Product' is smaller than 9945 in the negative rule, while in the positive rule r13, it exceeds 2656.
+          - The discount for the event 'Pay Order' is lower than 11 in the negative rule, while in the positive rule r13, it exceeds 15.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r13, it exceeds 15.
+          - The discount for the event 'Pay Order' is lower than 11 in the negative rule, while in the positive rule r13, it is bigger than 41.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r13, it is bigger than 41.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r15, it is lower than 44.
+          - The discount for the event 'Pay Order' is lower than 11 in the negative rule, while in the positive rule r16, it exceeds 10.
+          - The discount for the event 'Pay Order' exceeds 3 in the negative rule, while in the positive rule r16, it exceeds 10.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 9' is deviant because the order delivery is unequal to Fast (r21), the process is not executed by Company (r23) and the process is not executed by Company (r18).
+The process execution with 'Case No. 14' is deviant because the order discount doesn't exceed 20 (r22), the order discount goes lower than 20 (r21) and the process is not executed by Company (r23).
+The process execution with 'Case No. 34' is deviant because the product amount is not bigger than 138 (r8), the product price is higher than 2812 (r10) and the product price is not smaller than 3956 (r7).
+The process execution with 'Case No. 45' is deviant because the order delivery is not Slow (r19), the order discount doesn't exceed 20 (r22) and the order delivery is unequal to Slow (r24).
+The process execution with 'Case No. 59' is deviant because the order discount is not bigger than 20 (r22), the process is not executed by Company (r23) and the order delivery is not Slow (r19).
+The process execution with 'Case No. 66' is deviant because the process is not executed by Company (r23), the order discount goes lower than 20 (r22) and the order delivery is unequal to Slow (r19).
+The process execution with 'Case No. 78' is deviant because the product price is not below 2772 (r1) and the order delivery is unequal to Slow (r4).
+The process execution with 'Case No. 80' is deviant because the order discount is smaller than 20 (r22), the process is not executed by Company (r18) and the order delivery differs from Slow (r19).
+The process execution with 'Case No. 86' is deviant because the order discount goes lower than 20 (r22), the order discount is smaller than 20 (r21) and the order delivery is unequal to Slow (r24).
+The process execution with 'Case No. 87' is deviant because the product price is not below 2772 (r1) and the order delivery is unequal to Slow (r4).
+The process execution with 'Case No. 92' is deviant because the order payment type is unequal to PayPal (r26) and the order payment type is unequal to PayPal (r27).
+The process execution with 'Case No. 104' is deviant because the order discount doesn't exceed 10 (r16), the order discount doesn't exceed 15 (r13) and the product price is not smaller than 3753 (r11).
+The process execution with 'Case No. 111' is deviant because the product price is not bigger than 7834 (r2), the order discount is not bigger than 15 (r13) and the product amount is higher than 4919 (r16).
+The process execution with 'Case No. 116' is deviant because the product price goes lower than 7834 (r2), the order delivery differs from Slow (r19) and the process is not executed by Company (r23).
+The process execution with 'Case No. 127' is deviant because the order discount is smaller than 20 (r21), the process is not executed by Company (r18) and the order delivery is not Slow (r19).
+The process execution with 'Case No. 130' is deviant because the order delivery is unequal to Slow (r1), the product price is not bigger than 7834 (r2) and the product amount is not bigger than 6253 (r4).
+The process execution with 'Case No. 131' is deviant because the product amount doesn't exceed 6253 (r4), the product price is not below 2772 (r1) and the order delivery differs from Fast (r2).
+The process execution with 'Case No. 132' is deviant because the process is not executed by Company (r15), the product price is not smaller than 3956 (r7) and the product price is not below 3753 (r11).
+The process execution with 'Case No. 147' is deviant because the product price goes lower than 7834 (r2), the process is not executed by Company (r18) and the order discount is smaller than 20 (r21).
+The process execution with 'Case No. 154' is deviant because the order delivery is not Slow (r19), the order discount doesn't exceed 20 (r22) and the order delivery is not Slow (r24).
+The process execution with 'Case No. 166' is deviant because the order discount is not bigger than 20 (r22), the process is not executed by Company (r18) and the order delivery differs from Fast (r21).
+The process execution with 'Case No. 167' is deviant because the order discount is smaller than 20 (r22), the process is not executed by Company (r18) and the order delivery is unequal to Fast (r21).
+The process execution with 'Case No. 169' is deviant because the order delivery is not Fast (r26) and the order delivery is not Fast (r27).
+The process execution with 'Case No. 175' is deviant because the order delivery is not Slow (r24), the process is not executed by Company (r18) and the order payment type is unequal to PayPal (r27).
+The process execution with 'Case No. 179' is deviant because the product price is above 2812 (r10), the product price is higher than 3956 (r7) and the product price is above 8816 (r5).
+The process execution with 'Case No. 181' is deviant because the order discount doesn't exceed 15 (r13), the process is not executed by Company (r10) and the product price is higher than 3753 (r11).
+The process execution with 'Case No. 193' is deviant because the product price is above 3956 (r7), the order payment type differs from PayPal (r26) and the order discount doesn't exceed 10 (r16).
+The process execution with 'Case No. 199' is deviant because the product price is not below 3193 (r12), the process is not executed by Company (r15) and the order discount is not bigger than 15 (r13).
+The process execution with 'Case No. 173' is deviant because the order payment type differs from PayPal (r27), the order delivery differs from Slow (r19) and the order delivery differs from Slow (r18).
+The process execution with 'Case No. 195' is deviant because the order payment type differs from PayPal (r26) and the order payment type is not PayPal (r27).

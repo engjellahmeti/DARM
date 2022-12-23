@@ -19,14 +19,13 @@ The second mined negative rule  is 'If the notification type is P that implicate
           - The amount for the event 'Add Penalty' exceeds 5000 in the negative rule, while in the positive rule r3, it is lesser than 4909.
 
 Concrete examples of traces that failed:
-The process execution with 'Case No. 873' is deviant because the penalty amount is above 4909 (r3), the penalty amount is not smaller than 4951 (r7) and the process is not executed by Admin (r6).
 The process execution with 'Case No. 50' is deviant because the process is not executed by Police (r7), the notification type is unequal to P (r3) and the penalty amount doesn't exceed 5000 (r2).
 The process execution with 'Case No. 84' is deviant because the notification type is unequal to P (r3), the penalty amount is smaller than 5000 (r2) and the process is not executed by Police (r7).
-The process execution with 'Case No. 878' is deviant because the penalty amount is above 4909 (r3), the notification type is not C (r2) and the penalty amount is above 4951 (r7).
-The process execution with 'Case No. 863' is deviant because the penalty amount is not smaller than 4951 (r7), the process is not executed by Admin (r6) and the penalty amount is not smaller than 4909 (r3).
-The process execution with 'Case No. 840' is deviant because the penalty amount is not smaller than 4909 (r3), the process is not executed by Police (r7) and the process is not executed by Admin (r6).
-The process execution with 'Case No. 898' is deviant because the notification type is unequal to C (r2), the process is not executed by Police (r7) and the penalty amount is not smaller than 4909 (r3).
-The process execution with 'Case No. 891' is deviant because the process is not executed by Admin (r6) and the penalty amount is not below 4951 (r7).
-The process execution with 'Case No. 375' is deviant because the process is not executed by Admin (r6) and the process is not executed by Police (r7).
-
 The process execution with 'Case No. 218' is deviant because the penalty amount is not bigger than 5000 (r6) and the process is not executed by Police (r7).
+The process execution with 'Case No. 375' is deviant because the process is not executed by Admin (r6) and the process is not executed by Police (r7).
+The process execution with 'Case No. 840' is deviant because the penalty amount is not smaller than 4909 (r3), the process is not executed by Police (r7) and the process is not executed by Admin (r6).
+The process execution with 'Case No. 863' is deviant because the penalty amount is not smaller than 4951 (r7), the process is not executed by Admin (r6) and the penalty amount is not smaller than 4909 (r3).
+The process execution with 'Case No. 873' is deviant because the penalty amount is above 4909 (r3), the penalty amount is not smaller than 4951 (r7) and the process is not executed by Admin (r6).
+The process execution with 'Case No. 878' is deviant because the penalty amount is above 4909 (r3), the notification type is not C (r2) and the penalty amount is above 4951 (r7).
+The process execution with 'Case No. 891' is deviant because the process is not executed by Admin (r6) and the penalty amount is not below 4951 (r7).
+The process execution with 'Case No. 898' is deviant because the notification type is unequal to C (r2), the process is not executed by Police (r7) and the penalty amount is not smaller than 4909 (r3).

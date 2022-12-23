@@ -1,0 +1,84 @@
+--------------------Negative rules--------------------
+
+   Rule r0:  ( NotificationType=C | NotificationType=c ) & ( Resource=Admin | Resource=System ) => Amount<6393
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex c\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex c\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 6393\. :determiner zero) ) 
+
+   Rule r1:  NotificationType=P & ( Resource=Admin | Resource=System ) => Amount<6393
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 6393\. :determiner zero) ) 
+
+   Rule r3:  NotificationType=P & Resource=Police => 6515<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex police\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 6515\. :determiner zero) )
+
+   Rule r4:  Resource=Police => 5594<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex police\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5594\. :determiner zero) )
+
+   Rule r5:  Resource=System => Amount<6949
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 6949\. :determiner zero) ) 
+
+   Rule r6:  Resource=Admin => Amount<5026
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 5026\. :determiner zero) ) 
+
+   Rule r8:  NotificationType=P => 4974<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 4974\. :determiner zero) )
+
+   Rule r9:  NotificationType=C => Amount<4975
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex c\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 4975\. :determiner zero) ) 
+
+--------------------Positive rules--------------------
+
+   Rule r1:  NotificationType=C & Resource=Police => Amount<5903
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex c\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex police\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 5903\. :determiner zero) ) 
+
+   Rule r2:  NotificationType=P & ( Resource=Admin | Resource=System ) => Amount<6044
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex p\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 6044\. :determiner zero) ) 
+
+   Rule r3:  NotificationType=C & ( Resource=Admin | Resource=System ) => 6044<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex c\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 6044\. :determiner zero) )
+
+   Rule r5:  Resource=System => Amount<7793
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 7793\. :determiner zero) ) 
+
+   Rule r7:  NotificationType=C => 4953<Amount
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex notification type :determiner the) :range (first / object :lex c\. :number mass)) 
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 4953\. :determiner zero) )
+
+   Rule r9:  Amount<4973 => Resource=Police
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 4973\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex police\. :number mass)) 
+
+   Rule r10:  4973<Amount => Resource=Admin
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 4973\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+
+   Rule r11:  Amount<3116 => Resource=Police
+       (lowerthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex low) :standard (second / quality :lex 3116\. :determiner zero) ) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex police\. :number mass)) 
+
+   Rule r12:  5965<Amount => ( Resource=Admin | Resource=System )
+       (higherthan / greater-than-comparison  :tense present  :domain (attributename / one-or-two-d-time :lex amount :determiner the) :range (comparisontype / sense-and-measure-quality :lex high) :standard (first / quality :lex 5965\. :determiner zero) )
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex admin\. :number mass)) 
+       (equalness / property-ascription  :tense present  :lex equal :number mass :domain  (attributename / subject :lex resource :determiner the) :range (first / object :lex system\. :number mass)) 
+

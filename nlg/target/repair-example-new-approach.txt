@@ -1,0 +1,173 @@
+--> The negative event log has the following rules:
+            1. If the register resource is Solver or the register resource is System that implies that the process is executed by System. (r0)
+            2. If the register resource is Solver that implicates that the process is executed by Solver. (r1)
+            3. If the register resource is Tester that implicates that the resource is Tester. (r2)
+            4. If the process is executed by Solver that implicates that the complexity of repair is Simple. (r3)
+            5. If the process is executed by System or the process is executed by Tester that implies that the complexity of repair is Complex. (r4)
+            6. If the register resource is Solver or the register resource is System that implies the complexity of repair is equal to Medium. (r5)
+            7. If the process is executed by Tester that implies that the resource is Tester and the complexity of repair is Complex or the complexity of repair is equal to Simple. (r6)
+            8. If the process is executed by Solver that implies that the resource is System. (r8)
+
+--> While the positive event log has the following rules:
+            1. If the process is executed by Tester that implies that the resource is System. (r0)
+            2. If the register resource is Solver or the register resource is System that implicates that the process is executed by Solver. (r1)
+            3. If the register resource is System that implies the complexity of repair is equal to Simple. (r3)
+            4. If the process is executed by Solver or the register resource is Tester that implies the complexity of repair is equal to Complex. (r4)
+            5. If the process is executed by System that implicates that the complexity of repair is equal to Medium. (r5)
+            6. If the process is executed by Solver that implicates that the complexity of repair is equal to Complex and the process is executed by Solver. (r6)
+            7. If the process is executed by Tester that implies that the resource is System and the complexity of repair is equal to Simple. (r7)
+            8. If the register resource is System that implies that the complexity of repair is Medium or the complexity of repair is equal to Simple and the resource is Solver or the resource is Tester. (r8)
+            9. If the process is executed by System and the complexity of repair is equal to Complex or the complexity of repair is Medium that implicates that the repair resource is System. (r10)
+            10. If the complexity of repair is Medium or the complexity of repair is Simple and the resource is System that implies that the repair number s is lesser than 2. (r13)
+            11. If the complexity of repair is equal to Medium or the complexity of repair is equal to Simple and the resource is Solver or the process is executed by Tester that implies that the repair number s is bigger than 2. (r15)
+            12. If the resource is Solver that implies that the process is executed by Solver and the repair defect fixed is equal to True. (r16)
+            13. If the resource is System that implies the process is executed by System or the process is executed by Tester and the repair defect fixed is equal to True and the repair number s exceeds 1. (r18)
+            14. If the complexity of repair is equal to Medium that implies the repair number s doesn't go lower than 1 and the repair resource is Solver and the repair defect fixed is equal to True. (r20)
+
+Comparisons between the set of negative and positive redescription rules that relate on the attribute names, but have different nature:
+The first mined negative rule  is 'If the process is executed by Solver or the process is executed by System that implies that the complexity of repair is Medium. (r5)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r0, it is Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r0, it is Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r1, it is executed by Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r1, it is System.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r3, it is executed by System.
+          - The complexity of repair for the event 'Inform User' is Medium in the negative rule, while in the positive rule r3, it is equal to Simple.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r4, it is Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r4, it is Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r4, it is Tester.
+          - The complexity of repair for the event 'Inform User' is Medium in the negative rule, while in the positive rule r4, it is Complex.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r5, it is executed by System.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r6, it is executed by Solver.
+          - The complexity of repair for the event 'Inform User' is Medium in the negative rule, while in the positive rule r6, it is Complex.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r7, it is executed by Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r7, it is executed by Tester.
+          - The complexity of repair for the event 'Inform User' is Medium in the negative rule, while in the positive rule r7, it is Simple.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r8, it is executed by System.
+          - The complexity of repair for the event 'Inform User' is Medium in the negative rule, while in the positive rule r8, it is equal to Simple.
+
+The second mined negative rule  is 'If the process is executed by Solver or the process is executed by System that implies the process is executed by System. (r0)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r0, it is executed by Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r0, it is executed by Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r1, it is Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r1, it is executed by System.
+          - The resource for the event 'Inform User' is executed by System in the negative rule, while in the positive rule r1, it is Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r3, it is System.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r4, it is Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r4, it is executed by Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r4, it is executed by Tester.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r5, it is executed by System.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r6, it is executed by Solver.
+          - The resource for the event 'Inform User' is executed by System in the negative rule, while in the positive rule r6, it is executed by Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r7, it is executed by Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r7, it is executed by Tester.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r8, it is System.
+          - The resource for the event 'Inform User' is executed by System in the negative rule, while in the positive rule r8, it is Solver.
+          - The resource for the event 'Inform User' is executed by System in the negative rule, while in the positive rule r8, it is Tester.
+
+The third mined negative rule  is 'If the process is executed by System or the register resource is Tester that implies the complexity of repair is equal to Complex. (r4)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r0, it is Tester.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r1, it is Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r1, it is Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r1, it is System.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r3, it is executed by System.
+          - The complexity of repair for the event 'Inform User' is equal to Complex in the negative rule, while in the positive rule r3, it is Simple.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r4, it is executed by Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r4, it is executed by Solver.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r4, it is Tester.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r5, it is System.
+          - The complexity of repair for the event 'Inform User' is equal to Complex in the negative rule, while in the positive rule r5, it is Medium.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r6, it is Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r6, it is Solver.
+          - The resource for the event 'Register' is executed by System in the negative rule, while in the positive rule r7, it is Tester.
+          - The complexity of repair for the event 'Inform User' is equal to Complex in the negative rule, while in the positive rule r7, it is Simple.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r8, it is System.
+          - The complexity of repair for the event 'Inform User' is equal to Complex in the negative rule, while in the positive rule r8, it is equal to Medium.
+          - The complexity of repair for the event 'Inform User' is equal to Complex in the negative rule, while in the positive rule r8, it is equal to Simple.
+
+The fourth mined negative rule  is 'If the register resource is Solver that implicates that the complexity of repair is equal to Simple. (r3)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r0, it is executed by Tester.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r1, it is executed by System.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r3, it is System.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r4, it is Tester.
+          - The complexity of repair for the event 'Inform User' is equal to Simple in the negative rule, while in the positive rule r4, it is equal to Complex.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r5, it is executed by System.
+          - The complexity of repair for the event 'Inform User' is equal to Simple in the negative rule, while in the positive rule r5, it is Medium.
+          - The complexity of repair for the event 'Inform User' is equal to Simple in the negative rule, while in the positive rule r6, it is equal to Complex.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r7, it is executed by Tester.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r8, it is executed by System.
+          - The complexity of repair for the event 'Inform User' is equal to Simple in the negative rule, while in the positive rule r8, it is equal to Medium.
+
+The fifth mined negative rule  is 'If the register resource is Solver that implies that the resource is Solver. (r1)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r0, it is Tester.
+          - The resource for the event 'Inform User' is Solver in the negative rule, while in the positive rule r0, it is System.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r1, it is System.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r3, it is System.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r4, it is Tester.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r5, it is executed by System.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r7, it is executed by Tester.
+          - The resource for the event 'Inform User' is Solver in the negative rule, while in the positive rule r7, it is executed by System.
+          - The resource for the event 'Register' is Solver in the negative rule, while in the positive rule r8, it is executed by System.
+          - The resource for the event 'Inform User' is Solver in the negative rule, while in the positive rule r8, it is Tester.
+
+The sixth mined negative rule  is 'If the process is executed by Solver that implies the resource is System. (r8)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r0, it is Tester.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r1, it is executed by System.
+          - The resource for the event 'Inform User' is System in the negative rule, while in the positive rule r1, it is executed by Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r3, it is System.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r4, it is executed by Tester.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r5, it is executed by System.
+          - The resource for the event 'Inform User' is System in the negative rule, while in the positive rule r6, it is Solver.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r7, it is Tester.
+          - The resource for the event 'Register' is executed by Solver in the negative rule, while in the positive rule r8, it is System.
+          - The resource for the event 'Inform User' is System in the negative rule, while in the positive rule r8, it is executed by Solver.
+          - The resource for the event 'Inform User' is System in the negative rule, while in the positive rule r8, it is Tester.
+
+The seventh mined negative rule  is 'If the register resource is Tester that implies that the process is executed by Tester. (r2)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r0, it is System.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r1, it is executed by Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r1, it is executed by System.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r1, it is executed by Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r3, it is executed by System.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r4, it is Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r5, it is System.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r6, it is executed by Solver.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r6, it is executed by Solver.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r7, it is System.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r8, it is executed by System.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r8, it is executed by Solver.
+
+The eigth mined negative rule  is 'If the register resource is Tester that implies that the process is executed by Tester and the complexity of repair is Complex or the complexity of repair is Simple. (r6)' and its subrules comparisons to the positive subrules are below:
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r0, it is System.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r1, it is executed by Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r1, it is System.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r1, it is Solver.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r3, it is System.
+          - The complexity of repair for the event 'Inform User' is Complex in the negative rule, while in the positive rule r3, it is Simple.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r4, it is Solver.
+          - The complexity of repair for the event 'Inform User' is Simple in the negative rule, while in the positive rule r4, it is Complex.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r5, it is System.
+          - The complexity of repair for the event 'Inform User' is Complex in the negative rule, while in the positive rule r5, it is Medium.
+          - The complexity of repair for the event 'Inform User' is Simple in the negative rule, while in the positive rule r5, it is Medium.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r6, it is executed by Solver.
+          - The complexity of repair for the event 'Inform User' is Simple in the negative rule, while in the positive rule r6, it is equal to Complex.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r6, it is Solver.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r7, it is System.
+          - The complexity of repair for the event 'Inform User' is Complex in the negative rule, while in the positive rule r7, it is equal to Simple.
+          - The resource for the event 'Register' is Tester in the negative rule, while in the positive rule r8, it is System.
+          - The complexity of repair for the event 'Inform User' is Complex in the negative rule, while in the positive rule r8, it is Medium.
+          - The complexity of repair for the event 'Inform User' is Simple in the negative rule, while in the positive rule r8, it is Medium.
+          - The complexity of repair for the event 'Inform User' is Complex in the negative rule, while in the positive rule r8, it is equal to Simple.
+          - The resource for the event 'Inform User' is executed by Tester in the negative rule, while in the positive rule r8, it is executed by Solver.
+
+Concrete examples of traces that failed:
+The process execution with 'Case No. 461' is deviant because the complexity of repair is not Simple (r3), the process is not executed by Solver (r16) and the process is not executed by Solver (r4).
+The process execution with 'Case No. 207' is deviant because the complexity of repair is not Medium (r5), the process is not executed by Solver (r8) and the process is not executed by Tester (r7).
+The process execution with 'Case No. 799' is deviant because the process is not executed by System (r8), the process is not executed by Solver (r1) and the process is not executed by System (r3).
+The process execution with 'Case No. 785' is deviant because the process is not executed by System (r3), the process is not executed by Solver (r4) and the process is not executed by System (r10).
+The process execution with 'Case No. 832' is deviant because the process is not executed by Solver (r6), the process is not executed by System (r7) and the process is not executed by System (r10).
+The process execution with 'Case No. 937' is deviant because the complexity of repair is not Complex (r6), the process is not executed by Tester (r7) and the process is not executed by System (r0).
+The process execution with 'Case No. 203' is deviant because the process is not executed by Solver (r8), the process is not executed by Tester (r7) and the complexity of repair is unequal to Medium (r5).
+The process execution with 'Case No. 368' is deviant because the process is not executed by System (r10), the process is not executed by Tester (r15) and the process is not executed by Tester (r20).
+The process execution with 'Case No. 300' is deviant because the process is not executed by Solver (r6), the process is not executed by System (r3) and the process is not executed by System (r5).
+The process execution with 'Case No. 299' is deviant because the process is not executed by Tester (r0), the process is not executed by System (r5) and the process is not executed by System (r10).
+The process execution with 'Case No. 888' is deviant because the process is not executed by Solver (r8), the process is not executed by Solver (r1) and the process is not executed by Solver (r5).
