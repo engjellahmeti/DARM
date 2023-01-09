@@ -187,6 +187,16 @@ def plot_results_improved(filenames, type):
             except:
                 pass
 
+            _new_approach = {}
+            try:
+                if 'new-approach' in rule_quality_measures[filename][type][dc].keys():
+                    _new_approach =  rule_quality_measures[filename][type][dc]['new-approach']
+                    for key in _new_approach.keys():
+                        df.loc[i] = [dc1, 'RF-SplitT',  _new_approach[key]['Jaccard Index'], _new_approach[key]['p-value'], _new_approach[key]['AEJ'], _new_approach[key]['AAJ'], _new_approach[key]['Confidence'], _new_approach[key]['Information Gain'], _new_approach[key]['Lift'], _new_approach[key]['Pearson correlation coefficient']]
+                        i+=1
+            except:
+                pass
+
             _splittrees = {}
             try:
                 if 'splittrees' in rule_quality_measures[filename][type][dc].keys():
@@ -197,15 +207,6 @@ def plot_results_improved(filenames, type):
             except:
                 pass
 
-            _new_approach = {}
-            try:
-                if 'new-approach' in rule_quality_measures[filename][type][dc].keys():
-                    _new_approach =  rule_quality_measures[filename][type][dc]['new-approach']
-                    for key in _new_approach.keys():
-                        df.loc[i] = [dc1, 'RF-SplitT',  _new_approach[key]['Jaccard Index'], _new_approach[key]['p-value'], _new_approach[key]['AEJ'], _new_approach[key]['AAJ'], _new_approach[key]['Confidence'], _new_approach[key]['Information Gain'], _new_approach[key]['Lift'], _new_approach[key]['Pearson correlation coefficient']]
-                        i+=1
-            except:
-                pass
 
             try:
                 temp = '{0}-reremi'.format(filename)
@@ -256,6 +257,10 @@ def plot_results_improved(filenames, type):
         ax.label_outer()
         ax.grid(False)
 
+    if 'unning' in print_name:
+        print_name = 'Order-To-Cash'
+    elif 'Credit' in print_name:
+        print_name = 'Credit Application'
     axs[0].set_title(print_name)
     plt.xlabel('')
     import matplotlib
