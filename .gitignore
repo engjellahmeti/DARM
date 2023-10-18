@@ -13,3 +13,6 @@ csv_feature_vectors
 mlruns
 support.json
 redescription_mining/evaluation/plots/previous
+redescription_mining/evaluation/plots/before_review/
+redescription_mining/evaluation/plots/with_confidence/
+redescription_mining/evaluation/plots/other_z/

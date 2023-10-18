@@ -275,4 +275,314 @@ def plot_results_improved(filenames, type):
 
     plt.show()
     print()
- 
+
+def plot_results_per_declare_constraint(filenames, type):
+    with open(r'redescription_mining\evaluation\rule_quality_measures_v2.json', 'r') as a:
+        rule_quality_measures = json.load(a)
+    measurements = ['Jaccard Index', 'p-value', 'AEJ', 'AAJ', 'Confidence', 'Inf. Gain', 'Lift', 'Pearson']
+
+    # https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html
+    fig = plt.figure()
+    gs = fig.add_gridspec(len(measurements), hspace=0)
+    axs = gs.subplots(sharex=True)
+    filename = filenames[0]
+    print_name = filenames[1]
+    dc = filenames[2]
+    dc = dc.str_representation() 
+    for j, measure_ in enumerate(measurements):
+        df = pd.DataFrame(columns=['Constraint', 'Algorithm', 'Algorithms', 'Jaccard Index', 'p-value', 'AEJ', 'AAJ', 'Confidence', 'Inf. Gain', 'Lift', 'Pearson'])
+        i = 0
+
+
+        dc1 = dc
+        dc1 = re.sub(r'precedence', 'prec', dc1)
+        dc1 = re.sub(r'response', 'resp', dc1)
+        dc1 = re.sub(r'respondedexistence', 'respExis', dc1)
+        
+        _reremi = {}
+        try:
+            if 'reremi' in rule_quality_measures[filename][type][dc].keys():
+                _reremi =  rule_quality_measures[filename][type][dc]['reremi']
+                for key in _reremi.keys():
+                    df.loc[i] = [dc1, 'ReReMi', 'ReReMi ({})'.format(len(_reremi.keys())), _reremi[key]['Jaccard Index'], _reremi[key]['p-value'], _reremi[key]['AEJ'], _reremi[key]['AAJ'], _reremi[key]['Confidence'], _reremi[key]['Information Gain'], _reremi[key]['Lift'], _reremi[key]['Pearson correlation coefficient']]
+                    i+=1
+            else:
+                df.loc[i] = [dc1, 'ReReMi', 'ReReMi (0)', None,None,None,None,None,None,None,None]
+                i+=1
+        except:
+            pass
+
+        _new_approach = {}
+        try:
+            if 'new-approach' in rule_quality_measures[filename][type][dc].keys():
+                _new_approach =  rule_quality_measures[filename][type][dc]['new-approach']
+                for key in _new_approach.keys():
+                    df.loc[i] = [dc1, 'RF-SplitT', 'RF-SplitT ({})'.format(len(_new_approach.keys())),  _new_approach[key]['Jaccard Index'], _new_approach[key]['p-value'], _new_approach[key]['AEJ'], _new_approach[key]['AAJ'], _new_approach[key]['Confidence'], _new_approach[key]['Information Gain'], _new_approach[key]['Lift'], _new_approach[key]['Pearson correlation coefficient']]
+                    i+=1
+            else:
+                df.loc[i] = [dc1, 'RF-SplitT', 'RF-SplitT (0)', None,None,None,None,None,None,None,None]
+                i+=1
+        except:
+            pass
+
+        _splittrees = {}
+        try:
+            if 'splittrees' in rule_quality_measures[filename][type][dc].keys():
+                _splittrees =  rule_quality_measures[filename][type][dc]['splittrees']
+                for key in _splittrees.keys():
+                    df.loc[i] = [dc1, 'SplitT', 'SplitT ({})'.format(len(_splittrees.keys())),  _splittrees[key]['Jaccard Index'], _splittrees[key]['p-value'], _splittrees[key]['AEJ'], _splittrees[key]['AAJ'], _splittrees[key]['Confidence'], _splittrees[key]['Information Gain'], _splittrees[key]['Lift'], _splittrees[key]['Pearson correlation coefficient']]
+                    i+=1
+            else:
+                df.loc[i] = [dc1, 'SplitT', 'SplitT (0)', None,None,None,None,None,None,None,None]
+                i+=1
+        except:
+            pass
+
+        try:
+            temp = '{0}-reremi'.format(filename)
+            get_no_entities = support[temp][type][list(_reremi.keys())[0]]['|V|']
+        except:
+            try:
+                if get_no_entities == -1:
+                    get_no_entities = support['{0}-splittrees'.format(filename)][type][list(_splittrees.keys())[0]]['|V|']
+            except:
+                try:
+                    if get_no_entities == -1:
+                        get_no_entities = support['{0}-new-approach'.format(filename)][type][list(_new_approach.keys())[0]]['|V|']
+                except:
+                    get_no_entities = -1
+
+        if df[(df['Constraint'] == dc) & (df['Algorithm'] == 'ReReMi')].empty:
+            df.loc[i] = [dc1, 'ReReMi', 'ReReMi ({})'.format(len(_reremi.keys())), None,None,None,None,None,None,None,None]
+            i+=1
+        if df[(df['Constraint'] == dc) & (df['Algorithm'] == 'SplitT')].empty:
+            df.loc[i] = [dc1, 'SplitT', 'SplitT ({})'.format(len(_splittrees.keys())), None,None,None,None,None,None,None,None]
+            i+=1
+        if df[(df['Constraint'] == dc) & (df['Algorithm'] == 'RF-SplitT')].empty:
+            df.loc[i] = [dc1, 'RF-SplitT', 'RF-SplitT ({})'.format(len(_new_approach.keys())), None,None,None,None,None,None,None,None]
+            i+=1
+
+        sns.boxplot(data=df, x="Algorithms", y=measure_, ax=axs[j])
+
+    if 'unning' in print_name:
+        print_name = 'Order-To-Cash'
+    elif 'Credit' in print_name:
+        print_name = 'Credit Application'
+    axs[0].set_title(print_name + ' - ' + dc.__str__())
+    plt.xlabel('')
+    import matplotlib
+    plot_backend = matplotlib.get_backend()
+    mng = plt.get_current_fig_manager()
+    if plot_backend == 'TkAgg':
+        mng.resize(*mng.window.maxsize())
+    elif plot_backend == 'wxAgg':
+        mng.frame.Maximize(True)
+    elif plot_backend == 'Qt4Agg':
+        mng.window.showMaximized()
+
+    print(filename, type, dc)
+    plt.show()
+    # plt.savefig(r'redescription_mining\evaluation\plots\{0}-{1}-{2}.pdf'.format(filename, type, dc),  bbox_inches='tight')
+
+    print()
+
+def check_key(dict, dc, algorithm):
+    try:
+        return dict[dc][algorithm]
+    except:
+        return {}
+
+def check_key_all(dict, print_name, algorithm):
+    constraints = get_declare_constraints(declare_file_path='event_log_generation\declare constraint files\{}.decl'.format(print_name))
+    i = 0
+    for dc in constraints:
+        dc = dc.str_representation()
+        try:
+            i += len(dict[dc][algorithm].keys())
+        except:
+            i += 0
+    return i
+
+def plot_results_per_declare_constraint_negative_positive(filenames):
+    with open(r'redescription_mining\evaluation\rule_quality_measures_v2.json', 'r') as a:
+        rule_quality_measures = json.load(a)
+    measurements = ['Jaccard Index', 'p-value', 'AEJ', 'AAJ', 'Inf. Gain', 'Lift', 'Pearson']
+
+    # https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html
+    fig = plt.figure()
+    gs = fig.add_gridspec(len(measurements), hspace=0)
+    axs = gs.subplots(sharex=True)
+    filename = filenames[0]
+    print_name = filenames[1]
+    dc = filenames[2]
+    dc = dc.str_representation() 
+    reremi_neg = check_key(rule_quality_measures[filename]['negative'], dc, 'reremi')
+    reremi_pos = check_key(rule_quality_measures[filename]['positive'], dc, 'reremi')
+    rfsplitt_neg = check_key(rule_quality_measures[filename]['negative'], dc, 'new-approach')
+    rfsplitt_pos = check_key(rule_quality_measures[filename]['positive'], dc, 'new-approach')
+    splittrees_neg = check_key(rule_quality_measures[filename]['negative'], dc, 'splittrees')
+    splittrees_pos = check_key(rule_quality_measures[filename]['positive'], dc, 'splittrees')
+    for j, measure_ in enumerate(measurements):
+        i = 0
+        df = pd.DataFrame(columns=['Constraint', 'Algorithm', 'Algorithms', 'Type', 'Jaccard Index', 'p-value', 'AEJ', 'AAJ',  'Inf. Gain', 'Lift', 'Pearson'])
+        for type in ['positive', 'negative']:
+
+
+            dc1 = dc
+            dc1 = re.sub(r'precedence', 'prec', dc1)
+            dc1 = re.sub(r'response', 'resp', dc1)
+            dc1 = re.sub(r'respondedexistence', 'respExis', dc1)
+            
+            _reremi = {}
+            try:
+                if 'reremi' in rule_quality_measures[filename][type][dc].keys():
+                    _reremi =  rule_quality_measures[filename][type][dc]['reremi']
+                    for key in _reremi.keys():
+                        df.loc[i] = [dc1, 'ReReMi', 'ReReMi ({0}, {1})'.format(len(reremi_pos.keys()), len(reremi_neg.keys())), 'Positive' if type == 'positive' else 'Deviant', _reremi[key]['Jaccard Index'], _reremi[key]['p-value'], _reremi[key]['AEJ'], _reremi[key]['AAJ'],  _reremi[key]['Information Gain'], _reremi[key]['Lift'], _reremi[key]['Pearson correlation coefficient']]
+                        i+=1
+                else:
+                    df.loc[i] = [dc1, 'ReReMi', 'ReReMi ({0}, {1})'.format(len(reremi_pos.keys()), len(reremi_neg.keys())), 'Positive' if type == 'positive' else 'Deviant', None,None,None,None,None,None,None]
+                    i+=1
+            except:
+                pass
+
+            _new_approach = {}
+            try:
+                if 'new-approach' in rule_quality_measures[filename][type][dc].keys():
+                    _new_approach =  rule_quality_measures[filename][type][dc]['new-approach']
+                    for key in _new_approach.keys():
+                        df.loc[i] = [dc1, 'RF-SplitT', 'RF-SplitT ({0}, {1})'.format(len(rfsplitt_pos.keys()), len(rfsplitt_neg.keys())), 'Positive' if type == 'positive' else 'Deviant',  _new_approach[key]['Jaccard Index'], _new_approach[key]['p-value'], _new_approach[key]['AEJ'], _new_approach[key]['AAJ'], _new_approach[key]['Information Gain'], _new_approach[key]['Lift'], _new_approach[key]['Pearson correlation coefficient']]
+                        i+=1
+                else:
+                    df.loc[i] = [dc1, 'RF-SplitT', 'RF-SplitT ({0}, {1})'.format(len(rfsplitt_pos.keys()), len(rfsplitt_neg.keys())), 'Positive' if type == 'positive' else 'Deviant', None,None,None,None,None,None,None]
+                    i+=1
+            except:
+                pass
+
+            _splittrees = {}
+            try:
+                if 'splittrees' in rule_quality_measures[filename][type][dc].keys():
+                    _splittrees =  rule_quality_measures[filename][type][dc]['splittrees']
+                    for key in _splittrees.keys():
+                        df.loc[i] = [dc1, 'SplitT', 'SplitT ({0}, {1})'.format(len(splittrees_pos.keys()), len(splittrees_neg.keys())), 'Positive' if type == 'positive' else 'Deviant',  _splittrees[key]['Jaccard Index'], _splittrees[key]['p-value'], _splittrees[key]['AEJ'], _splittrees[key]['AAJ'], _splittrees[key]['Information Gain'], _splittrees[key]['Lift'], _splittrees[key]['Pearson correlation coefficient']]
+                        i+=1
+                else:
+                    df.loc[i] = [dc1, 'SplitT', 'SplitT ({0}, {1})'.format(len(splittrees_pos.keys()), len(splittrees_neg.keys())), 'Positive' if type == 'positive' else 'Deviant', None,None,None,None,None,None,None]
+                    i+=1
+            except:
+                pass
+
+            try:
+                temp = '{0}-reremi'.format(filename)
+                get_no_entities = support[temp][type][list(_reremi.keys())[0]]['|V|']
+            except:
+                try:
+                    if get_no_entities == -1:
+                        get_no_entities = support['{0}-splittrees'.format(filename)][type][list(_splittrees.keys())[0]]['|V|']
+                except:
+                    try:
+                        if get_no_entities == -1:
+                            get_no_entities = support['{0}-new-approach'.format(filename)][type][list(_new_approach.keys())[0]]['|V|']
+                    except:
+                        get_no_entities = -1
+
+            if df[(df['Constraint'] == dc) & (df['Algorithm'] == 'ReReMi')].empty:
+                df.loc[i] = [dc1, 'ReReMi', 'ReReMi ({0}, {1})'.format(len(reremi_pos.keys()), len(reremi_neg.keys())), 'Positive' if type == 'positive' else 'Deviant', None,None,None,None,None,None,None]
+                i+=1
+            if df[(df['Constraint'] == dc) & (df['Algorithm'] == 'SplitT')].empty:
+                df.loc[i] = [dc1, 'SplitT', 'SplitT ({0}, {1})'.format(len(splittrees_pos.keys()), len(splittrees_neg.keys())), 'Positive' if type == 'positive' else 'Deviant', None,None,None,None,None,None,None]
+                i+=1
+            if df[(df['Constraint'] == dc) & (df['Algorithm'] == 'RF-SplitT')].empty:
+                df.loc[i] = [dc1, 'RF-SplitT', 'RF-SplitT ({0}, {1})'.format(len(rfsplitt_pos.keys()), len(rfsplitt_neg.keys())), 'Positive' if type == 'positive' else 'Deviant', None,None,None,None,None,None,None]
+                i+=1
+
+        sns.boxplot(data=df, x="Algorithms", y=measure_, hue="Type", ax=axs[j])
+
+    for i, ax in enumerate(axs):
+        if i != len(axs) - 1:
+            ax.get_legend().remove()
+        else:
+            # https://stackoverflow.com/questions/4700614/how-to-put-the-legend-outside-the-plot
+            ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.25),
+          fancybox=True, shadow=True, ncol=5)
+        ax.label_outer()
+        ax.grid(False)
+
+    if 'unning' in print_name:
+        print_name = 'Order-To-Cash'
+    elif 'Credit' in print_name:
+        print_name = 'Credit Application'
+    axs[0].set_title(print_name + ' - ' + dc.__str__())
+    plt.xlabel('')
+    import matplotlib
+    plot_backend = matplotlib.get_backend()
+    mng = plt.get_current_fig_manager()
+    if plot_backend == 'TkAgg':
+        mng.resize(*mng.window.maxsize())
+    elif plot_backend == 'wxAgg':
+        mng.frame.Maximize(True)
+    elif plot_backend == 'Qt4Agg':
+        mng.window.showMaximized()
+
+    print(filename, type, dc)
+    plt.show()
+    # plt.savefig(r'redescription_mining\evaluation\plots\{0}-{1}-{2}.pdf'.format(filename, type, dc),  bbox_inches='tight')
+    print()
+  
+def get_values(filenames):
+    with open(r'redescription_mining\evaluation\rule_quality_measures_v2.json', 'r') as a:
+        rule_quality_measures = json.load(a)
+    measurements = ['Jaccard Index', 'p-value', 'AEJ', 'AAJ', 'Confidence', 'Inf. Gain', 'Lift', 'Pearson']
+
+    filename = filenames[0]
+    print_name = filenames[1]
+    reremi_neg = check_key_all(rule_quality_measures[filename]['negative'], print_name, 'reremi')
+    reremi_pos = check_key_all(rule_quality_measures[filename]['positive'], print_name, 'reremi')
+    rfsplitt_neg = check_key_all(rule_quality_measures[filename]['negative'], print_name, 'new-approach')
+    rfsplitt_pos = check_key_all(rule_quality_measures[filename]['positive'], print_name, 'new-approach')
+    splittrees_neg = check_key_all(rule_quality_measures[filename]['negative'], print_name, 'splittrees')
+    splittrees_pos = check_key_all(rule_quality_measures[filename]['positive'], print_name, 'splittrees')
+
+    print(filename)
+    print('    positive')
+    print('        ReReMi    RF-SplitT    SplitT')
+    print('         {0}        {1}          {2}'.format(reremi_pos, rfsplitt_pos, splittrees_pos))
+    
+    print(filename)
+    print('    negative')
+    print('        ReReMi    RF-SplitT    SplitT')
+    print('         {0}        {1}          {2}'.format(reremi_neg, rfsplitt_neg, splittrees_neg))
+    
+
+def plot_entities(filenames):
+    with open(r'redescription_mining\evaluation\support.json', 'r') as a:
+        rule_quality_measures = json.load(a)
+
+    # https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html
+   
+    filename = filenames[0]
+    print_name = filenames[1]
+    constraints = get_declare_constraints(declare_file_path='event_log_generation\declare constraint files\{}.decl'.format(print_name))
+    temp_dict = {'Declare Constraint': [], 'Type': [], 'No. of entities': []}
+    for type in  ['negative', 'positive']:
+        for dc in constraints:
+            dc = dc.str_representation() 
+            temp_dict['Declare Constraint'].append(dc)
+           
+            df = pd.read_csv(r'feature_vectors\csv_feature_vectors\{0}\activation-{1}-{2}.csv'.format(type, filename, dc), index_col=0)
+            
+            temp_dict['No. of entities'].append(df.shape[0])
+            temp_dict['Type'].append('Positive' if type =='positive' else 'Deviant')
+
+            
+
+    data = pd.DataFrame.from_dict(temp_dict)
+    sns.barplot(data=data, x='Declare Constraint', y='No. of entities', hue='Type',palette="Spectral")
+    plt.xticks(rotation=45)
+    if 'unning' in print_name:
+        print_name = 'Order-To-Cash'
+    elif 'Credit' in print_name:
+        print_name = 'Credit Application'
+    plt.title(print_name)
+    plt.show()
+    print()
