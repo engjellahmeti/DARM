@@ -31,7 +31,7 @@ How to run the code:
   - max_trace_length - the max. number of events per trace
   
 ## Citations
-If you're using *Deviance Analysis by means of Redescription Mining* approach in your research or applications, please cite using this BibTeX:
+If you're using *Redescription mining-based business process deviance analysis* approach in your research or applications, please cite using the following BibTeX:
 ```
 @article{Ahmeti.2024,
  author = {Ahmeti, Engj{\"e}ll and K{\"a}ppel, Martin and Jablonski, Stefan},
