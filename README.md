@@ -37,7 +37,7 @@ If you're using *Redescription mining-based business process deviance analysis* 
  author = {Ahmeti, Engj{\"e}ll and K{\"a}ppel, Martin and Jablonski, Stefan},
  year = {2024},
  title = {Redescription mining-based business process deviance analysis},
- keywords = {Deviance Mining},
+ keywords = {Deviance Mining, Redescription Mining, Process Mining, Natural Language Generation},
  issn = {1619-1366},
  journal = {Software and Systems Modeling},
  doi = {10.1007/s10270-024-01231-8}
