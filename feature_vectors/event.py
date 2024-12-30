@@ -1,4 +1,4 @@
-# @project Deviance Analysis by Means of Redescription Mining - Master Thesis
+# @paper Redescription mining-based business process deviance analysis
 
 # @author Volodymyr Leno, Marlon Dumas, Fabrizio Maria Maggi, Marcello La Rosa,Artem Polyvyanyy
 # @author Engjëll Ahmeti, updated as per need of the project

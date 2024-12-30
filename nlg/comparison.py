@@ -1,4 +1,4 @@
-# @project Deviance Analysis by Means of Redescription Mining - Master Thesis 
+# @paper Redescription mining-based business process deviance analysis
 # @author Engjëll Ahmeti
 # @date 2/2/2021
 from log_print import Print

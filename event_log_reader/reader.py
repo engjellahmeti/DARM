@@ -1,4 +1,4 @@
-# @project Deviance Analysis by Means of Redescription Mining - Master Thesis
+# @paper Redescription mining-based business process deviance analysis
 # @author https://github.com/FrankBGao/read_xes
 # @author Engjëll Ahmeti - changed as per need of our project.
 # @date 11/18/2020

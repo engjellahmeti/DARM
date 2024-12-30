@@ -1,4 +1,4 @@
-# @project Deviance Analysis by Means of Redescription Mining
+# @paper Redescription mining-based business process deviance analysis
 # @author Engjëll Ahmeti & https://towardsdatascience.com/how-to-evaluate-text-generation-models-metrics-for-automatic-evaluation-of-nlp-models-e1c251b04ec1
 # @date 3/3/2022
 
